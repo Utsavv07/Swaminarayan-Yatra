@@ -1117,20 +1117,20 @@
 
     <div class="contact-form-box reveal-right">
       <div class="form-title">Quick Enquiry</div>
-      <form onsubmit="handleSubmit(event)">
+      <form action="https://formspree.io/f/mvzvovll" method="POST">
         <div class="form-row">
           <div class="form-group">
             <label>Your Name</label>
-            <input type="text" placeholder="Ramesh Patel" required/>
+            <input type="text" name="name" placeholder="Ramesh Patel" required/>
           </div>
           <div class="form-group">
             <label>Mobile Number</label>
-            <input type="tel" placeholder="98XXXXXXXX" required/>
+            <input type="tel" name="name" placeholder="98XXXXXXXX" required/>
           </div>
         </div>
         <div class="form-group">
           <label>Interested Destination</label>
-          <select>
+          <select name="destination">
             <option>Chardham Yatra</option>
             <option>Ayodhya</option>
             <option>Vrindavan / Mathura</option>
@@ -1145,11 +1145,11 @@
         <div class="form-row">
           <div class="form-group">
             <label>No. of Travellers</label>
-            <input type="number" placeholder="4" min="1"/>
+            <input type="number" name="travellers" placeholder="4" min="1"/>
           </div>
           <div class="form-group">
             <label>Preferred Month</label>
-            <select>
+            <select name="month">
               <option>April 2026</option>
               <option>May 2026</option>
               <option>June 2026</option>
@@ -1165,9 +1165,9 @@
         </div>
         <div class="form-group">
           <label>Message (Optional)</label>
-          <textarea placeholder="Any special requirements, budget, or questions..."></textarea>
+          <textarea name="message" placeholder="Any special requirements..."></textarea>
         </div>
-        <button type="submit" class="form-submit">🙏 Send Enquiry</button>
+       <button type="submit">🙏 SEND ENQUIRY</button>
       </form>
     </div>
   </div>
