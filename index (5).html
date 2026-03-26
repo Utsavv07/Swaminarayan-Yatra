@@ -1,0 +1,1301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Swaminarayan Yatra & Krishna Tours</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Tiro+Devanagari+Hindi&family=Josefin+Sans:wght@300;400;600&display=swap" rel="stylesheet"/>
+  <style>
+    :root {
+      --saffron: #E8721C;
+      --deep-saffron: #C45A0A;
+      --gold: #D4A017;
+      --gold-light: #F5C842;
+      --cream: #FDF6E3;
+      --ivory: #FEFAF0;
+      --maroon: #7B1F1F;
+      --deep-maroon: #4A0E0E;
+      --forest: #2D5016;
+      --sky: #1A3A5C;
+      --text-dark: #2C1810;
+      --text-mid: #5C3D2E;
+      --text-light: #8B6650;
+    }
+
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--ivory);
+      color: var(--text-dark);
+      font-family: 'Josefin Sans', sans-serif;
+      overflow-x: hidden;
+    }
+
+    /* ──────────────── NAV ──────────────── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      background: rgba(74,14,14,0.95);
+      backdrop-filter: blur(10px);
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 5%;
+      height: 68px;
+      border-bottom: 2px solid var(--gold);
+    }
+    .nav-logo {
+      display: flex; align-items: center; gap: 12px;
+    }
+    .nav-logo .om {
+      font-size: 1.8rem; color: var(--gold);
+      animation: spin-om 8s linear infinite;
+    }
+    @keyframes spin-om {
+      0%,100%{transform:rotate(-5deg);}50%{transform:rotate(5deg);}
+    }
+    .nav-logo-text {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.25rem; font-weight: 700;
+      color: var(--cream); letter-spacing: 0.05em;
+      line-height: 1.2;
+    }
+    .nav-logo-text span { color: var(--gold-light); font-style: italic; }
+    .nav-links {
+      display: flex; gap: 2rem; list-style: none;
+    }
+    .nav-links a {
+      color: var(--cream); text-decoration: none;
+      font-size: 0.75rem; letter-spacing: 0.15em; text-transform: uppercase;
+      transition: color 0.3s;
+    }
+    .nav-links a:hover { color: var(--gold-light); }
+    .nav-cta {
+      background: var(--gold); color: var(--deep-maroon);
+      padding: 8px 20px; border: none; cursor: pointer;
+      font-family: 'Josefin Sans', sans-serif;
+      font-size: 0.75rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase;
+      text-decoration: none;
+      transition: background 0.3s, transform 0.2s;
+      display: inline-block;
+    }
+    .nav-cta:hover { background: var(--gold-light); transform: translateY(-1px); }
+
+    /* ──────────────── HERO ──────────────── */
+    .hero {
+      min-height: 100vh;
+      background:
+        linear-gradient(180deg, rgba(74,14,14,0.7) 0%, rgba(44,24,16,0.5) 50%, rgba(26,58,92,0.6) 100%),
+        url('https://images.unsplash.com/photo-1545389336-cf090694435e?w=1600&q=80') center/cover no-repeat;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      text-align: center;
+      padding: 100px 5% 60px;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse at 50% 60%, rgba(232,114,28,0.15) 0%, transparent 70%);
+    }
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: rgba(212,160,23,0.2);
+      border: 1px solid var(--gold);
+      color: var(--gold-light);
+      padding: 6px 20px;
+      font-size: 0.7rem; letter-spacing: 0.25em; text-transform: uppercase;
+      margin-bottom: 2rem;
+      animation: fadeUp 0.8s ease both;
+    }
+    .hero-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(3rem, 8vw, 6rem);
+      font-weight: 700;
+      color: var(--cream);
+      line-height: 1.05;
+      animation: fadeUp 0.8s 0.2s ease both;
+      text-shadow: 0 4px 30px rgba(0,0,0,0.5);
+    }
+    .hero-title .accent { color: var(--gold-light); font-style: italic; }
+    .hero-subtitle {
+      font-size: clamp(0.85rem, 2vw, 1rem);
+      color: rgba(253,246,227,0.8);
+      letter-spacing: 0.15em; text-transform: uppercase;
+      margin: 1.5rem 0 2.5rem;
+      animation: fadeUp 0.8s 0.4s ease both;
+    }
+    .hero-gujarati {
+      font-family: 'Tiro Devanagari Hindi', serif;
+      font-size: 1.3rem; color: var(--gold-light);
+      margin-bottom: 2rem;
+      animation: fadeUp 0.8s 0.3s ease both;
+    }
+    .hero-btns {
+      display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;
+      animation: fadeUp 0.8s 0.6s ease both;
+    }
+    .btn-primary {
+      background: var(--saffron); color: white;
+      padding: 14px 36px; text-decoration: none;
+      font-size: 0.8rem; font-weight: 600; letter-spacing: 0.15em; text-transform: uppercase;
+      transition: all 0.3s;
+      display: inline-block;
+    }
+    .btn-primary:hover { background: var(--deep-saffron); transform: translateY(-2px); box-shadow: 0 8px 30px rgba(232,114,28,0.4); }
+    .btn-outline {
+      background: transparent; color: var(--gold-light);
+      border: 2px solid var(--gold);
+      padding: 14px 36px; text-decoration: none;
+      font-size: 0.8rem; font-weight: 600; letter-spacing: 0.15em; text-transform: uppercase;
+      transition: all 0.3s; display: inline-block;
+    }
+    .btn-outline:hover { background: var(--gold); color: var(--deep-maroon); }
+
+    .hero-scroll {
+      position: absolute; bottom: 2rem; left: 50%; transform: translateX(-50%);
+      display: flex; flex-direction: column; align-items: center; gap: 6px;
+      color: rgba(253,246,227,0.5); font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase;
+      animation: fadeUp 1s 1s ease both;
+    }
+    .hero-scroll-line {
+      width: 1px; height: 50px;
+      background: linear-gradient(to bottom, var(--gold), transparent);
+      animation: scrollLine 2s ease-in-out infinite;
+    }
+    @keyframes scrollLine { 0%,100%{height:30px;opacity:0.5;}50%{height:60px;opacity:1;} }
+
+    @keyframes fadeUp {
+      from { opacity:0; transform:translateY(30px); }
+      to   { opacity:1; transform:translateY(0); }
+    }
+
+    /* ──────────────── STATS BAR ──────────────── */
+    .stats-bar {
+      background: var(--deep-maroon);
+      border-bottom: 3px solid var(--gold);
+      display: grid; grid-template-columns: repeat(4,1fr);
+    }
+    .stat-item {
+      padding: 2rem 1rem; text-align: center;
+      border-right: 1px solid rgba(212,160,23,0.3);
+      transition: background 0.3s;
+    }
+    .stat-item:last-child { border-right: none; }
+    .stat-item:hover { background: rgba(212,160,23,0.1); }
+    .stat-num {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2.5rem; font-weight: 700; color: var(--gold-light);
+      line-height: 1;
+    }
+    .stat-label {
+      font-size: 0.65rem; color: rgba(253,246,227,0.7);
+      letter-spacing: 0.2em; text-transform: uppercase; margin-top: 0.4rem;
+    }
+
+    /* ──────────────── SECTION COMMON ──────────────── */
+    section { padding: 6rem 5%; }
+    .section-header { text-align: center; margin-bottom: 4rem; }
+    .section-label {
+      display: inline-block;
+      font-size: 0.65rem; letter-spacing: 0.3em; text-transform: uppercase;
+      color: var(--saffron); margin-bottom: 0.8rem;
+    }
+    .section-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2.2rem, 5vw, 3.5rem); font-weight: 700;
+      color: var(--deep-maroon); line-height: 1.1;
+    }
+    .section-title .italic { font-style: italic; color: var(--saffron); }
+    .section-divider {
+      width: 80px; height: 3px;
+      background: linear-gradient(90deg, transparent, var(--gold), transparent);
+      margin: 1.2rem auto 0;
+    }
+
+    /* ──────────────── DESTINATIONS ──────────────── */
+    .destinations { background: var(--cream); }
+
+    .dest-featured {
+      display: grid; grid-template-columns: 1.2fr 1fr;
+      gap: 2px; margin-bottom: 2px;
+    }
+    .dest-card {
+      position: relative; overflow: hidden; cursor: pointer;
+      aspect-ratio: 4/3;
+    }
+    .dest-card.tall { aspect-ratio: 3/4; }
+    .dest-card img {
+      width: 100%; height: 100%; object-fit: cover;
+      transition: transform 0.6s ease;
+    }
+    .dest-card:hover img { transform: scale(1.08); }
+    .dest-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(to top, rgba(74,14,14,0.85) 0%, rgba(0,0,0,0.1) 60%);
+      display: flex; flex-direction: column; justify-content: flex-end;
+      padding: 2rem;
+    }
+    .dest-badge {
+      display: inline-block;
+      background: var(--saffron); color: white;
+      font-size: 0.6rem; letter-spacing: 0.2em; text-transform: uppercase;
+      padding: 3px 10px; margin-bottom: 0.6rem;
+      width: fit-content;
+    }
+    .dest-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.8rem; font-weight: 700; color: white; line-height: 1.1;
+    }
+    .dest-desc { font-size: 0.75rem; color: rgba(255,255,255,0.75); margin-top: 0.5rem; }
+
+    .dest-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 2px;
+    }
+    .dest-mini {
+      position: relative; overflow: hidden; cursor: pointer;
+      aspect-ratio: 16/10;
+    }
+    .dest-mini img { width:100%; height:100%; object-fit:cover; transition: transform 0.6s; }
+    .dest-mini:hover img { transform: scale(1.08); }
+    .dest-mini .dest-overlay { padding: 1.2rem; }
+    .dest-mini .dest-name { font-size: 1.2rem; }
+
+    /* ──────────────── CHARDHAM HIGHLIGHT ──────────────── */
+    .chardham {
+      background: var(--deep-maroon);
+      position: relative; overflow: hidden;
+    }
+    .chardham::before {
+      content: 'ॐ';
+      position: absolute; right: -2rem; top: 50%; transform: translateY(-50%);
+      font-size: 30rem; color: rgba(212,160,23,0.04);
+      font-family: serif; line-height: 1; pointer-events: none;
+    }
+    .chardham .section-title { color: var(--cream); }
+    .chardham-layout {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center;
+    }
+    .chardham-img-stack {
+      position: relative; height: 500px;
+    }
+    .chardham-img-stack img {
+      position: absolute; object-fit: cover;
+      border: 4px solid var(--gold);
+      box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+    }
+    .chardham-img-stack img:nth-child(1) { width: 65%; height: 65%; top: 0; left: 0; }
+    .chardham-img-stack img:nth-child(2) { width: 55%; height: 55%; bottom: 0; right: 0; }
+    .chardham-img-stack img:nth-child(3) {
+      width: 40%; height: 40%; top: 50%; left: 30%;
+      transform: translateY(-50%);
+      border-color: var(--saffron);
+      z-index: 2;
+    }
+    .chardham-dhams {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 1px;
+      background: rgba(212,160,23,0.2);
+      margin: 2rem 0;
+    }
+    .dham-item {
+      background: rgba(74,14,14,0.6);
+      padding: 1.2rem; text-align: center;
+      transition: background 0.3s;
+    }
+    .dham-item:hover { background: rgba(212,160,23,0.15); }
+    .dham-icon { font-size: 1.8rem; margin-bottom: 0.4rem; }
+    .dham-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.1rem; font-weight: 700; color: var(--gold-light);
+    }
+    .dham-state { font-size: 0.65rem; color: rgba(253,246,227,0.5); letter-spacing: 0.1em; text-transform: uppercase; }
+    .chardham-text p {
+      color: rgba(253,246,227,0.75); line-height: 1.9;
+      font-size: 0.9rem; margin-bottom: 1.5rem;
+    }
+    .chardham-text .highlight {
+      color: var(--gold-light);
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.4rem; font-style: italic;
+      display: block; margin-bottom: 1rem; line-height: 1.4;
+    }
+
+    /* ──────────────── SERVICES ──────────────── */
+    .services { background: var(--ivory); }
+    .services-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem;
+    }
+    .service-card {
+      background: white;
+      border: 1px solid rgba(212,160,23,0.2);
+      padding: 2.5rem 2rem;
+      position: relative; overflow: hidden;
+      transition: all 0.4s;
+    }
+    .service-card::before {
+      content: '';
+      position: absolute; top: 0; left: 0; right: 0; height: 3px;
+      background: linear-gradient(90deg, var(--saffron), var(--gold));
+      transform: scaleX(0); transform-origin: left;
+      transition: transform 0.4s;
+    }
+    .service-card:hover { box-shadow: 0 20px 60px rgba(123,31,31,0.12); transform: translateY(-4px); }
+    .service-card:hover::before { transform: scaleX(1); }
+    .service-icon { font-size: 2.5rem; margin-bottom: 1rem; }
+    .service-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.4rem; font-weight: 700; color: var(--deep-maroon);
+      margin-bottom: 0.8rem;
+    }
+    .service-desc { font-size: 0.82rem; color: var(--text-light); line-height: 1.8; }
+
+    /* ──────────────── WHY US ──────────────── */
+    .why-us {
+      background: linear-gradient(135deg, var(--cream) 0%, rgba(232,114,28,0.06) 100%);
+      border-top: 3px solid rgba(212,160,23,0.3);
+      border-bottom: 3px solid rgba(212,160,23,0.3);
+    }
+    .why-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 2rem; }
+    .why-item { text-align: center; padding: 1.5rem; }
+    .why-num {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 3.5rem; font-weight: 700;
+      color: rgba(232,114,28,0.15); line-height: 1;
+      margin-bottom: 0.5rem;
+    }
+    .why-icon { font-size: 2rem; margin-bottom: 0.8rem; }
+    .why-title { font-size: 0.85rem; font-weight: 600; color: var(--deep-maroon); letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 0.5rem; }
+    .why-text { font-size: 0.78rem; color: var(--text-light); line-height: 1.7; }
+
+    /* ──────────────── GALLERY ──────────────── */
+    .gallery { background: var(--deep-maroon); padding: 6rem 0; overflow: hidden; }
+    .gallery .section-header { padding: 0 5%; }
+    .gallery .section-title { color: var(--cream); }
+    .gallery-strip {
+      display: flex; gap: 8px;
+      animation: marquee 30s linear infinite;
+      width: max-content;
+      margin-top: 3rem;
+    }
+    .gallery:hover .gallery-strip { animation-play-state: paused; }
+    @keyframes marquee { from{transform:translateX(0);} to{transform:translateX(-50%);} }
+    .gallery-item {
+      width: 280px; height: 200px; flex-shrink: 0;
+      overflow: hidden; position: relative;
+    }
+    .gallery-item img { width:100%; height:100%; object-fit:cover; transition:transform 0.5s; }
+    .gallery-item:hover img { transform:scale(1.1); }
+
+    /* ──────────────── CONTACT ──────────────── */
+    .contact { background: var(--ivory); }
+    .contact-layout { display: grid; grid-template-columns: 1fr 1.2fr; gap: 5rem; align-items: start; }
+    .contact-info h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2.5rem; font-weight: 700; color: var(--deep-maroon);
+      margin-bottom: 1rem; line-height: 1.2;
+    }
+    .contact-info h2 em { color: var(--saffron); }
+    .contact-info p { font-size: 0.85rem; color: var(--text-light); line-height: 1.8; margin-bottom: 2rem; }
+    .contact-item {
+      display: flex; align-items: flex-start; gap: 1rem;
+      margin-bottom: 1.5rem;
+    }
+    .contact-icon-box {
+      width: 44px; height: 44px; flex-shrink: 0;
+      background: var(--deep-maroon); color: var(--gold);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.1rem;
+    }
+    .contact-detail-label { font-size: 0.6rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--saffron); margin-bottom: 0.2rem; }
+    .contact-detail-value { font-size: 0.88rem; color: var(--text-dark); font-weight: 400; }
+    .contact-detail-value a { color: inherit; text-decoration: none; }
+    .contact-detail-value a:hover { color: var(--saffron); }
+    .contact-social { display: flex; gap: 0.8rem; margin-top: 2rem; }
+    .social-btn {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 10px 20px; text-decoration: none;
+      font-size: 0.75rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase;
+      transition: all 0.3s;
+    }
+    .social-btn.whatsapp { background: #25D366; color: white; }
+    .social-btn.whatsapp:hover { background: #1ebe5d; transform: translateY(-2px); }
+    .social-btn.instagram { background: linear-gradient(45deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888); color: white; }
+    .social-btn.instagram:hover { opacity: 0.9; transform: translateY(-2px); }
+    .contact-form-box {
+      background: white;
+      border: 1px solid rgba(212,160,23,0.25);
+      padding: 3rem;
+      position: relative;
+    }
+    .contact-form-box::before {
+      content: '';
+      position: absolute; top: 0; left: 0; right: 0; height: 4px;
+      background: linear-gradient(90deg, var(--saffron), var(--gold), var(--saffron));
+    }
+    .form-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.8rem; font-weight: 700; color: var(--deep-maroon);
+      margin-bottom: 1.5rem;
+    }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    .form-group { margin-bottom: 1.2rem; }
+    .form-group label { display: block; font-size: 0.65rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--saffron); margin-bottom: 0.4rem; }
+    .form-group input, .form-group select, .form-group textarea {
+      width: 100%; padding: 12px 14px;
+      border: 1px solid rgba(212,160,23,0.3);
+      background: var(--ivory);
+      font-family: 'Josefin Sans', sans-serif;
+      font-size: 0.85rem; color: var(--text-dark);
+      outline: none; transition: border-color 0.3s;
+    }
+    .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
+      border-color: var(--saffron);
+      background: white;
+    }
+    .form-group textarea { resize: vertical; min-height: 100px; }
+    .form-submit {
+      width: 100%; padding: 14px;
+      background: var(--deep-maroon); color: var(--gold-light);
+      border: 2px solid var(--gold); cursor: pointer;
+      font-family: 'Josefin Sans', sans-serif;
+      font-size: 0.8rem; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase;
+      transition: all 0.3s;
+    }
+    .form-submit:hover { background: var(--gold); color: var(--deep-maroon); }
+
+    /* ──────────────── FOOTER ──────────────── */
+    footer {
+      background: var(--deep-maroon);
+      border-top: 3px solid var(--gold);
+      padding: 3rem 5%;
+      display: grid; grid-template-columns: 1.5fr 1fr 1fr; gap: 3rem;
+    }
+    .footer-brand .brand-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.6rem; font-weight: 700; color: var(--gold-light);
+      margin-bottom: 0.5rem;
+    }
+    .footer-brand p { font-size: 0.78rem; color: rgba(253,246,227,0.5); line-height: 1.7; }
+    .footer-col h4 {
+      font-size: 0.65rem; letter-spacing: 0.25em; text-transform: uppercase;
+      color: var(--gold); margin-bottom: 1rem;
+    }
+    .footer-col ul { list-style: none; }
+    .footer-col li { margin-bottom: 0.5rem; }
+    .footer-col a { color: rgba(253,246,227,0.6); text-decoration: none; font-size: 0.8rem; transition: color 0.3s; }
+    .footer-col a:hover { color: var(--gold-light); }
+    .footer-bottom {
+      background: var(--deep-maroon);
+      border-top: 1px solid rgba(212,160,23,0.2);
+      text-align: center; padding: 1.2rem 5%;
+      font-size: 0.7rem; color: rgba(253,246,227,0.4); letter-spacing: 0.1em;
+    }
+    .footer-bottom span { color: var(--gold); }
+
+    /* ──────────────── FLOATING BUTTONS ──────────────── */
+    .float-btns {
+      position: fixed; bottom: 2rem; right: 2rem; z-index: 50;
+      display: flex; flex-direction: column; gap: 0.8rem;
+    }
+    .float-btn {
+      width: 52px; height: 52px;
+      display: flex; align-items: center; justify-content: center;
+      border-radius: 50%; text-decoration: none; font-size: 1.3rem;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .float-btn:hover { transform: scale(1.1); box-shadow: 0 8px 30px rgba(0,0,0,0.4); }
+    .float-btn.wa { background: #25D366; }
+    .float-btn.call { background: var(--saffron); }
+
+    /* ──────────────── RESPONSIVE ──────────────── */
+    @media (max-width: 900px) {
+      .nav-links { display: none; }
+      .stats-bar { grid-template-columns: repeat(2,1fr); }
+      .dest-featured { grid-template-columns: 1fr; }
+      .dest-grid { grid-template-columns: 1fr 1fr; }
+      .chardham-layout { grid-template-columns: 1fr; }
+      .chardham-img-stack { height: 300px; }
+      .services-grid { grid-template-columns: 1fr 1fr; }
+      .why-grid { grid-template-columns: 1fr 1fr; }
+      .contact-layout { grid-template-columns: 1fr; }
+      footer { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 600px) {
+      .dest-grid { grid-template-columns: 1fr; }
+      .services-grid { grid-template-columns: 1fr; }
+      .form-row { grid-template-columns: 1fr; }
+    }
+
+    /* ══════════════════════════════════════════
+       BEAUTIFUL ANIMATION ADDITIONS
+    ══════════════════════════════════════════ */
+
+    /* ── Floating Diya Particles on Hero ── */
+    .hero-particles {
+      position: absolute; inset: 0; pointer-events: none; overflow: hidden;
+    }
+    .diya-particle {
+      position: absolute;
+      font-size: 1.2rem;
+      opacity: 0;
+      animation: floatDiya var(--dur, 8s) var(--delay, 0s) ease-in-out infinite;
+      filter: drop-shadow(0 0 6px rgba(212,160,23,0.8));
+    }
+    @keyframes floatDiya {
+      0%   { opacity: 0; transform: translateY(100vh) rotate(0deg) scale(0.6); }
+      10%  { opacity: 0.9; }
+      80%  { opacity: 0.7; }
+      100% { opacity: 0; transform: translateY(-10vh) rotate(20deg) scale(1.1); }
+    }
+
+    /* ── Gold Shimmer on section dividers ── */
+    .section-divider {
+      position: relative; overflow: hidden;
+    }
+    .section-divider::after {
+      content: '';
+      position: absolute; top: 0; left: -100%;
+      width: 60%; height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.8), transparent);
+      animation: shimmerBar 3s ease-in-out infinite;
+    }
+    @keyframes shimmerBar {
+      0%   { left: -60%; }
+      100% { left: 120%; }
+    }
+
+    /* ── Pulse ring on floating buttons ── */
+    .float-btn.wa::before,
+    .float-btn.call::before {
+      content: '';
+      position: absolute; inset: -4px;
+      border-radius: 50%;
+      border: 2px solid currentColor;
+      opacity: 0;
+      animation: pulseRing 2.5s ease-out infinite;
+    }
+    .float-btn { position: relative; }
+    .float-btn.wa { color: #25D366; }
+    .float-btn.call { color: var(--saffron); }
+    @keyframes pulseRing {
+      0%   { transform: scale(0.9); opacity: 0.7; }
+      100% { transform: scale(1.6); opacity: 0; }
+    }
+    .float-btn.call::before { animation-delay: 1.25s; }
+
+    /* ── Nav glow line animation ── */
+    nav::after {
+      content: '';
+      position: absolute; bottom: -2px; left: 0; right: 0; height: 2px;
+      background: linear-gradient(90deg, transparent, var(--gold-light), var(--saffron), var(--gold-light), transparent);
+      background-size: 200% 100%;
+      animation: navGlow 4s linear infinite;
+    }
+    @keyframes navGlow {
+      0%   { background-position: 200% 0; }
+      100% { background-position: -200% 0; }
+    }
+
+    /* ── Scroll-reveal base state ── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .reveal.revealed {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .reveal-left {
+      opacity: 0;
+      transform: translateX(-50px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .reveal-left.revealed {
+      opacity: 1;
+      transform: translateX(0);
+    }
+    .reveal-right {
+      opacity: 0;
+      transform: translateX(50px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .reveal-right.revealed {
+      opacity: 1;
+      transform: translateX(0);
+    }
+    .reveal-scale {
+      opacity: 0;
+      transform: scale(0.85);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .reveal-scale.revealed {
+      opacity: 1;
+      transform: scale(1);
+    }
+
+    /* ── Staggered children ── */
+    .stagger-children > * {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.5s ease, transform 0.5s ease;
+    }
+    .stagger-children.revealed > *:nth-child(1) { opacity:1; transform:translateY(0); transition-delay:0.05s; }
+    .stagger-children.revealed > *:nth-child(2) { opacity:1; transform:translateY(0); transition-delay:0.15s; }
+    .stagger-children.revealed > *:nth-child(3) { opacity:1; transform:translateY(0); transition-delay:0.25s; }
+    .stagger-children.revealed > *:nth-child(4) { opacity:1; transform:translateY(0); transition-delay:0.35s; }
+    .stagger-children.revealed > *:nth-child(5) { opacity:1; transform:translateY(0); transition-delay:0.45s; }
+    .stagger-children.revealed > *:nth-child(6) { opacity:1; transform:translateY(0); transition-delay:0.55s; }
+
+    /* ── Stat counter shimmer ── */
+    .stat-num {
+      background: linear-gradient(90deg, var(--gold-light), #fff8dc, var(--gold-light));
+      background-size: 200% auto;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      animation: goldShine 3s linear infinite;
+    }
+    @keyframes goldShine {
+      0%   { background-position: 0% center; }
+      100% { background-position: 200% center; }
+    }
+
+    /* ── Om symbol floating in Chardham section ── */
+    .chardham::before {
+      animation: floatOm 6s ease-in-out infinite;
+    }
+    @keyframes floatOm {
+      0%,100% { transform: translateY(-50%) rotate(0deg); opacity: 0.04; }
+      50%      { transform: translateY(-52%) rotate(3deg); opacity: 0.07; }
+    }
+
+    /* ── Service card shimmer glow on hover ── */
+    .service-card {
+      transition: all 0.4s, box-shadow 0.4s;
+    }
+    .service-card:hover {
+      box-shadow: 0 20px 60px rgba(212,160,23,0.18), 0 0 0 1px rgba(212,160,23,0.25);
+    }
+
+    /* ── Dham item pulse icon ── */
+    .dham-icon {
+      display: inline-block;
+      animation: iconBob 2.5s ease-in-out infinite;
+    }
+    .dham-item:nth-child(2) .dham-icon { animation-delay: 0.6s; }
+    .dham-item:nth-child(3) .dham-icon { animation-delay: 1.2s; }
+    .dham-item:nth-child(4) .dham-icon { animation-delay: 1.8s; }
+    @keyframes iconBob {
+      0%,100% { transform: translateY(0); }
+      50%      { transform: translateY(-5px); }
+    }
+
+    /* ── Hero badge glow pulse ── */
+    .hero-badge {
+      animation: fadeUp 0.8s ease both, badgePulse 3s ease-in-out 1s infinite;
+    }
+    @keyframes badgePulse {
+      0%,100% { box-shadow: 0 0 0 0 rgba(212,160,23,0); }
+      50%      { box-shadow: 0 0 16px 4px rgba(212,160,23,0.35); }
+    }
+
+    /* ── Highlight quote shimmer in chardham ── */
+    .chardham-text .highlight {
+      background: linear-gradient(90deg, var(--gold-light), #fff8dc, var(--gold-light));
+      background-size: 200% auto;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      animation: goldShine 4s linear infinite;
+    }
+
+    /* ── Contact icon box heartbeat ── */
+    .contact-icon-box {
+      transition: transform 0.3s;
+      animation: heartbeat 3s ease-in-out infinite;
+    }
+    .contact-item:nth-child(2) .contact-icon-box { animation-delay: 0.75s; }
+    .contact-item:nth-child(3) .contact-icon-box { animation-delay: 1.5s; }
+    .contact-item:nth-child(4) .contact-icon-box { animation-delay: 2.25s; }
+    @keyframes heartbeat {
+      0%,100% { transform: scale(1); }
+      14%     { transform: scale(1.1); }
+      28%     { transform: scale(1); }
+      42%     { transform: scale(1.06); }
+      56%     { transform: scale(1); }
+    }
+
+    /* ── Footer brand diya flicker ── */
+    .footer-brand .brand-name {
+      animation: flickerGold 4s ease-in-out infinite;
+    }
+    @keyframes flickerGold {
+      0%,100% { text-shadow: 0 0 8px rgba(245,200,66,0.3); }
+      30%     { text-shadow: 0 0 20px rgba(245,200,66,0.7), 0 0 40px rgba(232,114,28,0.3); }
+      60%     { text-shadow: 0 0 12px rgba(245,200,66,0.5); }
+    }
+
+    /* ── Gallery section heading animate ── */
+    .gallery .section-title {
+      animation: none;
+    }
+
+    /* ── Why-us number animate on hover ── */
+    .why-item:hover .why-num {
+      color: rgba(232,114,28,0.4);
+      transition: color 0.4s;
+    }
+    .why-item {
+      transition: transform 0.3s;
+    }
+    .why-item:hover {
+      transform: translateY(-6px);
+    }
+
+    /* ── Scroll progress bar at top ── */
+    #scroll-progress {
+      position: fixed; top: 0; left: 0; z-index: 200;
+      height: 3px; width: 0%;
+      background: linear-gradient(90deg, var(--saffron), var(--gold-light), var(--saffron));
+      background-size: 200% 100%;
+      animation: goldShine 2s linear infinite;
+      transition: width 0.1s linear;
+      pointer-events: none;
+    }
+
+    /* ── Twinkling stars overlay on hero ── */
+    .star {
+      position: absolute;
+      width: 3px; height: 3px;
+      border-radius: 50%;
+      background: var(--gold-light);
+      opacity: 0;
+      animation: twinkle var(--dur, 3s) var(--delay, 0s) ease-in-out infinite;
+    }
+    @keyframes twinkle {
+      0%,100% { opacity: 0; transform: scale(0.5); }
+      50%      { opacity: 0.9; transform: scale(1.3); }
+    }
+  </style>
+</head>
+<body>
+
+<!-- SCROLL PROGRESS BAR -->
+<div id="scroll-progress"></div>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">
+    <span class="om">🪔</span>
+    <div class="nav-logo-text">
+      Swaminarayan <span>Yatra</span><br>
+      <small style="font-size:0.65rem;font-family:'Josefin Sans';font-weight:300;letter-spacing:0.1em;color:rgba(253,246,227,0.6);">&amp; Krishna Tours</small>
+    </div>
+  </div>
+  <ul class="nav-links">
+    <li><a href="#destinations">Destinations</a></li>
+    <li><a href="#chardham">Chardham</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <a href="tel:7990372808" class="nav-cta">📞 Book Now</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <!-- Animated floating particles -->
+  <div class="hero-particles" id="heroParticles"></div>
+  <div class="hero-badge">🙏 &nbsp; Jay Swaminarayan &nbsp; 🙏</div>
+  <div class="hero-gujarati">સ્વામિનારાયણ યાત્રા</div>
+  <h1 class="hero-title">
+    Sacred Journeys.<br><span class="accent">Divine Experiences.</span>
+  </h1>
+  <p class="hero-subtitle">Chardham &bull; Ayodhya &bull; Nepal &bull; Kashmir &bull; South India</p>
+  <div class="hero-btns">
+    <a href="#chardham" class="btn-primary">Explore Chardham Yatra</a>
+    <a href="https://wa.me/c/919898927080" target="_blank" class="btn-outline">WhatsApp Us</a>
+  </div>
+  <div class="hero-scroll">
+    <div class="hero-scroll-line"></div>
+    <span>scroll</span>
+  </div>
+</section>
+
+<!-- STATS -->
+<div class="stats-bar stagger-children">
+  <div class="stat-item"><div class="stat-num">500+</div><div class="stat-label">Happy Pilgrims</div></div>
+  <div class="stat-item"><div class="stat-num">15+</div><div class="stat-label">Years of Service</div></div>
+  <div class="stat-item"><div class="stat-num">20+</div><div class="stat-label">Destinations</div></div>
+  <div class="stat-item"><div class="stat-num">100%</div><div class="stat-label">Divine Satisfaction</div></div>
+</div>
+
+<!-- DESTINATIONS -->
+<section class="destinations" id="destinations">
+  <div class="section-header reveal">
+    <span class="section-label">Where We Take You</span>
+    <h2 class="section-title">Our Sacred <span class="italic">Destinations</span></h2>
+    <div class="section-divider"></div>
+  </div>
+
+  <div class="dest-featured reveal">
+    <div class="dest-card">
+      <img src="images/photo4.jpg" alt="Chardham"/>
+      <div class="dest-overlay">
+        <span class="dest-badge">⭐ Most Popular</span>
+        <div class="dest-name">Chardham Yatra</div>
+        <div class="dest-desc">Badrinath · Kedarnath · Gangotri · Yamunotri</div>
+      </div>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:2px;">
+      <div class="dest-card">
+        <img src="images/photo1.jpg" alt="Ayodhya"/>
+        <div class="dest-overlay">
+          <div class="dest-name">Ayodhya</div>
+          <div class="dest-desc">Ram Mandir &amp; Holy Ghats</div>
+        </div>
+      </div>
+      <div class="dest-card">
+        <img src="images/photo6.jpg" alt="Kashmir"/>
+        <div class="dest-overlay">
+          <div class="dest-name">Kashmir</div>
+          <div class="dest-desc">Paradise on Earth</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="dest-grid" style="margin-top:2px;">
+    <div class="dest-mini">
+      <img src="images/photo7.jpg" alt="Vrindavan"/>
+      <div class="dest-overlay">
+        <div class="dest-name">Vrindavan</div>
+        <div class="dest-desc">Mathura &amp; Gokul</div>
+      </div>
+    </div>
+    <div class="dest-mini">
+      <img src="images/photo10.jpg" alt="Haridwar"/>
+      <div class="dest-overlay">
+        <div class="dest-name">Haridwar &amp; Rishikesh</div>
+        <div class="dest-desc">Ganga Aarti &amp; Yoga</div>
+      </div>
+    </div>
+    <div class="dest-mini">
+      <img src="images/photo8.jpg" alt="Nepal"/>
+      <div class="dest-overlay">
+        <div class="dest-name">Nepal Yatra</div>
+        <div class="dest-desc">Pashupatinath &amp; Muktinath</div>
+      </div>
+    </div>
+    <div class="dest-mini">
+      <img src="images/photo11.jpg" alt="South India"/>
+      <div class="dest-overlay">
+        <div class="dest-name">South India Yatra</div>
+        <div class="dest-desc">Tirupati · Rameshwaram · Madurai</div>
+      </div>
+    </div>
+    <div class="dest-mini">
+      <img src="images/photo2.jpg" alt="Shimla Manali"/>
+      <div class="dest-overlay">
+        <div class="dest-name">Shimla &amp; Manali</div>
+        <div class="dest-desc">Himalayan Retreats</div>
+      </div>
+    </div>
+    <div class="dest-mini">
+      <img src="images/photo29.jpg" alt="More"/>
+      <div class="dest-overlay">
+        <div class="dest-name">Many More...</div>
+        <div class="dest-desc">Contact us for custom tours</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CHARDHAM HIGHLIGHT -->
+<section class="chardham" id="chardham">
+  <div class="section-header">
+    <span class="section-label" style="color:var(--gold-light);">Our Specialty</span>
+    <h2 class="section-title">Chardham <span class="italic">Yatra</span></h2>
+    <div class="section-divider"></div>
+  </div>
+  <div class="chardham-layout">
+    <div class="chardham-img-stack reveal-left">
+      <img src="images/photo3.jpg" alt="Kedarnath"/>
+      <img src="images/photo9.jpg" alt="Badrinath"/>
+      <img src="images/photo5.jpg" alt="Gangotri"/>
+    </div>
+    <div class="chardham-text reveal-right">
+      <span class="highlight">"The most sacred pilgrimage of Hindu faith — we've guided hundreds of devotees safely."</span>
+      <div class="chardham-dhams">
+        <div class="dham-item">
+          <div class="dham-icon">🏔️</div>
+          <div class="dham-name">Kedarnath</div>
+          <div class="dham-state">Uttarakhand</div>
+        </div>
+        <div class="dham-item">
+          <div class="dham-icon">🛕</div>
+          <div class="dham-name">Badrinath</div>
+          <div class="dham-state">Uttarakhand</div>
+        </div>
+        <div class="dham-item">
+          <div class="dham-icon">🌊</div>
+          <div class="dham-name">Gangotri</div>
+          <div class="dham-state">Uttarakhand</div>
+        </div>
+        <div class="dham-item">
+          <div class="dham-icon">⛰️</div>
+          <div class="dham-name">Yamunotri</div>
+          <div class="dham-state">Uttarakhand</div>
+        </div>
+      </div>
+      <p>Experience the divine grace of the four most sacred shrines of Hinduism. Our expert team has completed multiple successful Chardham yatras, ensuring safe, comfortable, and spiritually fulfilling journeys for every pilgrim.</p>
+      <p>From Rajkot, we arrange complete tour packages including transportation, accommodation, meals, and guided darshans at each dham.</p>
+      <a href="https://wa.me/c/919898927080" target="_blank" class="btn-primary">Enquire for Chardham 2025</a>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="services" id="services">
+  <div class="section-header">
+    <span class="section-label">What We Offer</span>
+    <h2 class="section-title">Our <span class="italic">Services</span></h2>
+    <div class="section-divider"></div>
+  </div>
+  <div class="services-grid stagger-children">
+    <div class="service-card">
+      <div class="service-icon">🚌</div>
+      <div class="service-name">Group Tours</div>
+      <div class="service-desc">Join our carefully curated group yatras with like-minded devotees. Safe, fun, and spiritually enriching group travel experiences.</div>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">💑</div>
+      <div class="service-name">Honeymoon Packages</div>
+      <div class="service-desc">Begin your sacred journey together with our special honeymoon packages to heavenly destinations across India.</div>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">🏢</div>
+      <div class="service-name">Corporate Tours</div>
+      <div class="service-desc">Team outings, corporate retreats and incentive trips planned and executed with professional precision.</div>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">✈️</div>
+      <div class="service-name">Flight Bookings</div>
+      <div class="service-desc">Best fare flight bookings for domestic and international travel. Quick confirmation and reliable service.</div>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">🚂</div>
+      <div class="service-name">Railway Bookings</div>
+      <div class="service-desc">Tatkal, general and quota-based train ticket bookings across all Indian Railways routes.</div>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">🚗</div>
+      <div class="service-name">Car Rental</div>
+      <div class="service-desc">Comfortable, well-maintained vehicles with experienced drivers for local city tours and outstation travel.</div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY US -->
+<section class="why-us">
+  <div class="section-header">
+    <span class="section-label">Why Choose Us</span>
+    <h2 class="section-title">Trusted by <span class="italic">Thousands</span></h2>
+    <div class="section-divider"></div>
+  </div>
+  <div class="why-grid stagger-children">
+    <div class="why-item">
+      <div class="why-num">01</div>
+      <div class="why-icon">🙏</div>
+      <div class="why-title">Faith First</div>
+      <div class="why-text">We understand the spiritual significance of every yatra and plan every detail with devotion and care.</div>
+    </div>
+    <div class="why-item">
+      <div class="why-num">02</div>
+      <div class="why-icon">🛡️</div>
+      <div class="why-title">Safe Travel</div>
+      <div class="why-text">Experienced guides, vetted accommodations, and reliable transport ensure your safety throughout the journey.</div>
+    </div>
+    <div class="why-item">
+      <div class="why-num">03</div>
+      <div class="why-icon">💰</div>
+      <div class="why-title">Best Value</div>
+      <div class="why-text">Transparent pricing with no hidden costs. Premium experiences at the most competitive rates in Rajkot.</div>
+    </div>
+    <div class="why-item">
+      <div class="why-num">04</div>
+      <div class="why-icon">📞</div>
+      <div class="why-title">24/7 Support</div>
+      <div class="why-text">Manish bhai and our team are always reachable before, during, and after your yatra for complete peace of mind.</div>
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY MARQUEE -->
+<section class="gallery">
+  <div class="section-header">
+    <span class="section-label" style="color:var(--gold-light);">Our Yatras</span>
+    <h2 class="section-title">Moments from the <span class="italic">Journey</span></h2>
+    <div class="section-divider"></div>
+  </div>
+  <div style="overflow:hidden;">
+    <div class="gallery-strip">
+      <!-- First set -->
+      <div class="gallery-item"><img src="images/photo12.jpg" alt=""/></div>
+      <div class="gallery-item"><img src="images/photo13.jpg" alt=""/></div>
+      <div class="gallery-item"><img src="images/photo14.jpg" alt=""/></div>
+      <div class="gallery-item"><img src="images/photo15.jpg" alt=""/></div>
+      <div class="gallery-item"><img src="images/photo16.jpg" alt=""/></div>
+      <div class="gallery-item"><img src="images/photo17.jpg" alt=""/></div>
+      <div class="gallery-item"><img src="images/photo18.jpg" alt=""/></div>
+      <div class="gallery-item"><img src="images/photo19.jpg" alt=""/></div>
+      <!-- Duplicate for seamless loop -->
+      <div class="gallery-item"><img src="images/photo20.jpg" alt=""/></div>
+      <div class="gallery-item"><img src="images/photo21.jpg" alt=""/></div>
+      <div class="gallery-item"><img src="images/photo22.jpg" alt=""/></div>
+      <div class="gallery-item"><img src="images/photo23.jpg" alt=""/></div>
+      <div class="gallery-item"><img src="images/photo24.jpg" alt=""/></div>
+      <div class="gallery-item"><img src="images/photo25.jpg" alt=""/></div>
+      <div class="gallery-item"><img src="images/photo26.jpg" alt=""/></div>
+      <div class="gallery-item"><img src="images/photo28.jpg" alt=""/></div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="contact-layout">
+    <div class="contact-info reveal-left">
+      <h2>Let's Plan Your <em>Sacred Journey</em></h2>
+      <p>Contact Manish bhai directly or fill the enquiry form. We'll get back to you with the best package tailored for you and your family.</p>
+
+      <div class="contact-item">
+        <div class="contact-icon-box">📍</div>
+        <div>
+          <div class="contact-detail-label">Address</div>
+          <div class="contact-detail-value">UI-35, Shrimad Bhavan, Near Kanta Stri Vikas Gruh,<br>Dhebar Road, Rajkot – 360002, Gujarat</div>
+        </div>
+      </div>
+      <div class="contact-item">
+        <div class="contact-icon-box">📞</div>
+        <div>
+          <div class="contact-detail-label">Phone / WhatsApp</div>
+          <div class="contact-detail-value">
+            <a href="tel:7990372808">7990372808</a> &nbsp;|&nbsp;
+            <a href="tel:9898927080">9898927080</a>
+          </div>
+        </div>
+      </div>
+      <div class="contact-item">
+        <div class="contact-icon-box">✉️</div>
+        <div>
+          <div class="contact-detail-label">Email</div>
+          <div class="contact-detail-value"><a href="/cdn-cgi/l/email-protection#3459555a5d475c1a46555055505d55745359555d581a575b59"><span class="__cf_email__" data-cfemail="c9a4a8a7a0baa1e7bba8ada8ada0a889aea4a8a0a5e7aaa6a4">[email&#160;protected]</span></a></div>
+        </div>
+      </div>
+      <div class="contact-item">
+        <div class="contact-icon-box">🕐</div>
+        <div>
+          <div class="contact-detail-label">Working Hours</div>
+          <div class="contact-detail-value">Mon–Sat: 9:00 AM – 8:00 PM<br>Sunday: By Appointment</div>
+        </div>
+      </div>
+
+      <div class="contact-social">
+        <a href="https://wa.me/c/919898927080" target="_blank" class="social-btn whatsapp">
+          💬 WhatsApp Catalogue
+        </a>
+        <a href="https://www.instagram.com/swam.inarayantourism?igsh=cnQ2bWV6NmU0enlh" target="_blank" class="social-btn instagram">
+          📷 Instagram
+        </a>
+      </div>
+    </div>
+
+    <div class="contact-form-box reveal-right">
+      <div class="form-title">Quick Enquiry</div>
+      <form onsubmit="handleSubmit(event)">
+        <div class="form-row">
+          <div class="form-group">
+            <label>Your Name</label>
+            <input type="text" placeholder="Ramesh Patel" required/>
+          </div>
+          <div class="form-group">
+            <label>Mobile Number</label>
+            <input type="tel" placeholder="98XXXXXXXX" required/>
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Interested Destination</label>
+          <select>
+            <option>Chardham Yatra</option>
+            <option>Ayodhya</option>
+            <option>Vrindavan / Mathura</option>
+            <option>Nepal Yatra</option>
+            <option>Kashmir</option>
+            <option>South India Yatra</option>
+            <option>Shimla &amp; Manali</option>
+            <option>Haridwar &amp; Rishikesh</option>
+            <option>Custom Tour</option>
+          </select>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label>No. of Travellers</label>
+            <input type="number" placeholder="4" min="1"/>
+          </div>
+          <div class="form-group">
+            <label>Preferred Month</label>
+            <select>
+              <option>April 2026</option>
+              <option>May 2026</option>
+              <option>June 2026</option>
+              <option>July 2026</option>
+              <option>August 2026</option>
+              <option>September 2026</option>
+              <option>October 2026</option>
+              <option>November 2026</option>
+              <option>December 2026</option>
+              <option>2027</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Message (Optional)</label>
+          <textarea placeholder="Any special requirements, budget, or questions..."></textarea>
+        </div>
+        <button type="submit" class="form-submit">🙏 Send Enquiry</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-brand">
+    <div class="brand-name">🪔 Swaminarayan Yatra</div>
+    <p>&amp; Krishna Tours — Your trusted travel partner for sacred pilgrimages and leisure tours from Rajkot, Gujarat. Jay Swaminarayan.</p>
+  </div>
+  <div class="footer-col">
+    <h4>Destinations</h4>
+    <ul>
+      <li><a href="#chardham">Chardham Yatra</a></li>
+      <li><a href="#destinations">Ayodhya</a></li>
+      <li><a href="#destinations">Vrindavan</a></li>
+      <li><a href="#destinations">Nepal Yatra</a></li>
+      <li><a href="#destinations">Kashmir</a></li>
+      <li><a href="#destinations">South India</a></li>
+    </ul>
+  </div>
+  <div class="footer-col">
+    <h4>Contact</h4>
+    <ul>
+      <li><a href="tel:7990372808">📞 7990372808</a></li>
+      <li><a href="tel:9898927080">📞 9898927080</a></li>
+      <li><a href="https://wa.me/c/919898927080" target="_blank">💬 WhatsApp Catalogue</a></li>
+      <li><a href="https://www.instagram.com/swam.inarayantourism" target="_blank">📷 Instagram</a></li>
+      <li><a href="/cdn-cgi/l/email-protection#e8858986819b80c69a898c898c8189a88f85898184c68b8785">✉️ Email Us</a></li>
+    </ul>
+  </div>
+</footer>
+<div class="footer-bottom">
+  © 2026 Swaminarayan Yatra &amp; Krishna Tours · Rajkot, Gujarat · Made with <span>🙏</span> for every devotee
+</div>
+
+<!-- FLOATING BUTTONS -->
+<div class="float-btns">
+  <a href="https://wa.me/919898927080" target="_blank" class="float-btn wa" title="WhatsApp">💬</a>
+  <a href="tel:7990372808" class="float-btn call" title="Call Now">📞</a>
+</div>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+  function handleSubmit(e) {
+    e.preventDefault();
+    const btn = e.target.querySelector('.form-submit');
+    btn.textContent = '✅ Enquiry Sent! We\'ll call you soon.';
+    btn.style.background = 'var(--forest)';
+    btn.style.color = 'white';
+    btn.style.borderColor = 'var(--forest)';
+    setTimeout(() => {
+      btn.textContent = '🙏 Send Enquiry';
+      btn.style.background = '';
+      btn.style.color = '';
+      btn.style.borderColor = '';
+      e.target.reset();
+    }, 4000);
+  }
+
+  // Scroll reveal
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.style.opacity = '1';
+        e.target.style.transform = 'translateY(0)';
+      }
+    });
+  }, { threshold: 0.1 });
+
+  // Observe elements with scroll-reveal class from original
+  document.querySelectorAll('.service-card, .why-item, .dest-card, .dest-mini').forEach(el => {
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(30px)';
+    el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+    observer.observe(el);
+  });
+</script>
+
+<!-- ANIMATION SCRIPTS -->
+<script>
+  /* ── Scroll progress bar ── */
+  const progressBar = document.getElementById('scroll-progress');
+  window.addEventListener('scroll', () => {
+    const scrollTop = window.scrollY;
+    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+    const pct = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+    progressBar.style.width = pct + '%';
+  });
+
+  /* ── Floating diya & star particles in hero ── */
+  const heroParticles = document.getElementById('heroParticles');
+  const diyas = ['🪔','✨','🌸','🌼','⭐','🌺'];
+  for (let i = 0; i < 18; i++) {
+    const el = document.createElement('div');
+    const isStar = i > 11;
+    if (isStar) {
+      el.className = 'star';
+      el.style.cssText = `
+        left: ${Math.random()*100}%;
+        top: ${Math.random()*100}%;
+        --dur: ${2 + Math.random()*4}s;
+        --delay: ${Math.random()*5}s;
+      `;
+    } else {
+      el.className = 'diya-particle';
+      el.textContent = diyas[i % diyas.length];
+      el.style.cssText = `
+        left: ${5 + Math.random()*90}%;
+        --dur: ${7 + Math.random()*8}s;
+        --delay: ${Math.random()*10}s;
+        font-size: ${0.8 + Math.random()*1}rem;
+      `;
+    }
+    heroParticles.appendChild(el);
+  }
+
+  /* ── Intersection Observer for scroll reveals ── */
+  const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('revealed');
+      }
+    });
+  }, { threshold: 0.12 });
+
+  document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-scale, .stagger-children').forEach(el => {
+    revealObserver.observe(el);
+  });
+</script>
+
+</body>
+</html>
