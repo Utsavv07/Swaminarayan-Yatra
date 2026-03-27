@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Swaminarayan Yatra & Krishna Tours</title>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Tiro+Devanagari+Hindi&family=Josefin+Sans:wght@300;400;600&display=swap" rel="stylesheet"/>
+  <title>Swaminarayan Yatra</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,800;1,400;1,600;1,700&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&family=Hind:wght@400;500;600&display=swap" rel="stylesheet"/>
   <style>
     :root {
       --saffron: #E8721C;
@@ -22,14 +22,121 @@
       --text-light: #8B6650;
     }
 
-    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    /* ── Font refinements for new typefaces ── */
+    body {
+      font-size: 15px;
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      letter-spacing: 0.01em;
+    }
+
+    /* Playfair Display looks best with slightly tighter tracking */
+    h1, h2, h3, h4,
+    .hero-title, .section-title, .dest-name,
+    .service-name, .dham-name, .contact-info h2,
+    .form-title, .brand-name, .nav-logo-text {
+      letter-spacing: -0.01em;
+    }
+
+    /* DM Sans body copy — slightly open for readability */
+    p, li, .service-desc, .why-text, .dest-desc,
+    .chardham-text p, .contact-detail-value {
+      letter-spacing: 0.005em;
+      font-weight: 400;
+    }
+
+    /* Labels & caps — DM Sans at small size needs a touch more spacing */
+    .section-label, .stat-label, .dest-badge,
+    .dham-state, .contact-detail-label, .nav-links a,
+    .btn-primary, .btn-outline, .nav-cta,
+    .why-title, .social-btn {
+      letter-spacing: 0.1em;
+    }
+
+    /* Gujarati text — Hind is great for Indian scripts */
+    .hero-gujarati {
+      font-family: 'Hind', sans-serif;
+      font-weight: 500;
+      font-size: 1.4rem;
+    }
+
+    /* Hero title — Playfair Display shines large */
+    .hero-title {
+      font-family: 'Playfair Display', serif;
+      font-weight: 800;
+    }
+
+    /* Section titles — Playfair at 700 */
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-weight: 700;
+      line-height: 1.15;
+    }
+
+    /* Destination names */
+    .dest-name {
+      font-family: 'Playfair Display', serif;
+      font-weight: 700;
+    }
+
+    /* Chardham highlight quote */
+    .chardham-text .highlight {
+      font-family: 'Playfair Display', serif;
+      font-weight: 600;
+      font-style: italic;
+    }
+
+    /* Nav logo */
+    .nav-logo-text {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.2rem;
+    }
+
+    /* Service names */
+    .service-name {
+      font-family: 'Playfair Display', serif;
+    }
+
+    /* Stat numbers */
+    .stat-num {
+      font-family: 'Playfair Display', serif;
+    }
+
+    /* Contact heading */
+    .contact-info h2 {
+      font-family: 'Playfair Display', serif;
+    }
+
+    /* Form title */
+    .form-title {
+      font-family: 'Playfair Display', serif;
+    }
+
+    /* Footer brand name */
+    .footer-brand .brand-name {
+      font-family: 'Playfair Display', serif;
+    }
+
+    /* Why title */
+    .why-num {
+      font-family: 'Playfair Display', serif;
+    }
+
+    /* Dham name */
+    .dham-name {
+      font-family: 'Playfair Display', serif;
+    }
+
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
     html { scroll-behavior: smooth; }
 
     body {
       background: var(--ivory);
       color: var(--text-dark);
-      font-family: 'Josefin Sans', sans-serif;
+      font-family: 'DM Sans', sans-serif;
       overflow-x: hidden;
     }
 
@@ -54,7 +161,7 @@
       0%,100%{transform:rotate(-5deg);}50%{transform:rotate(5deg);}
     }
     .nav-logo-text {
-      font-family: 'Cormorant Garamond', serif;
+      font-family: 'Playfair Display', serif;
       font-size: 1.25rem; font-weight: 700;
       color: var(--cream); letter-spacing: 0.05em;
       line-height: 1.2;
@@ -72,7 +179,7 @@
     .nav-cta {
       background: var(--gold); color: var(--deep-maroon);
       padding: 8px 20px; border: none; cursor: pointer;
-      font-family: 'Josefin Sans', sans-serif;
+      font-family: 'DM Sans', sans-serif;
       font-size: 0.75rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase;
       text-decoration: none;
       transition: background 0.3s, transform 0.2s;
@@ -109,7 +216,7 @@
       animation: fadeUp 0.8s ease both;
     }
     .hero-title {
-      font-family: 'Cormorant Garamond', serif;
+      font-family: 'Playfair Display', serif;
       font-size: clamp(3rem, 8vw, 6rem);
       font-weight: 700;
       color: var(--cream);
@@ -126,7 +233,7 @@
       animation: fadeUp 0.8s 0.4s ease both;
     }
     .hero-gujarati {
-      font-family: 'Tiro Devanagari Hindi', serif;
+      font-family: 'Hind', sans-serif;
       font-size: 1.3rem; color: var(--gold-light);
       margin-bottom: 2rem;
       animation: fadeUp 0.8s 0.3s ease both;
@@ -136,21 +243,48 @@
       animation: fadeUp 0.8s 0.6s ease both;
     }
     .btn-primary {
-      background: var(--saffron); color: white;
-      padding: 14px 36px; text-decoration: none;
-      font-size: 0.8rem; font-weight: 600; letter-spacing: 0.15em; text-transform: uppercase;
-      transition: all 0.3s;
+      background: linear-gradient(135deg, var(--saffron) 0%, var(--deep-saffron) 100%);
+      color: white;
+      padding: 15px 38px; text-decoration: none;
+      font-size: 0.82rem; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase;
+      transition: all 0.35s cubic-bezier(0.34,1.56,0.64,1);
       display: inline-block;
+      position: relative; overflow: hidden;
+      border: 2px solid transparent;
+      box-shadow: 0 6px 24px rgba(232,114,28,0.35);
     }
-    .btn-primary:hover { background: var(--deep-saffron); transform: translateY(-2px); box-shadow: 0 8px 30px rgba(232,114,28,0.4); }
+    .btn-primary::after {
+      content: '';
+      position: absolute; inset: 0;
+      background: linear-gradient(135deg, rgba(255,255,255,0.18) 0%, transparent 60%);
+      transform: translateX(-110%) skewX(-20deg);
+      transition: transform 0.5s ease;
+    }
+    .btn-primary:hover::after { transform: translateX(110%) skewX(-20deg); }
+    .btn-primary:hover {
+      background: linear-gradient(135deg, #FF8A2B 0%, var(--saffron) 100%);
+      transform: translateY(-3px) scale(1.02);
+      box-shadow: 0 12px 35px rgba(232,114,28,0.55);
+    }
     .btn-outline {
       background: transparent; color: var(--gold-light);
       border: 2px solid var(--gold);
-      padding: 14px 36px; text-decoration: none;
-      font-size: 0.8rem; font-weight: 600; letter-spacing: 0.15em; text-transform: uppercase;
-      transition: all 0.3s; display: inline-block;
+      padding: 15px 38px; text-decoration: none;
+      font-size: 0.82rem; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase;
+      transition: all 0.35s cubic-bezier(0.34,1.56,0.64,1); display: inline-block;
+      position: relative; overflow: hidden;
     }
-    .btn-outline:hover { background: var(--gold); color: var(--deep-maroon); }
+    .btn-outline::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: var(--gold);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.35s ease;
+      z-index: -1;
+    }
+    .btn-outline:hover::before { transform: scaleX(1); }
+    .btn-outline:hover { color: var(--deep-maroon); transform: translateY(-3px); box-shadow: 0 10px 30px rgba(212,160,23,0.4); }
 
     .hero-scroll {
       position: absolute; bottom: 2rem; left: 50%; transform: translateX(-50%);
@@ -184,7 +318,7 @@
     .stat-item:last-child { border-right: none; }
     .stat-item:hover { background: rgba(212,160,23,0.1); }
     .stat-num {
-      font-family: 'Cormorant Garamond', serif;
+      font-family: 'Playfair Display', serif;
       font-size: 2.5rem; font-weight: 700; color: var(--gold-light);
       line-height: 1;
     }
@@ -202,7 +336,7 @@
       color: var(--saffron); margin-bottom: 0.8rem;
     }
     .section-title {
-      font-family: 'Cormorant Garamond', serif;
+      font-family: 'Playfair Display', serif;
       font-size: clamp(2.2rem, 5vw, 3.5rem); font-weight: 700;
       color: var(--deep-maroon); line-height: 1.1;
     }
@@ -244,7 +378,7 @@
       width: fit-content;
     }
     .dest-name {
-      font-family: 'Cormorant Garamond', serif;
+      font-family: 'Playfair Display', serif;
       font-size: 1.8rem; font-weight: 700; color: white; line-height: 1.1;
     }
     .dest-desc { font-size: 0.75rem; color: rgba(255,255,255,0.75); margin-top: 0.5rem; }
@@ -306,7 +440,7 @@
     .dham-item:hover { background: rgba(212,160,23,0.15); }
     .dham-icon { font-size: 1.8rem; margin-bottom: 0.4rem; }
     .dham-name {
-      font-family: 'Cormorant Garamond', serif;
+      font-family: 'Playfair Display', serif;
       font-size: 1.1rem; font-weight: 700; color: var(--gold-light);
     }
     .dham-state { font-size: 0.65rem; color: rgba(253,246,227,0.5); letter-spacing: 0.1em; text-transform: uppercase; }
@@ -316,7 +450,7 @@
     }
     .chardham-text .highlight {
       color: var(--gold-light);
-      font-family: 'Cormorant Garamond', serif;
+      font-family: 'Playfair Display', serif;
       font-size: 1.4rem; font-style: italic;
       display: block; margin-bottom: 1rem; line-height: 1.4;
     }
@@ -344,7 +478,7 @@
     .service-card:hover::before { transform: scaleX(1); }
     .service-icon { font-size: 2.5rem; margin-bottom: 1rem; }
     .service-name {
-      font-family: 'Cormorant Garamond', serif;
+      font-family: 'Playfair Display', serif;
       font-size: 1.4rem; font-weight: 700; color: var(--deep-maroon);
       margin-bottom: 0.8rem;
     }
@@ -359,7 +493,7 @@
     .why-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 2rem; }
     .why-item { text-align: center; padding: 1.5rem; }
     .why-num {
-      font-family: 'Cormorant Garamond', serif;
+      font-family: 'Playfair Display', serif;
       font-size: 3.5rem; font-weight: 700;
       color: rgba(232,114,28,0.15); line-height: 1;
       margin-bottom: 0.5rem;
@@ -391,7 +525,7 @@
     .contact { background: var(--ivory); }
     .contact-layout { display: grid; grid-template-columns: 1fr 1.2fr; gap: 5rem; align-items: start; }
     .contact-info h2 {
-      font-family: 'Cormorant Garamond', serif;
+      font-family: 'Playfair Display', serif;
       font-size: 2.5rem; font-weight: 700; color: var(--deep-maroon);
       margin-bottom: 1rem; line-height: 1.2;
     }
@@ -411,17 +545,48 @@
     .contact-detail-value { font-size: 0.88rem; color: var(--text-dark); font-weight: 400; }
     .contact-detail-value a { color: inherit; text-decoration: none; }
     .contact-detail-value a:hover { color: var(--saffron); }
-    .contact-social { display: flex; gap: 0.8rem; margin-top: 2rem; }
+    .contact-social { display: flex; gap: 1rem; margin-top: 2rem; flex-wrap: wrap; }
     .social-btn {
-      display: inline-flex; align-items: center; gap: 8px;
-      padding: 10px 20px; text-decoration: none;
-      font-size: 0.75rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase;
-      transition: all 0.3s;
+      display: inline-flex; align-items: center; gap: 10px;
+      padding: 13px 22px; text-decoration: none;
+      font-size: 0.78rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase;
+      transition: all 0.35s cubic-bezier(0.34,1.56,0.64,1);
+      position: relative; overflow: hidden; border-radius: 4px;
     }
-    .social-btn.whatsapp { background: #25D366; color: white; }
-    .social-btn.whatsapp:hover { background: #1ebe5d; transform: translateY(-2px); }
-    .social-btn.instagram { background: linear-gradient(45deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888); color: white; }
-    .social-btn.instagram:hover { opacity: 0.9; transform: translateY(-2px); }
+    .social-btn::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: rgba(255,255,255,0.15);
+      transform: translateX(-100%) skewX(-15deg);
+      transition: transform 0.4s ease;
+    }
+    .social-btn:hover::before { transform: translateX(100%) skewX(-15deg); }
+
+    .social-btn.whatsapp {
+      background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
+      color: white;
+      box-shadow: 0 4px 18px rgba(37,211,102,0.35);
+      animation: waSocPulse 3s ease-in-out infinite;
+    }
+    @keyframes waSocPulse {
+      0%,100% { box-shadow: 0 4px 18px rgba(37,211,102,0.35); }
+      50%      { box-shadow: 0 6px 28px rgba(37,211,102,0.6), 0 0 0 5px rgba(37,211,102,0.1); }
+    }
+    .social-btn.whatsapp:hover { transform: translateY(-4px) scale(1.04); box-shadow: 0 10px 35px rgba(37,211,102,0.55); animation: none; }
+
+    .social-btn.instagram {
+      background: linear-gradient(135deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+      color: white;
+      box-shadow: 0 4px 18px rgba(220,39,67,0.35);
+      animation: igSocPulse 3s ease-in-out 1.5s infinite;
+    }
+    @keyframes igSocPulse {
+      0%,100% { box-shadow: 0 4px 18px rgba(220,39,67,0.35); }
+      50%      { box-shadow: 0 6px 28px rgba(220,39,67,0.6), 0 0 0 5px rgba(220,39,67,0.1); }
+    }
+    .social-btn.instagram:hover { transform: translateY(-4px) scale(1.04); box-shadow: 0 10px 35px rgba(220,39,67,0.55); animation: none; }
+
+    .social-btn svg { width: 18px; height: 18px; fill: white; flex-shrink: 0; }
     .contact-form-box {
       background: white;
       border: 1px solid rgba(212,160,23,0.25);
@@ -434,7 +599,7 @@
       background: linear-gradient(90deg, var(--saffron), var(--gold), var(--saffron));
     }
     .form-title {
-      font-family: 'Cormorant Garamond', serif;
+      font-family: 'Playfair Display', serif;
       font-size: 1.8rem; font-weight: 700; color: var(--deep-maroon);
       margin-bottom: 1.5rem;
     }
@@ -445,7 +610,7 @@
       width: 100%; padding: 12px 14px;
       border: 1px solid rgba(212,160,23,0.3);
       background: var(--ivory);
-      font-family: 'Josefin Sans', sans-serif;
+      font-family: 'DM Sans', sans-serif;
       font-size: 0.85rem; color: var(--text-dark);
       outline: none; transition: border-color 0.3s;
     }
@@ -454,15 +619,200 @@
       background: white;
     }
     .form-group textarea { resize: vertical; min-height: 100px; }
-    .form-submit {
-      width: 100%; padding: 14px;
-      background: var(--deep-maroon); color: var(--gold-light);
-      border: 2px solid var(--gold); cursor: pointer;
-      font-family: 'Josefin Sans', sans-serif;
-      font-size: 0.8rem; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase;
-      transition: all 0.3s;
+    /* ── Calendar Picker ── */
+    .cal-input-wrap {
+      position: relative;
     }
-    .form-submit:hover { background: var(--gold); color: var(--deep-maroon); }
+    .cal-trigger {
+      width: 100%; padding: 12px 14px;
+      border: 1px solid rgba(212,160,23,0.3);
+      background: var(--ivory);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.85rem; color: var(--text-dark);
+      cursor: pointer;
+      display: flex; align-items: center; gap: 8px;
+      transition: border-color 0.3s, background 0.3s, box-shadow 0.3s;
+      user-select: none;
+    }
+    .cal-trigger:hover, .cal-trigger:focus {
+      border-color: var(--saffron); background: white;
+      box-shadow: 0 0 0 3px rgba(212,160,23,0.12);
+      outline: none;
+    }
+    .cal-trigger.open {
+      border-color: var(--gold);
+      box-shadow: 0 0 0 3px rgba(212,160,23,0.2);
+    }
+    .cal-icon { font-size: 1rem; }
+    .cal-display { flex: 1; }
+    .cal-display.selected { color: var(--deep-maroon); font-weight: 500; }
+    .cal-arrow {
+      font-size: 0.7rem; color: var(--text-light);
+      transition: transform 0.3s;
+    }
+    .cal-trigger.open .cal-arrow { transform: rotate(180deg); }
+
+    .cal-dropdown {
+      position: absolute; top: calc(100% + 6px); left: 0; right: 0;
+      background: white;
+      border: 1px solid rgba(212,160,23,0.4);
+      box-shadow: 0 12px 40px rgba(74,14,14,0.15), 0 4px 12px rgba(0,0,0,0.08);
+      z-index: 200;
+      visibility: hidden;
+      opacity: 0; transform: translateY(-8px) scale(0.97);
+      pointer-events: none;
+      transition: opacity 0.25s ease, transform 0.25s ease, visibility 0.25s;
+      transform-origin: top center;
+    }
+    .cal-dropdown.open {
+      visibility: visible;
+      opacity: 1; transform: translateY(0) scale(1);
+      pointer-events: all;
+    }
+
+    .cal-header {
+      display: flex; align-items: center; justify-content: space-between;
+      background: var(--deep-maroon);
+      padding: 10px 14px;
+    }
+    .cal-month-year {
+      font-family: 'Playfair Display', serif;
+      font-size: 0.95rem; font-weight: 600;
+      color: var(--gold-light); letter-spacing: 0.03em;
+    }
+    .cal-nav {
+      background: none; border: none; cursor: pointer;
+      color: var(--gold-light); font-size: 1.4rem; line-height: 1;
+      padding: 0 6px;
+      transition: color 0.2s, transform 0.2s;
+    }
+    .cal-nav:hover { color: white; transform: scale(1.2); }
+
+    .cal-weekdays {
+      display: grid; grid-template-columns: repeat(7, 1fr);
+      background: rgba(212,160,23,0.08);
+      border-bottom: 1px solid rgba(212,160,23,0.2);
+    }
+    .cal-weekdays span {
+      text-align: center; padding: 7px 0;
+      font-size: 0.62rem; font-weight: 600; letter-spacing: 0.08em;
+      color: var(--saffron); text-transform: uppercase;
+    }
+
+    .cal-days {
+      display: grid; grid-template-columns: repeat(7, 1fr);
+      padding: 6px;
+      gap: 2px;
+    }
+    .cal-day {
+      aspect-ratio: 1; display: flex; align-items: center; justify-content: center;
+      font-size: 0.78rem; cursor: pointer; border-radius: 50%;
+      color: var(--text-dark);
+      transition: background 0.2s, color 0.2s, transform 0.15s;
+      font-family: 'DM Sans', sans-serif;
+    }
+    .cal-day:hover:not(.disabled):not(.empty) {
+      background: rgba(232,114,28,0.12);
+      color: var(--saffron);
+      transform: scale(1.15);
+    }
+    .cal-day.today {
+      border: 1px solid var(--gold);
+      color: var(--saffron); font-weight: 600;
+    }
+    .cal-day.selected {
+      background: var(--deep-maroon);
+      color: var(--gold-light); font-weight: 700;
+      box-shadow: 0 4px 12px rgba(74,14,14,0.3);
+      transform: scale(1.1);
+    }
+    .cal-day.disabled {
+      color: #ccc; cursor: not-allowed; opacity: 0.5;
+    }
+    .cal-day.empty { cursor: default; }
+
+    /* ── Send Enquiry Button ── */
+    .send-btn {
+      position: relative; width: 100%;
+      padding: 0; border: none; cursor: pointer;
+      height: 58px; overflow: hidden;
+      background: transparent;
+      margin-top: 0.5rem;
+    }
+    .send-btn-bg {
+      position: absolute; inset: 0;
+      background: linear-gradient(135deg, var(--deep-maroon) 0%, var(--maroon) 50%, var(--deep-maroon) 100%);
+      background-size: 200% 200%;
+      border: 2px solid var(--gold);
+      transition: background-position 0.5s ease, border-color 0.3s;
+    }
+    .send-btn:hover .send-btn-bg {
+      background-position: 100% 100%;
+      border-color: var(--gold-light);
+    }
+
+    .send-btn-shimmer {
+      position: absolute; inset: 0;
+      background: linear-gradient(105deg, transparent 40%, rgba(245,200,66,0.18) 50%, transparent 60%);
+      background-size: 200% 100%;
+      background-position: -100% 0;
+      transition: background-position 0s;
+    }
+    .send-btn:hover .send-btn-shimmer {
+      background-position: 200% 0;
+      transition: background-position 0.6s ease;
+    }
+
+    .send-btn-content {
+      position: relative; z-index: 2;
+      display: flex; align-items: center; justify-content: center;
+      gap: 10px; height: 100%;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.9rem; font-weight: 600;
+      letter-spacing: 0.18em; text-transform: uppercase;
+      color: var(--gold-light);
+      transition: gap 0.3s, color 0.3s;
+    }
+    .send-btn:hover .send-btn-content { color: white; gap: 16px; }
+
+    .send-btn-icon {
+      font-size: 1.1rem;
+      display: inline-block;
+      animation: prayBob 2.5s ease-in-out infinite;
+    }
+    @keyframes prayBob {
+      0%,100% { transform: translateY(0) rotate(0deg); }
+      30%     { transform: translateY(-3px) rotate(-5deg); }
+      60%     { transform: translateY(-1px) rotate(3deg); }
+    }
+
+    .send-btn-arrow {
+      font-size: 1.1rem;
+      display: inline-block;
+      transition: transform 0.3s cubic-bezier(0.34,1.56,0.64,1);
+    }
+    .send-btn:hover .send-btn-arrow { transform: translateX(6px); }
+
+    .send-btn-particles {
+      position: absolute; inset: 0; pointer-events: none; z-index: 1;
+    }
+    .btn-spark {
+      position: absolute; border-radius: 50%;
+      background: var(--gold-light);
+      animation: sparkFly var(--dur,0.6s) ease-out forwards;
+      opacity: 0;
+    }
+    @keyframes sparkFly {
+      0%   { transform: translate(0,0) scale(1); opacity: 0.9; }
+      100% { transform: translate(var(--tx,0px), var(--ty,-30px)) scale(0); opacity: 0; }
+    }
+
+    .send-btn.sending .send-btn-content .send-btn-text::after { content: '…'; }
+    .send-btn.success .send-btn-bg {
+      background: linear-gradient(135deg, #1a5c1a, #2D5016);
+      border-color: #4caf50;
+    }
+    .send-btn.success .send-btn-content { color: #b8ffb8; }
 
     /* ──────────────── FOOTER ──────────────── */
     footer {
@@ -472,7 +822,7 @@
       display: grid; grid-template-columns: 1.5fr 1fr 1fr; gap: 3rem;
     }
     .footer-brand .brand-name {
-      font-family: 'Cormorant Garamond', serif;
+      font-family: 'Playfair Display', serif;
       font-size: 1.6rem; font-weight: 700; color: var(--gold-light);
       margin-bottom: 0.5rem;
     }
@@ -495,19 +845,129 @@
 
     /* ──────────────── FLOATING BUTTONS ──────────────── */
     .float-btns {
-      position: fixed; bottom: 2rem; right: 2rem; z-index: 50;
-      display: flex; flex-direction: column; gap: 0.8rem;
+      position: fixed; bottom: 2rem; right: 1.5rem; z-index: 50;
+      display: flex; flex-direction: column; gap: 1rem;
+      align-items: flex-end;
     }
+
     .float-btn {
-      width: 52px; height: 52px;
+      position: relative;
+      width: 58px; height: 58px;
       display: flex; align-items: center; justify-content: center;
-      border-radius: 50%; text-decoration: none; font-size: 1.3rem;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.3);
-      transition: transform 0.3s, box-shadow 0.3s;
+      border-radius: 50%; text-decoration: none; font-size: 1.5rem;
+      box-shadow: 0 6px 24px rgba(0,0,0,0.35);
+      transition: transform 0.35s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.3s;
+      overflow: visible;
     }
-    .float-btn:hover { transform: scale(1.1); box-shadow: 0 8px 30px rgba(0,0,0,0.4); }
-    .float-btn.wa { background: #25D366; }
-    .float-btn.call { background: var(--saffron); }
+
+    .float-btn-label {
+      position: absolute;
+      right: 70px;
+      top: 50%;
+      transform: translateY(-50%) translateX(8px);
+      background: rgba(20,10,5,0.92);
+      color: white;
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      padding: 5px 12px;
+      border-radius: 20px;
+      white-space: nowrap;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.25s ease, transform 0.25s ease;
+      border: 1px solid rgba(255,255,255,0.15);
+      backdrop-filter: blur(8px);
+    }
+    .float-btn:hover .float-btn-label {
+      opacity: 1;
+      transform: translateY(-50%) translateX(0);
+    }
+
+    /* WhatsApp */
+    .float-btn.wa {
+      background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
+      border: 2px solid rgba(255,255,255,0.3);
+      animation: waBounce 3s ease-in-out infinite;
+    }
+    @keyframes waBounce {
+      0%,100% { transform: translateY(0) scale(1); }
+      40%      { transform: translateY(-5px) scale(1.05); }
+      60%      { transform: translateY(-2px) scale(1.02); }
+    }
+    .float-btn.wa:hover { animation: none; transform: scale(1.18); box-shadow: 0 12px 40px rgba(37,211,102,0.55); }
+
+    /* Instagram */
+    .float-btn.ig {
+      background: linear-gradient(135deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+      border: 2px solid rgba(255,255,255,0.3);
+      animation: igPulse 2.8s ease-in-out infinite;
+    }
+    @keyframes igPulse {
+      0%,100% { box-shadow: 0 6px 24px rgba(220,39,67,0.35); }
+      50%      { box-shadow: 0 6px 32px rgba(220,39,67,0.7), 0 0 0 6px rgba(220,39,67,0.12); }
+    }
+    .float-btn.ig:hover { animation: none; transform: scale(1.18) rotate(-5deg); box-shadow: 0 12px 40px rgba(220,39,67,0.6); }
+
+    /* Email */
+    .float-btn.email {
+      background: linear-gradient(135deg, var(--saffron) 0%, var(--deep-saffron) 100%);
+      border: 2px solid rgba(255,255,255,0.3);
+      animation: emailWiggle 4s ease-in-out infinite;
+    }
+    @keyframes emailWiggle {
+      0%,90%,100% { transform: rotate(0deg); }
+      92%          { transform: rotate(-8deg); }
+      94%          { transform: rotate(8deg); }
+      96%          { transform: rotate(-5deg); }
+      98%          { transform: rotate(5deg); }
+    }
+    .float-btn.email:hover { animation: none; transform: scale(1.18); box-shadow: 0 12px 40px rgba(232,114,28,0.6); }
+
+    /* Call */
+    .float-btn.call {
+      background: linear-gradient(135deg, #1a3a5c 0%, #2a5a8c 100%);
+      border: 2px solid rgba(255,255,255,0.3);
+      animation: callRing 3.5s ease-in-out infinite;
+    }
+    @keyframes callRing {
+      0%,80%,100% { transform: rotate(0deg); }
+      82%         { transform: rotate(15deg); }
+      84%         { transform: rotate(-15deg); }
+      86%         { transform: rotate(12deg); }
+      88%         { transform: rotate(-12deg); }
+      90%         { transform: rotate(0deg); }
+    }
+    .float-btn.call:hover { animation: none; transform: scale(1.18); box-shadow: 0 12px 40px rgba(26,58,92,0.6); }
+
+    /* Pulse ring on all float buttons */
+    .float-btn::before {
+      content: '';
+      position: absolute; inset: -5px;
+      border-radius: 50%;
+      border: 2px solid currentColor;
+      opacity: 0;
+      animation: pulseRing 2.5s ease-out infinite;
+    }
+    .float-btn.wa { color: #25D366; }
+    .float-btn.ig { color: #dc2743; }
+    .float-btn.email { color: var(--saffron); }
+    .float-btn.call { color: #4a90d9; }
+    .float-btn.ig::before { animation-delay: 0.7s; }
+    .float-btn.email::before { animation-delay: 1.4s; }
+    .float-btn.call::before { animation-delay: 2.1s; }
+
+    @keyframes pulseRing {
+      0%   { transform: scale(0.9); opacity: 0.6; }
+      100% { transform: scale(1.7); opacity: 0; }
+    }
+
+    /* Float btn SVG icons */
+    .float-btn svg {
+      width: 26px; height: 26px;
+      fill: white;
+      filter: drop-shadow(0 1px 3px rgba(0,0,0,0.3));
+    }
 
     /* ──────────────── RESPONSIVE ──────────────── */
     @media (max-width: 900px) {
@@ -566,24 +1026,7 @@
       100% { left: 120%; }
     }
 
-    /* ── Pulse ring on floating buttons ── */
-    .float-btn.wa::before,
-    .float-btn.call::before {
-      content: '';
-      position: absolute; inset: -4px;
-      border-radius: 50%;
-      border: 2px solid currentColor;
-      opacity: 0;
-      animation: pulseRing 2.5s ease-out infinite;
-    }
-    .float-btn { position: relative; }
-    .float-btn.wa { color: #25D366; }
-    .float-btn.call { color: var(--saffron); }
-    @keyframes pulseRing {
-      0%   { transform: scale(0.9); opacity: 0.7; }
-      100% { transform: scale(1.6); opacity: 0; }
-    }
-    .float-btn.call::before { animation-delay: 1.25s; }
+    /* pulse ring handled in new float-btn block */
 
     /* ── Nav glow line animation ── */
     nav::after {
@@ -598,56 +1041,10 @@
       100% { background-position: -200% 0; }
     }
 
-    /* ── Scroll-reveal base state ── */
-    .reveal {
-      opacity: 0;
-      transform: translateY(40px);
-      transition: opacity 0.7s ease, transform 0.7s ease;
-    }
-    .reveal.revealed {
-      opacity: 1;
-      transform: translateY(0);
-    }
-    .reveal-left {
-      opacity: 0;
-      transform: translateX(-50px);
-      transition: opacity 0.7s ease, transform 0.7s ease;
-    }
-    .reveal-left.revealed {
-      opacity: 1;
-      transform: translateX(0);
-    }
-    .reveal-right {
-      opacity: 0;
-      transform: translateX(50px);
-      transition: opacity 0.7s ease, transform 0.7s ease;
-    }
-    .reveal-right.revealed {
-      opacity: 1;
-      transform: translateX(0);
-    }
-    .reveal-scale {
-      opacity: 0;
-      transform: scale(0.85);
-      transition: opacity 0.6s ease, transform 0.6s ease;
-    }
-    .reveal-scale.revealed {
-      opacity: 1;
-      transform: scale(1);
-    }
-
-    /* ── Staggered children ── */
-    .stagger-children > * {
-      opacity: 0;
-      transform: translateY(30px);
-      transition: opacity 0.5s ease, transform 0.5s ease;
-    }
-    .stagger-children.revealed > *:nth-child(1) { opacity:1; transform:translateY(0); transition-delay:0.05s; }
-    .stagger-children.revealed > *:nth-child(2) { opacity:1; transform:translateY(0); transition-delay:0.15s; }
-    .stagger-children.revealed > *:nth-child(3) { opacity:1; transform:translateY(0); transition-delay:0.25s; }
-    .stagger-children.revealed > *:nth-child(4) { opacity:1; transform:translateY(0); transition-delay:0.35s; }
-    .stagger-children.revealed > *:nth-child(5) { opacity:1; transform:translateY(0); transition-delay:0.45s; }
-    .stagger-children.revealed > *:nth-child(6) { opacity:1; transform:translateY(0); transition-delay:0.55s; }
+    /* ── Scroll-reveal classes — visual only, GSAP handles motion ── */
+    /* These are kept for GSAP to target via class names but do NOT hide content */
+    .reveal, .reveal-left, .reveal-right, .reveal-scale { /* no hidden state */ }
+    .stagger-children > * { /* no hidden state — GSAP animates */ }
 
     /* ── Stat counter shimmer ── */
     .stat-num {
@@ -790,10 +1187,9 @@
 <nav>
   <div class="nav-logo">
     <span class="om">🪔</span>
-    <div class="nav-logo-text">
-      Swaminarayan <span>Yatra</span><br>
-      <small style="font-size:0.65rem;font-family:'Josefin Sans';font-weight:300;letter-spacing:0.1em;color:rgba(253,246,227,0.6);">&amp; Krishna Tours</small>
-    </div>
+   <div style="text-align: center; padding: 10px;">
+    <img src="images/photo31.png" alt="Swaminarayan Yatra Logo" height="130">
+</div>
   </div>
   <ul class="nav-links">
     <li><a href="#destinations">Destinations</a></li>
@@ -1093,7 +1489,7 @@
         <div>
           <div class="contact-detail-label">Email</div>
           <div class="contact-detail-value">
-  <a href="mailto:manish.radadia@gmail.com">manish.radadia@gmail.com</a>
+  <a href="mailto:manish.radadia@gmail.com" style="color:inherit;">manish.radadia@gmail.com</a>
 </div>
         </div>
       </div>
@@ -1107,10 +1503,12 @@
 
       <div class="contact-social">
         <a href="https://wa.me/c/919898927080" target="_blank" class="social-btn whatsapp">
-          💬 WhatsApp Catalogue
+          <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          WhatsApp Catalogue
         </a>
         <a href="https://www.instagram.com/swam.inarayantourism?igsh=cnQ2bWV6NmU0enlh" target="_blank" class="social-btn instagram">
-          📷 Instagram
+          <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+          Instagram
         </a>
       </div>
     </div>
@@ -1148,26 +1546,43 @@
             <input type="number" name="travellers" placeholder="4" min="1"/>
           </div>
           <div class="form-group">
-            <label>Preferred Month</label>
-            <select name="month">
-              <option>April 2026</option>
-              <option>May 2026</option>
-              <option>June 2026</option>
-              <option>July 2026</option>
-              <option>August 2026</option>
-              <option>September 2026</option>
-              <option>October 2026</option>
-              <option>November 2026</option>
-              <option>December 2026</option>
-              <option>2027</option>
-            </select>
+            <label>Preferred Travel Date</label>
+            <div class="cal-input-wrap" id="calWrap">
+              <div class="cal-trigger" id="calTrigger" tabindex="0">
+                <span class="cal-icon">📅</span>
+                <span class="cal-display" id="calDisplay">Select a date</span>
+                <span class="cal-arrow">▾</span>
+              </div>
+              <input type="hidden" name="travel_date" id="calHidden"/>
+              <div class="cal-dropdown" id="calDropdown">
+                <div class="cal-header">
+                  <button type="button" class="cal-nav" id="calPrev">&#8249;</button>
+                  <span class="cal-month-year" id="calMonthYear"></span>
+                  <button type="button" class="cal-nav" id="calNext">&#8250;</button>
+                </div>
+                <div class="cal-weekdays">
+                  <span>Su</span><span>Mo</span><span>Tu</span><span>We</span>
+                  <span>Th</span><span>Fr</span><span>Sa</span>
+                </div>
+                <div class="cal-days" id="calDays"></div>
+              </div>
+            </div>
           </div>
         </div>
         <div class="form-group">
           <label>Message (Optional)</label>
           <textarea name="message" placeholder="Any special requirements..."></textarea>
         </div>
-       <button type="submit">🙏 SEND ENQUIRY</button>
+       <button type="submit" class="send-btn" id="sendBtn">
+         <span class="send-btn-bg"></span>
+         <span class="send-btn-shimmer"></span>
+         <span class="send-btn-content">
+           <span class="send-btn-icon">🙏</span>
+           <span class="send-btn-text">Send Enquiry</span>
+           <span class="send-btn-arrow">→</span>
+         </span>
+         <span class="send-btn-particles" id="btnParticles"></span>
+       </button>
       </form>
     </div>
   </div>
@@ -1197,7 +1612,7 @@
       <li><a href="tel:9898927080">📞 9898927080</a></li>
       <li><a href="https://wa.me/c/919898927080" target="_blank">💬 WhatsApp Catalogue</a></li>
       <li><a href="https://www.instagram.com/swam.inarayantourism" target="_blank">📷 Instagram</a></li>
-      <li><a href="/cdn-cgi/l/email-protection#e8858986819b80c69a898c898c8189a88f85898184c68b8785">✉️ Email Us</a></li>
+      <li><a href="mailto:manish.radadia@gmail.com">✉️ manish.radadia@gmail.com</a></li>
     </ul>
   </div>
 </footer>
@@ -1207,11 +1622,25 @@
 
 <!-- FLOATING BUTTONS -->
 <div class="float-btns">
-  <a href="https://wa.me/919898927080" target="_blank" class="float-btn wa" title="WhatsApp">💬</a>
-  <a href="tel:7990372808" class="float-btn call" title="Call Now">📞</a>
+  <a href="https://wa.me/919898927080" target="_blank" class="float-btn wa" title="WhatsApp">
+    <span class="float-btn-label">WhatsApp Us</span>
+    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+  </a>
+  <a href="https://www.instagram.com/swam.inarayantourism?igsh=cnQ2bWV6NmU0enlh" target="_blank" class="float-btn ig" title="Instagram">
+    <span class="float-btn-label">Follow on Instagram</span>
+    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+  </a>
+  <a href="mailto:manish.radadia@gmail.com" class="float-btn email" title="Email Us">
+    <span class="float-btn-label">manish.radadia@gmail.com</span>
+    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+  </a>
+  <a href="tel:7990372808" class="float-btn call" title="Call Now">
+    <span class="float-btn-label">Call: 7990372808</span>
+    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+  </a>
 </div>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+<script>
   function handleSubmit(e) {
     e.preventDefault();
     const btn = e.target.querySelector('.form-submit');
@@ -1228,76 +1657,746 @@
     }, 4000);
   }
 
-  // Scroll reveal
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(e => {
-      if (e.isIntersecting) {
-        e.target.style.opacity = '1';
-        e.target.style.transform = 'translateY(0)';
-      }
-    });
-  }, { threshold: 0.1 });
-
-  // Observe elements with scroll-reveal class from original
-  document.querySelectorAll('.service-card, .why-item, .dest-card, .dest-mini').forEach(el => {
-    el.style.opacity = '0';
-    el.style.transform = 'translateY(30px)';
-    el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-    observer.observe(el);
-  });
+  // Old inline reveal removed — handled cleanly by GSAP ScrollTrigger below
 </script>
 
-<!-- ANIMATION SCRIPTS -->
+
+<!-- GSAP + ScrollTrigger + Additional Animations -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollToPlugin.min.js"></script>
+
+<style>
+  /* ── Cursor glow trail ── */
+  .cursor-glow {
+    position: fixed; pointer-events: none; z-index: 9999;
+    width: 18px; height: 18px; border-radius: 50%;
+    background: radial-gradient(circle, rgba(245,200,66,0.55) 0%, transparent 70%);
+    transform: translate(-50%, -50%);
+    transition: opacity 0.3s;
+    mix-blend-mode: screen;
+  }
+
+  /* ── Magnetic nav links ── */
+  .nav-links a {
+    position: relative;
+  }
+  .nav-links a::after {
+    content: '';
+    position: absolute; bottom: -4px; left: 0; right: 0;
+    height: 1px;
+    background: var(--gold-light);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.3s ease;
+  }
+  .nav-links a:hover::after { transform: scaleX(1); }
+
+  /* ── Section label animated underline ── */
+  .section-label {
+    position: relative; display: inline-block;
+  }
+  .section-label::after {
+    content: '';
+    position: absolute; bottom: -3px; left: 0;
+    width: 0; height: 1px;
+    background: var(--saffron);
+    transition: width 0.6s ease;
+  }
+  .section-label.in-view::after { width: 100%; }
+
+  /* ── Scroll-triggered text split lines ── */
+  .split-reveal {
+    overflow: hidden;
+  }
+  .split-reveal .line-inner {
+    display: block;
+    transform: translateY(110%);
+    transition: transform 0.75s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .split-reveal.revealed .line-inner {
+    transform: translateY(0);
+  }
+  .split-reveal.revealed .line-inner:nth-child(2) { transition-delay: 0.12s; }
+  .split-reveal.revealed .line-inner:nth-child(3) { transition-delay: 0.24s; }
+
+  /* ── Stats bar counter ── */
+  .stat-num[data-target] {
+    transition: none;
+  }
+
+  /* ── Destination card overlay slide-up ── */
+  .dest-card .dest-overlay,
+  .dest-mini .dest-overlay {
+    transform: translateY(12px);
+    transition: transform 0.5s ease, background 0.5s;
+  }
+  .dest-card:hover .dest-overlay,
+  .dest-mini:hover .dest-overlay {
+    transform: translateY(0);
+  }
+
+  /* ── Ripple on CTA buttons ── */
+  .btn-primary, .btn-outline, .nav-cta {
+    overflow: hidden;
+  }
+  .btn-ripple {
+    position: absolute; border-radius: 50%;
+    background: rgba(255,255,255,0.3);
+    transform: scale(0);
+    animation: rippleOut 0.6s linear;
+    pointer-events: none;
+  }
+  @keyframes rippleOut {
+    to { transform: scale(4); opacity: 0; }
+  }
+
+  /* ── Why-item icon spin on hover ── */
+  .why-icon {
+    display: inline-block;
+    transition: transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+  .why-item:hover .why-icon {
+    transform: rotate(15deg) scale(1.2);
+  }
+
+  /* ── Service icon bounce on hover ── */
+  .service-icon {
+    display: inline-block;
+    transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+  .service-card:hover .service-icon {
+    transform: translateY(-8px) scale(1.15);
+  }
+
+  /* ── Gold border draw on section header ── */
+  .section-header::before {
+    content: '';
+    position: absolute; top: -10px; left: 50%; transform: translateX(-50%);
+    width: 0; height: 2px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    transition: width 0.8s ease;
+  }
+  .section-header {
+    position: relative;
+  }
+  .section-header.in-view::before {
+    width: 120px;
+  }
+
+  /* ── Parallax mandala behind hero ── */
+  .hero-mandala {
+    position: absolute; inset: 0; pointer-events: none;
+    display: flex; align-items: center; justify-content: center;
+    overflow: hidden;
+  }
+  .hero-mandala::after {
+    content: 'ॐ';
+    font-size: 28rem; font-family: serif;
+    color: rgba(212,160,23,0.04);
+    animation: rotateMandala 40s linear infinite;
+    line-height: 1;
+  }
+  @keyframes rotateMandala {
+    from { transform: rotate(0deg) scale(1); }
+    to   { transform: rotate(360deg) scale(1.05); }
+  }
+
+  /* gsap-card-ready removed — GSAP handles via safeFrom() */
+
+  /* ── Horizontal gold line sweep on contact section ── */
+  .contact::before {
+    content: '';
+    position: absolute; top: 0; left: -100%; right: auto;
+    height: 3px; width: 60%;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    animation: lineSweep 5s ease-in-out infinite;
+  }
+  .contact { position: relative; overflow: hidden; }
+  @keyframes lineSweep {
+    0%   { left: -60%; }
+    100% { left: 120%; }
+  }
+
+  /* ── Smooth counter animation helper ── */
+  .counting { font-feature-settings: 'tnum'; }
+
+  /* ── Form field focus glow ── */
+  .contact-form-box input:focus,
+  .contact-form-box select:focus,
+  .contact-form-box textarea:focus {
+    outline: none;
+    border-color: var(--gold) !important;
+    box-shadow: 0 0 0 3px rgba(212,160,23,0.15), 0 2px 8px rgba(212,160,23,0.1);
+    transform: translateY(-1px);
+    transition: all 0.3s ease;
+  }
+
+  /* ── Floating button entrance ── */
+  .float-btns {
+    opacity: 0;
+    transform: translateX(30px);
+    animation: slideInFloat 0.8s 2s cubic-bezier(0.34,1.56,0.64,1) forwards;
+  }
+  @keyframes slideInFloat {
+    to { opacity: 1; transform: translateX(0); }
+  }
+
+  /* ── Nav shrink on scroll (JS class toggled) ── */
+  nav.scrolled {
+    height: 54px;
+    background: rgba(74,14,14,0.98);
+    box-shadow: 0 4px 30px rgba(0,0,0,0.3);
+    transition: all 0.4s ease;
+  }
+  nav { transition: all 0.4s ease; }
+
+  /* ── Destination badge bounce ── */
+  .dest-badge {
+    animation: badgeBounce 3s ease-in-out infinite;
+  }
+  @keyframes badgeBounce {
+    0%,100% { transform: translateY(0); }
+    50%     { transform: translateY(-4px); }
+  }
+
+  /* ── Gallery pause text ── */
+  .gallery-strip-wrapper {
+    position: relative;
+  }
+
+  /* ── Chardham dham grid hover lift ── */
+  .dham-item {
+    transition: background 0.3s, transform 0.3s cubic-bezier(0.34,1.56,0.64,1);
+  }
+  .dham-item:hover {
+    transform: scale(1.04);
+  }
+
+  /* ── Animated gradient border on form box ── */
+  .contact-form-box {
+    position: relative;
+  }
+  .contact-form-box::before {
+    content: '';
+    position: absolute; inset: -2px; z-index: -1;
+    background: linear-gradient(135deg, var(--gold), var(--saffron), var(--gold-light), var(--saffron));
+    background-size: 300% 300%;
+    border-radius: 2px;
+    animation: formBorderGlow 5s ease infinite;
+    opacity: 0.6;
+  }
+  @keyframes formBorderGlow {
+    0%,100% { background-position: 0% 50%; }
+    50%     { background-position: 100% 50%; }
+  }
+
+  /* ── Footer links hover slide ── */
+  footer ul li a {
+    position: relative; display: inline-block;
+    transition: transform 0.3s ease, color 0.3s;
+  }
+  footer ul li a:hover {
+    transform: translateX(6px);
+    color: var(--gold-light) !important;
+  }
+</style>
+
 <script>
-  /* ── Scroll progress bar ── */
+  gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
+
+  /* ─────────────────────────────────────────────
+     1. SCROLL PROGRESS BAR
+  ───────────────────────────────────────────── */
   const progressBar = document.getElementById('scroll-progress');
   window.addEventListener('scroll', () => {
-    const scrollTop = window.scrollY;
-    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
-    const pct = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+    const pct = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100;
     progressBar.style.width = pct + '%';
-  });
+  }, { passive: true });
 
-  /* ── Floating diya & star particles in hero ── */
+  /* ─────────────────────────────────────────────
+     2. FLOATING DIYA PARTICLES IN HERO
+  ───────────────────────────────────────────── */
   const heroParticles = document.getElementById('heroParticles');
   const diyas = ['🪔','✨','🌸','🌼','⭐','🌺'];
-  for (let i = 0; i < 18; i++) {
+  for (let i = 0; i < 22; i++) {
     const el = document.createElement('div');
-    const isStar = i > 11;
-    if (isStar) {
+    if (i > 14) {
       el.className = 'star';
-      el.style.cssText = `
-        left: ${Math.random()*100}%;
-        top: ${Math.random()*100}%;
-        --dur: ${2 + Math.random()*4}s;
-        --delay: ${Math.random()*5}s;
-      `;
+      el.style.cssText = `left:${Math.random()*100}%;top:${Math.random()*100}%;--dur:${2+Math.random()*4}s;--delay:${Math.random()*5}s;`;
     } else {
       el.className = 'diya-particle';
       el.textContent = diyas[i % diyas.length];
-      el.style.cssText = `
-        left: ${5 + Math.random()*90}%;
-        --dur: ${7 + Math.random()*8}s;
-        --delay: ${Math.random()*10}s;
-        font-size: ${0.8 + Math.random()*1}rem;
-      `;
+      el.style.cssText = `left:${5+Math.random()*90}%;--dur:${7+Math.random()*8}s;--delay:${Math.random()*12}s;font-size:${0.8+Math.random()*1.2}rem;`;
     }
     heroParticles.appendChild(el);
   }
 
-  /* ── Intersection Observer for scroll reveals ── */
-  const revealObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('revealed');
+  /* ─────────────────────────────────────────────
+     3. CURSOR GLOW
+  ───────────────────────────────────────────── */
+  const glow = document.createElement('div');
+  glow.className = 'cursor-glow';
+  document.body.appendChild(glow);
+  let mx = -100, my = -100;
+  window.addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; }, { passive: true });
+  (function animGlow() {
+    glow.style.left = mx + 'px';
+    glow.style.top  = my + 'px';
+    requestAnimationFrame(animGlow);
+  })();
+
+  /* ─────────────────────────────────────────────
+     4. NAV SHRINK ON SCROLL
+  ───────────────────────────────────────────── */
+  const nav = document.querySelector('nav');
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 80);
+  }, { passive: true });
+
+  /* ─────────────────────────────────────────────
+     5. GSAP HERO ENTRANCE TIMELINE
+  ───────────────────────────────────────────── */
+  const heroTl = gsap.timeline({ delay: 0.2 });
+  heroTl
+    .from('.hero-badge',    { y: 40, opacity: 0, duration: 0.8, ease: 'power3.out' })
+    .from('.hero-gujarati', { y: 30, opacity: 0, duration: 0.7, ease: 'power3.out' }, '-=0.5')
+    .from('.hero-title',    { y: 50, opacity: 0, duration: 0.9, ease: 'power3.out' }, '-=0.5')
+    .from('.hero-subtitle', { y: 25, opacity: 0, duration: 0.7, ease: 'power3.out' }, '-=0.6')
+    .from('.hero-btns a',   { y: 25, opacity: 0, stagger: 0.15, duration: 0.6, ease: 'back.out(1.7)' }, '-=0.4')
+    .from('.hero-scroll',   { opacity: 0, duration: 0.8, ease: 'power2.out' }, '-=0.2');
+
+  /* ─────────────────────────────────────────────
+     6. STATS BAR — ANIMATED COUNTER
+  ───────────────────────────────────────────── */
+  gsap.from('.stat-item', {
+    scrollTrigger: { trigger: '.stats-bar', start: 'top 95%', once: true },
+    y: 35, opacity: 0, stagger: 0.1, duration: 0.65, ease: 'power3.out'
+  });
+
+  document.querySelectorAll('.stat-num').forEach(el => {
+    const raw    = el.textContent.replace(/[^0-9]/g, '');
+    const suffix = el.textContent.replace(/[0-9]/g, '');
+    if (!raw) return;
+    const target = parseInt(raw);
+    ScrollTrigger.create({
+      trigger: el,
+      start: 'top 95%',
+      once: true,
+      onEnter: () => {
+        gsap.fromTo({ val: 0 }, { val: target }, {
+          duration: 1.8,
+          ease: 'power2.out',
+          onUpdate: function() {
+            el.textContent = Math.round(this.targets()[0].val) + suffix;
+          }
+        });
       }
     });
-  }, { threshold: 0.12 });
-
-  document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-scale, .stagger-children').forEach(el => {
-    revealObserver.observe(el);
   });
-</script>
 
+  /* ─────────────────────────────────────────────
+     7. SECTION HEADERS — ELEGANT ENTRANCE
+  ───────────────────────────────────────────── */
+  document.querySelectorAll('.section-header').forEach(header => {
+    const label   = header.querySelector('.section-label');
+    const title   = header.querySelector('.section-title');
+    const divider = header.querySelector('.section-divider');
+    gsap.timeline({
+      scrollTrigger: { trigger: header, start: 'top 92%', once: true }
+    })
+    .from(label,   { y: 18, opacity: 0, duration: 0.55, ease: 'power2.out' }, 0)
+    .from(title,   { y: 30, opacity: 0, duration: 0.75, ease: 'power3.out' }, 0.1)
+    .from(divider, { scaleX: 0, duration: 0.6, ease: 'power2.inOut' }, 0.25);
+
+    ScrollTrigger.create({
+      trigger: header, start: 'top 92%', once: true,
+      onEnter: () => {
+        header.classList.add('in-view');
+        label?.classList.add('in-view');
+      }
+    });
+  });
+
+  /* ─────────────────────────────────────────────
+     SAFE SCROLL ANIMATION HELPER
+     Uses once:true + generous start so nothing
+     ever gets stuck invisible
+  ───────────────────────────────────────────── */
+  function safeFrom(selector, vars, triggerEl) {
+    const els = gsap.utils.toArray(selector);
+    if (!els.length) return;
+    const trig = triggerEl || els[0];
+    gsap.from(els, {
+      ...vars,
+      scrollTrigger: {
+        trigger: trig,
+        start: 'top 92%',
+        once: true,
+        toggleActions: 'play none none none',
+        ...(vars.scrollTrigger || {})
+      }
+    });
+  }
+
+  /* ─────────────────────────────────────────────
+     8. DESTINATION CARDS
+  ───────────────────────────────────────────── */
+  safeFrom('.dest-featured .dest-card',
+    { x: (i) => i === 0 ? -50 : 50, opacity: 0, duration: 0.85, stagger: 0.15, ease: 'power3.out' },
+    '.dest-featured'
+  );
+  safeFrom('.dest-mini',
+    { y: 40, opacity: 0, scale: 0.94, stagger: 0.09, duration: 0.65, ease: 'power3.out' },
+    '.dest-grid'
+  );
+
+  /* ─────────────────────────────────────────────
+     9. CHARDHAM SECTION
+  ───────────────────────────────────────────── */
+  safeFrom('.chardham-img-stack img',
+    { scale: 0.88, opacity: 0, stagger: 0.18, duration: 0.85, ease: 'back.out(1.4)' },
+    '.chardham-img-stack'
+  );
+  safeFrom('.chardham-text .highlight',
+    { x: -30, opacity: 0, duration: 0.85, ease: 'power3.out' },
+    '.chardham-text'
+  );
+  safeFrom('.dham-item',
+    { scale: 0.82, opacity: 0, stagger: 0.1, duration: 0.6, ease: 'back.out(1.7)' },
+    '.chardham-dhams'
+  );
+  safeFrom('.chardham-text p',
+    { y: 20, opacity: 0, stagger: 0.15, duration: 0.65, ease: 'power2.out' },
+    '.chardham-text'
+  );
+
+  /* ─────────────────────────────────────────────
+     10. SERVICE CARDS
+  ───────────────────────────────────────────── */
+  safeFrom('.service-card',
+    { y: 45, opacity: 0, stagger: 0.11, duration: 0.7, ease: 'power3.out' },
+    '.services-grid'
+  );
+
+  /* ─────────────────────────────────────────────
+     11. WHY-US
+  ───────────────────────────────────────────── */
+  safeFrom('.why-item',
+    { y: 40, opacity: 0, stagger: 0.12, duration: 0.65, ease: 'power3.out' },
+    '.why-grid'
+  );
+
+  /* ─────────────────────────────────────────────
+     12. GALLERY HEADER
+  ───────────────────────────────────────────── */
+  safeFrom('.gallery .section-header',
+    { y: 25, opacity: 0, duration: 0.85, ease: 'power3.out' },
+    '.gallery'
+  );
+
+  /* ─────────────────────────────────────────────
+     13. CONTACT SECTION
+  ───────────────────────────────────────────── */
+  safeFrom('.contact-info',
+    { x: -50, opacity: 0, duration: 0.85, ease: 'power3.out' },
+    '.contact-layout'
+  );
+  safeFrom('.contact-form-box',
+    { x: 50, opacity: 0, duration: 0.85, ease: 'power3.out' },
+    '.contact-layout'
+  );
+  safeFrom('.contact-item',
+    { x: -25, opacity: 0, stagger: 0.12, duration: 0.55, ease: 'power2.out' },
+    '.contact-info'
+  );
+  safeFrom('.contact-social a',
+    { scale: 0.88, opacity: 0, stagger: 0.1, duration: 0.5, ease: 'back.out(1.7)' },
+    '.contact-social'
+  );
+
+  /* ─────────────────────────────────────────────
+     14. FOOTER
+  ───────────────────────────────────────────── */
+  safeFrom('footer > *',
+    { y: 25, opacity: 0, stagger: 0.12, duration: 0.65, ease: 'power3.out' },
+    'footer'
+  );
+  safeFrom('.footer-bottom',
+    { opacity: 0, duration: 0.7, ease: 'power2.out' },
+    '.footer-bottom'
+  );
+
+  /* ─────────────────────────────────────────────
+     15. RIPPLE EFFECT ON BUTTONS
+  ───────────────────────────────────────────── */
+  document.querySelectorAll('.btn-primary, .btn-outline, .nav-cta').forEach(btn => {
+    btn.style.position = 'relative';
+    btn.addEventListener('click', function(e) {
+      const r = document.createElement('span');
+      r.className = 'btn-ripple';
+      const rect = btn.getBoundingClientRect();
+      const size = Math.max(rect.width, rect.height);
+      r.style.cssText = `width:${size}px;height:${size}px;left:${e.clientX-rect.left-size/2}px;top:${e.clientY-rect.top-size/2}px;`;
+      btn.appendChild(r);
+      setTimeout(() => r.remove(), 700);
+    });
+  });
+
+  /* ─────────────────────────────────────────────
+     16. HERO PARALLAX (gentle, only y movement)
+  ───────────────────────────────────────────── */
+  gsap.to('.hero-title, .hero-subtitle, .hero-gujarati', {
+    scrollTrigger: {
+      trigger: '.hero',
+      start: 'top top',
+      end: 'bottom top',
+      scrub: 1.5
+    },
+    y: 80,
+    ease: 'none'
+  });
+
+  /* ─────────────────────────────────────────────
+     17. GLOBAL SAFETY NET
+     After 2.5s, force-show ANY element that is
+     still invisible due to a missed trigger.
+     Skips elements that are INTENTIONALLY hidden.
+  ───────────────────────────────────────────── */
+  setTimeout(() => {
+    // Elements that should stay hidden when closed
+    const skipSelectors = [
+      '#calDropdown', '.cal-dropdown',
+      '.btn-spark', '.diya-particle', '.star', '.cursor-glow',
+      '.btn-ripple', '.send-btn-particles', '.hero-particles'
+    ];
+    const skipEls = new Set();
+    skipSelectors.forEach(sel => {
+      document.querySelectorAll(sel).forEach(el => skipEls.add(el));
+    });
+
+    document.querySelectorAll('section, section *, .stats-bar, .stats-bar *, footer, footer *, .footer-bottom').forEach(el => {
+      if (skipEls.has(el)) return;
+      const cs = window.getComputedStyle(el);
+      const op = parseFloat(cs.opacity);
+      if (op < 0.05 && cs.display !== 'none' && cs.visibility !== 'hidden') {
+        el.style.opacity = '1';
+        el.style.transform = 'none';
+      }
+    });
+  }, 2500);
+
+  /* ─────────────────────────────────────────────
+     18. SCROLL-TO on nav links (smooth)
+  ───────────────────────────────────────────── */
+  document.querySelectorAll('a[href^="#"]').forEach(link => {
+    link.addEventListener('click', function(e) {
+      const target = document.querySelector(this.getAttribute('href'));
+      if (target) {
+        e.preventDefault();
+        gsap.to(window, { duration: 1.2, scrollTo: { y: target, offsetY: 68 }, ease: 'power3.inOut' });
+      }
+    });
+  });
+
+  /* ─────────────────────────────────────────────
+     19. CUSTOM CALENDAR PICKER — FIXED
+  ───────────────────────────────────────────── */
+  (function initCalendar() {
+    var wrap     = document.getElementById('calWrap');
+    var trigger  = document.getElementById('calTrigger');
+    var dropdown = document.getElementById('calDropdown');
+    var display  = document.getElementById('calDisplay');
+    var hidden   = document.getElementById('calHidden');
+    var monthYearEl = document.getElementById('calMonthYear');
+    var daysGrid    = document.getElementById('calDays');
+    var prevBtn     = document.getElementById('calPrev');
+    var nextBtn     = document.getElementById('calNext');
+
+    if (!trigger || !dropdown) return;
+
+    var MONTHS = ['January','February','March','April','May','June',
+                  'July','August','September','October','November','December'];
+    var today        = new Date();
+    today.setHours(0,0,0,0);
+    var viewYear     = today.getFullYear();
+    var viewMonth    = today.getMonth();
+    var selectedDate = null;
+    var isOpen       = false;
+
+    /* ── Render days grid ── */
+    function renderCalendar() {
+      monthYearEl.textContent = MONTHS[viewMonth] + ' ' + viewYear;
+      daysGrid.innerHTML = '';
+
+      var firstDay    = new Date(viewYear, viewMonth, 1).getDay();
+      var daysInMonth = new Date(viewYear, viewMonth + 1, 0).getDate();
+
+      for (var i = 0; i < firstDay; i++) {
+        var empty = document.createElement('div');
+        empty.className = 'cal-day empty';
+        daysGrid.appendChild(empty);
+      }
+
+      for (var d = 1; d <= daysInMonth; d++) {
+        (function(day) {
+          var cell     = document.createElement('div');
+          cell.className = 'cal-day';
+          cell.textContent = day;
+
+          var cellDate = new Date(viewYear, viewMonth, day);
+          cellDate.setHours(0,0,0,0);
+
+          if (cellDate < today) {
+            cell.classList.add('disabled');
+          } else {
+            if (cellDate.getTime() === today.getTime()) cell.classList.add('today');
+            if (selectedDate && cellDate.getTime() === selectedDate.getTime()) cell.classList.add('selected');
+
+            cell.addEventListener('click', function(e) {
+              e.stopPropagation();
+              selectedDate = new Date(viewYear, viewMonth, day);
+              selectedDate.setHours(0,0,0,0);
+              var formatted = day + ' ' + MONTHS[viewMonth] + ' ' + viewYear;
+              display.textContent = formatted;
+              display.classList.add('selected');
+              hidden.value = formatted;
+              closeCalendar();
+              renderCalendar();
+            });
+          }
+          daysGrid.appendChild(cell);
+        })(d);
+      }
+    }
+
+    /* ── Open / Close ── */
+    function openCalendar() {
+      isOpen = true;
+      trigger.classList.add('open');
+      dropdown.classList.add('open');
+    }
+
+    function closeCalendar() {
+      isOpen = false;
+      trigger.classList.remove('open');
+      dropdown.classList.remove('open');
+    }
+
+    /* ── Trigger click — toggle ── */
+    trigger.addEventListener('click', function(e) {
+      e.stopPropagation();
+      isOpen ? closeCalendar() : openCalendar();
+    });
+
+    /* ── Keyboard support ── */
+    trigger.addEventListener('keydown', function(e) {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        isOpen ? closeCalendar() : openCalendar();
+      }
+      if (e.key === 'Escape') closeCalendar();
+    });
+
+    /* ── Nav buttons — stop propagation so they don't close the dropdown ── */
+    prevBtn.addEventListener('click', function(e) {
+      e.stopPropagation();
+      viewMonth--;
+      if (viewMonth < 0) { viewMonth = 11; viewYear--; }
+      renderCalendar();
+    });
+
+    nextBtn.addEventListener('click', function(e) {
+      e.stopPropagation();
+      viewMonth++;
+      if (viewMonth > 11) { viewMonth = 0; viewYear++; }
+      renderCalendar();
+    });
+
+    /* ── Clicking inside dropdown keeps it open ── */
+    dropdown.addEventListener('click', function(e) {
+      e.stopPropagation();
+    });
+
+    /* ── Click outside closes it ── */
+    document.addEventListener('click', function() {
+      if (isOpen) closeCalendar();
+    });
+
+    /* ── Start closed ── */
+    closeCalendar();
+    renderCalendar();
+  })();
+
+  /* ─────────────────────────────────────────────
+     20. SEND BUTTON — SPARK PARTICLES + STATES
+  ───────────────────────────────────────────── */
+  (function() {
+    const btn = document.getElementById('sendBtn');
+    if (!btn) return;
+
+    function spawnSparks() {
+      const container = document.getElementById('btnParticles');
+      const rect = btn.getBoundingClientRect();
+      const cx = rect.width / 2;
+      const cy = rect.height / 2;
+      const colors = ['#F5C842','#E8721C','#fff','#D4A017','#FFE08A'];
+
+      for (let i = 0; i < 14; i++) {
+        const spark = document.createElement('span');
+        spark.className = 'btn-spark';
+        const size = 4 + Math.random() * 5;
+        const angle = (Math.PI * 2 / 14) * i + (Math.random() - 0.5) * 0.5;
+        const dist  = 30 + Math.random() * 40;
+        spark.style.cssText = `
+          width: ${size}px; height: ${size}px;
+          left: ${cx - size/2}px; top: ${cy - size/2}px;
+          background: ${colors[Math.floor(Math.random()*colors.length)]};
+          --tx: ${Math.cos(angle) * dist}px;
+          --ty: ${Math.sin(angle) * dist - 10}px;
+          --dur: ${0.45 + Math.random() * 0.35}s;
+          animation-delay: ${Math.random() * 0.1}s;
+        `;
+        container.appendChild(spark);
+        setTimeout(() => spark.remove(), 900);
+      }
+    }
+
+    btn.addEventListener('mouseenter', spawnSparks);
+
+    btn.addEventListener('click', function(e) {
+      spawnSparks();
+      // Ripple
+      const r = document.createElement('span');
+      r.className = 'btn-ripple';
+      r.style.cssText = `width:200px;height:200px;left:${e.offsetX-100}px;top:${e.offsetY-100}px;`;
+      btn.appendChild(r);
+      setTimeout(() => r.remove(), 700);
+    });
+
+    // Handle form submit state
+    const form = btn.closest('form');
+    if (form) {
+      form.addEventListener('submit', function() {
+        btn.classList.add('sending');
+        setTimeout(() => {
+          btn.classList.remove('sending');
+          btn.classList.add('success');
+          document.querySelector('.send-btn-text').textContent = 'Enquiry Sent!';
+          document.querySelector('.send-btn-icon').textContent = '✅';
+          document.querySelector('.send-btn-arrow').textContent = '';
+          spawnSparks(); spawnSparks();
+          setTimeout(() => {
+            btn.classList.remove('success');
+            document.querySelector('.send-btn-text').textContent = 'Send Enquiry';
+            document.querySelector('.send-btn-icon').textContent = '🙏';
+            document.querySelector('.send-btn-arrow').textContent = '→';
+          }, 4000);
+        }, 1500);
+      });
+    }
+  })();
+
+</script>
 </body>
 </html>
