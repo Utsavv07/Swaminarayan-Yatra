@@ -20,6 +20,629 @@
       --text-dark: #2C1810;
       --text-mid: #5C3D2E;
       --text-light: #8B6650;
+
+      /* ── NEW THEME ACCENTS ── */
+      --lotus-pink: #E8A0B4;
+      --temple-teal: #1A6B68;
+      --midnight: #0D0A1A;
+      --sacred-purple: #3D1A5C;
+      --divine-amber: #FFB347;
+      --pearl: #F8F4EE;
+    }
+
+    /* ════════════════════════════════════════
+       🌸 SACRED LUXURY THEME OVERRIDE
+       Unique mandala-inspired design system
+    ════════════════════════════════════════ */
+
+    /* ── Page Load Splash ── */
+    #page-splash {
+      position: fixed; inset: 0; z-index: 99999;
+      background: var(--deep-maroon);
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      transition: opacity 0.8s ease, visibility 0.8s ease;
+    }
+    #page-splash.gone { opacity: 0; visibility: hidden; pointer-events: none; }
+    .splash-om {
+      font-size: 5rem; color: var(--gold-light);
+      animation: splashOmPulse 1.5s ease-in-out infinite;
+      text-shadow: 0 0 40px rgba(245,200,66,0.8), 0 0 80px rgba(245,200,66,0.4);
+    }
+    .splash-text {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.2rem; color: rgba(253,246,227,0.7);
+      letter-spacing: 0.4em; text-transform: uppercase;
+      margin-top: 1.5rem;
+      animation: splashFadeIn 1s ease both;
+    }
+    .splash-line {
+      width: 0; height: 2px; margin-top: 1.5rem;
+      background: linear-gradient(90deg, transparent, var(--gold), transparent);
+      animation: splashLine 1.8s ease forwards;
+    }
+    @keyframes splashOmPulse {
+      0%,100% { transform: scale(1) rotate(0deg); opacity: 1; }
+      50% { transform: scale(1.08) rotate(3deg); opacity: 0.85; }
+    }
+    @keyframes splashFadeIn { from { opacity: 0; letter-spacing: 0.8em; } to { opacity: 0.7; letter-spacing: 0.4em; } }
+    @keyframes splashLine { from { width: 0; } to { width: 200px; } }
+
+    /* ── Mandala Background Watermark (sections) ── */
+    .mandala-bg {
+      position: absolute; inset: 0; pointer-events: none; overflow: hidden; z-index: 0;
+    }
+    .mandala-bg::before {
+      content: '';
+      position: absolute;
+      width: 700px; height: 700px;
+      border-radius: 50%;
+      background: 
+        radial-gradient(circle at center, transparent 30%, rgba(212,160,23,0.04) 31%, transparent 32%),
+        radial-gradient(circle at center, transparent 45%, rgba(212,160,23,0.03) 46%, transparent 47%),
+        radial-gradient(circle at center, transparent 60%, rgba(212,160,23,0.02) 61%, transparent 62%);
+      top: 50%; left: 50%; transform: translate(-50%,-50%);
+      animation: mandalaRotate 60s linear infinite;
+    }
+    @keyframes mandalaRotate { to { transform: translate(-50%,-50%) rotate(360deg); } }
+
+    /* ── Twinkling Stars overlay ── */
+    .stars-canvas {
+      position: absolute; inset: 0; pointer-events: none; overflow: hidden;
+    }
+    .star-dot {
+      position: absolute; border-radius: 50%;
+      background: var(--gold-light);
+      animation: starTwinkleNew var(--dur,3s) var(--del,0s) ease-in-out infinite;
+    }
+    @keyframes starTwinkleNew {
+      0%,100% { opacity: 0; transform: scale(0.5); }
+      50% { opacity: 0.8; transform: scale(1); }
+    }
+
+    /* ── Lotus Petal Scroll Progress ── */
+    #scroll-progress {
+      position: fixed; top: 0; left: 0; right: 0; height: 3px; z-index: 999;
+      background: transparent;
+    }
+    #scroll-progress-bar {
+      height: 100%; width: 0%;
+      background: linear-gradient(90deg, var(--saffron), var(--gold-light), var(--saffron));
+      background-size: 200% 100%;
+      animation: scrollGradientMove 2s linear infinite;
+      transition: width 0.1s linear;
+      box-shadow: 0 0 8px rgba(245,200,66,0.6);
+    }
+    @keyframes scrollGradientMove {
+      0% { background-position: 0% 0%; }
+      100% { background-position: 200% 0%; }
+    }
+
+    /* ── Enhanced NAV ── */
+    nav {
+      background: linear-gradient(135deg, rgba(26,6,6,0.97) 0%, rgba(74,14,14,0.97) 100%) !important;
+      box-shadow: 0 4px 30px rgba(0,0,0,0.4);
+      transition: all 0.4s ease;
+    }
+    nav.scrolled {
+      height: 56px !important;
+      background: rgba(20,4,4,0.99) !important;
+    }
+    .nav-logo .om {
+      animation: omFloat 3s ease-in-out infinite !important;
+      font-size: 2rem !important;
+      filter: drop-shadow(0 0 8px rgba(245,200,66,0.6));
+    }
+    @keyframes omFloat {
+      0%,100% { transform: translateY(0) rotate(-5deg); filter: drop-shadow(0 0 8px rgba(245,200,66,0.6)); }
+      50% { transform: translateY(-4px) rotate(5deg); filter: drop-shadow(0 0 16px rgba(245,200,66,0.9)); }
+    }
+    .nav-logo-text span {
+      background: linear-gradient(90deg, var(--gold-light), var(--divine-amber), var(--gold-light));
+      background-size: 200% auto;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      animation: goldTextShine 4s linear infinite;
+      font-style: italic;
+    }
+    @keyframes goldTextShine {
+      0% { background-position: 0% center; }
+      100% { background-position: 200% center; }
+    }
+    .nav-cta {
+      background: linear-gradient(135deg, var(--gold) 0%, var(--divine-amber) 100%) !important;
+      border-radius: 2px;
+      position: relative; overflow: hidden;
+      animation: navCtaGlow 3s ease-in-out infinite;
+    }
+    @keyframes navCtaGlow {
+      0%,100% { box-shadow: 0 0 12px rgba(212,160,23,0.3); }
+      50% { box-shadow: 0 0 24px rgba(212,160,23,0.6), 0 0 48px rgba(212,160,23,0.2); }
+    }
+    .nav-cta::after {
+      content: '';
+      position: absolute; inset: 0;
+      background: linear-gradient(105deg, transparent 40%, rgba(255,255,255,0.3) 50%, transparent 60%);
+      background-size: 200% 100%;
+      background-position: -100% 0;
+      animation: navCtaShimmer 3s ease-in-out infinite;
+    }
+    @keyframes navCtaShimmer {
+      0%,60% { background-position: -100% 0; }
+      100% { background-position: 300% 0; }
+    }
+
+    /* ── HERO Enhanced ── */
+    .hero {
+      background-blend-mode: multiply;
+      position: relative;
+    }
+    .hero::after {
+      content: '';
+      position: absolute; inset: 0;
+      background: 
+        radial-gradient(ellipse 80% 50% at 50% 100%, rgba(232,114,28,0.2) 0%, transparent 60%),
+        radial-gradient(ellipse 40% 40% at 20% 20%, rgba(212,160,23,0.1) 0%, transparent 50%),
+        radial-gradient(ellipse 30% 30% at 80% 10%, rgba(212,160,23,0.08) 0%, transparent 50%);
+      pointer-events: none;
+      animation: heroAtmosphere 8s ease-in-out infinite alternate;
+    }
+    @keyframes heroAtmosphere {
+      0% { opacity: 0.7; }
+      100% { opacity: 1; }
+    }
+    .hero-badge {
+      border-radius: 30px;
+      backdrop-filter: blur(10px);
+      animation: heroBadgePop 1s cubic-bezier(0.34,1.56,0.64,1) both !important;
+      background: rgba(212,160,23,0.15) !important;
+    }
+    @keyframes heroBadgePop {
+      from { opacity: 0; transform: translateY(20px) scale(0.8); }
+      to { opacity: 1; transform: translateY(0) scale(1); }
+    }
+    .hero-title {
+      text-shadow: 0 2px 60px rgba(0,0,0,0.6), 0 0 120px rgba(232,114,28,0.2) !important;
+    }
+    .hero-title .accent {
+      position: relative; display: inline-block;
+    }
+    .hero-title .accent::after {
+      content: '';
+      position: absolute; bottom: -4px; left: 0; right: 0; height: 3px;
+      background: linear-gradient(90deg, transparent, var(--gold-light), transparent);
+      animation: accentLineExpand 2s ease 1.2s both;
+    }
+    @keyframes accentLineExpand {
+      from { transform: scaleX(0); opacity: 0; }
+      to { transform: scaleX(1); opacity: 1; }
+    }
+    .btn-primary {
+      border-radius: 3px;
+      background: linear-gradient(135deg, var(--saffron) 0%, #FF7A20 50%, var(--deep-saffron) 100%) !important;
+      background-size: 200% 200% !important;
+      animation: btnBgShift 4s ease infinite;
+      box-shadow: 0 8px 32px rgba(232,114,28,0.45), inset 0 1px 0 rgba(255,255,255,0.15) !important;
+    }
+    @keyframes btnBgShift {
+      0%,100% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+    }
+    .btn-primary:hover {
+      transform: translateY(-4px) scale(1.04) !important;
+      box-shadow: 0 18px 50px rgba(232,114,28,0.6), 0 0 0 2px rgba(245,200,66,0.4) !important;
+    }
+    .btn-outline {
+      border-radius: 3px;
+      position: relative; overflow: hidden;
+    }
+    .btn-outline::after {
+      content: '';
+      position: absolute; inset: 0;
+      background: linear-gradient(90deg, transparent 0%, rgba(245,200,66,0.1) 50%, transparent 100%);
+      background-size: 200% 100%;
+      animation: btnOutlineGlow 3s ease-in-out infinite;
+    }
+    @keyframes btnOutlineGlow {
+      0%,100% { background-position: -100% 0; }
+      50% { background-position: 100% 0; }
+    }
+
+    /* ── STATS BAR Enhanced ── */
+    .stats-bar {
+      background: linear-gradient(135deg, #2a0808 0%, var(--deep-maroon) 40%, #1a0404 100%) !important;
+      position: relative; overflow: hidden;
+    }
+    .stats-bar::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: repeating-linear-gradient(
+        90deg,
+        transparent, transparent 24.9%,
+        rgba(212,160,23,0.06) 25%
+      );
+      pointer-events: none;
+    }
+    .stat-item {
+      position: relative;
+      transition: all 0.4s cubic-bezier(0.34,1.56,0.64,1) !important;
+    }
+    .stat-item::after {
+      content: '';
+      position: absolute; bottom: 0; left: 10%; right: 10%; height: 2px;
+      background: linear-gradient(90deg, transparent, var(--gold), transparent);
+      transform: scaleX(0);
+      transition: transform 0.4s ease;
+    }
+    .stat-item:hover::after { transform: scaleX(1); }
+    .stat-item:hover { background: rgba(212,160,23,0.08) !important; transform: translateY(-3px); }
+
+    /* ── SECTION LABELS Enhanced ── */
+    .section-label {
+      background: linear-gradient(90deg, var(--saffron), var(--divine-amber));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      font-weight: 700 !important;
+      font-size: 0.75rem !important;
+    }
+
+    /* ── DESTINATION CARDS Enhanced ── */
+    .dest-card, .dest-mini {
+      border-radius: 2px;
+    }
+    .dest-badge {
+      border-radius: 20px !important;
+      backdrop-filter: blur(8px);
+      animation: badgePulse 2.5s ease-in-out infinite;
+    }
+    @keyframes badgePulse {
+      0%,100% { box-shadow: 0 0 0 0 rgba(232,114,28,0); }
+      50% { box-shadow: 0 0 0 4px rgba(232,114,28,0.2); }
+    }
+    .dest-card:hover { transform: scale(1.01); }
+    .dest-mini:hover { transform: scale(1.02); }
+
+    /* ── CHARDHAM SECTION Enhanced ── */
+    .chardham {
+      background: linear-gradient(160deg, #1a0404 0%, var(--deep-maroon) 30%, #160f2a 70%, #0d0a1a 100%) !important;
+      position: relative;
+    }
+    .chardham::after {
+      content: '';
+      position: absolute; inset: 0;
+      background: 
+        radial-gradient(ellipse at 0% 100%, rgba(212,160,23,0.06) 0%, transparent 50%),
+        radial-gradient(ellipse at 100% 0%, rgba(232,114,28,0.05) 0%, transparent 50%);
+      pointer-events: none;
+    }
+    .dham-item {
+      border-radius: 4px;
+      border: 1px solid rgba(212,160,23,0.1) !important;
+      transition: all 0.4s cubic-bezier(0.34,1.56,0.64,1) !important;
+    }
+    .dham-item:hover {
+      background: rgba(212,160,23,0.12) !important;
+      transform: translateY(-4px) scale(1.02);
+      border-color: rgba(212,160,23,0.4) !important;
+      box-shadow: 0 12px 30px rgba(0,0,0,0.3);
+    }
+    .dham-icon {
+      display: inline-block;
+      animation: dhamIconFloat var(--fi-dur,4s) var(--fi-del,0s) ease-in-out infinite;
+      filter: drop-shadow(0 0 6px rgba(212,160,23,0.4));
+    }
+    .dham-item:nth-child(1) .dham-icon { --fi-dur:4s; --fi-del:0s; }
+    .dham-item:nth-child(2) .dham-icon { --fi-dur:3.5s; --fi-del:0.5s; }
+    .dham-item:nth-child(3) .dham-icon { --fi-dur:4.5s; --fi-del:1s; }
+    .dham-item:nth-child(4) .dham-icon { --fi-dur:3.8s; --fi-del:1.5s; }
+    @keyframes dhamIconFloat {
+      0%,100% { transform: translateY(0) rotate(-3deg); }
+      50% { transform: translateY(-6px) rotate(3deg); }
+    }
+
+    /* ── SERVICE CARDS Enhanced ── */
+    .service-card {
+      border-radius: 4px !important;
+      background: linear-gradient(160deg, #ffffff 0%, var(--pearl) 100%) !important;
+      box-shadow: 0 4px 20px rgba(123,31,31,0.06) !important;
+      transition: all 0.5s cubic-bezier(0.34,1.56,0.64,1) !important;
+      position: relative;
+    }
+    .service-card::after {
+      content: '';
+      position: absolute; inset: 0; border-radius: 4px;
+      background: radial-gradient(ellipse at 50% 0%, rgba(232,114,28,0.05) 0%, transparent 60%);
+      opacity: 0;
+      transition: opacity 0.4s ease;
+    }
+    .service-card:hover::after { opacity: 1; }
+    .service-card:hover {
+      transform: translateY(-8px) scale(1.01) !important;
+      box-shadow: 0 24px 60px rgba(123,31,31,0.18) !important;
+    }
+    .service-icon {
+      transition: all 0.5s cubic-bezier(0.34,1.56,0.64,1) !important;
+      filter: drop-shadow(0 4px 8px rgba(232,114,28,0.2));
+    }
+    .service-card:hover .service-icon {
+      transform: translateY(-6px) scale(1.3) rotate(10deg) !important;
+      filter: drop-shadow(0 8px 16px rgba(232,114,28,0.4));
+    }
+
+    /* ── WHY US Enhanced ── */
+    .why-us {
+      background: linear-gradient(160deg, var(--pearl) 0%, #fff8ec 50%, var(--cream) 100%) !important;
+      position: relative; overflow: hidden;
+    }
+    .why-item {
+      position: relative;
+      border-radius: 8px;
+      padding: 2rem !important;
+      transition: all 0.4s cubic-bezier(0.34,1.56,0.64,1);
+      background: transparent;
+    }
+    .why-item::before {
+      content: '';
+      position: absolute; inset: 0; border-radius: 8px;
+      background: linear-gradient(135deg, rgba(232,114,28,0.06) 0%, rgba(212,160,23,0.06) 100%);
+      border: 1px solid rgba(212,160,23,0.1);
+      opacity: 0;
+      transition: opacity 0.4s ease;
+    }
+    .why-item:hover::before { opacity: 1; }
+    .why-item:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 20px 50px rgba(123,31,31,0.1);
+    }
+    .why-num {
+      background: linear-gradient(135deg, rgba(232,114,28,0.12), rgba(212,160,23,0.1));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .why-icon {
+      font-size: 2.5rem !important;
+      filter: drop-shadow(0 4px 8px rgba(232,114,28,0.25));
+    }
+    .why-item:hover .why-icon {
+      transform: rotate(15deg) scale(1.3) !important;
+      filter: drop-shadow(0 8px 16px rgba(232,114,28,0.5));
+    }
+
+    /* ── GALLERY Enhanced ── */
+    .gallery {
+      background: linear-gradient(160deg, #0d0306 0%, var(--deep-maroon) 40%, #08060f 100%) !important;
+    }
+    .gallery-item {
+      border-radius: 4px;
+      border: 1px solid rgba(212,160,23,0.1);
+      transition: all 0.4s ease;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+    }
+    .gallery-item:hover {
+      border-color: rgba(212,160,23,0.5);
+      box-shadow: 0 8px 30px rgba(0,0,0,0.6), 0 0 0 1px rgba(212,160,23,0.3);
+    }
+
+    /* ── REVIEWS Enhanced ── */
+    .rv-card {
+      border-radius: 6px !important;
+      background: linear-gradient(160deg, rgba(255,255,255,0.06) 0%, rgba(255,255,255,0.03) 100%) !important;
+      backdrop-filter: blur(4px);
+    }
+    .rv-card:hover {
+      border-color: var(--gold) !important;
+      background: linear-gradient(160deg, rgba(212,160,23,0.1) 0%, rgba(232,114,28,0.06) 100%) !important;
+    }
+    .rv-avatar {
+      animation: avatarGlow 3s ease-in-out infinite;
+    }
+    @keyframes avatarGlow {
+      0%,100% { box-shadow: 0 0 8px rgba(232,114,28,0.3); }
+      50% { box-shadow: 0 0 18px rgba(232,114,28,0.6), 0 0 32px rgba(212,160,23,0.2); }
+    }
+
+    /* ── CONTACT Enhanced ── */
+    .contact {
+      background: linear-gradient(160deg, var(--pearl) 0%, var(--ivory) 60%, var(--cream) 100%) !important;
+      position: relative;
+    }
+    .contact-icon-box {
+      border-radius: 6px !important;
+      background: linear-gradient(135deg, var(--deep-maroon), #6a1515) !important;
+      box-shadow: 0 4px 16px rgba(74,14,14,0.3);
+      transition: all 0.4s cubic-bezier(0.34,1.56,0.64,1);
+    }
+    .contact-item:hover .contact-icon-box {
+      transform: scale(1.12) rotate(5deg);
+      box-shadow: 0 8px 24px rgba(232,114,28,0.4);
+    }
+    .contact-form-box {
+      border-radius: 8px !important;
+      box-shadow: 0 12px 50px rgba(123,31,31,0.1) !important;
+      background: #ffffff !important;
+    }
+    .contact-form-box::before {
+      height: 4px !important;
+      background: linear-gradient(90deg, var(--saffron), var(--gold-light), var(--divine-amber), var(--gold)) !important;
+      background-size: 200% 100%;
+      animation: formBorderShimmer 4s linear infinite;
+      border-radius: 8px 8px 0 0 !important;
+    }
+    @keyframes formBorderShimmer {
+      0% { background-position: 0% 0%; }
+      100% { background-position: 200% 0%; }
+    }
+    .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
+      border-color: var(--saffron) !important;
+      box-shadow: 0 0 0 3px rgba(232,114,28,0.12) !important;
+      background: white !important;
+    }
+    .social-btn {
+      border-radius: 6px !important;
+    }
+
+    /* ── FOOTER Enhanced ── */
+    footer {
+      background: linear-gradient(160deg, #0d0204 0%, var(--deep-maroon) 30%, #0a0515 100%) !important;
+      position: relative; overflow: hidden;
+    }
+    footer::before {
+      content: 'ॐ';
+      position: absolute; right: 5%; top: 50%; transform: translateY(-50%);
+      font-size: 18rem; color: rgba(212,160,23,0.03);
+      font-family: serif; line-height: 1;
+      animation: footerOmFloat 12s ease-in-out infinite;
+    }
+    @keyframes footerOmFloat {
+      0%,100% { transform: translateY(-50%) rotate(0deg) scale(1); }
+      50% { transform: translateY(-52%) rotate(5deg) scale(1.02); }
+    }
+    .footer-brand .brand-name {
+      background: linear-gradient(90deg, var(--gold-light), var(--divine-amber), var(--gold-light));
+      background-size: 200% auto;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      animation: goldTextShine 5s linear infinite;
+    }
+    .footer-col a {
+      transition: all 0.3s ease !important;
+      position: relative;
+    }
+    .footer-col a::after {
+      content: '';
+      position: absolute; bottom: -2px; left: 0;
+      width: 0; height: 1px;
+      background: var(--gold-light);
+      transition: width 0.3s ease;
+    }
+    .footer-col a:hover::after { width: 100%; }
+    .footer-col a:hover { color: var(--gold-light) !important; transform: translateX(4px); }
+    .footer-bottom {
+      background: rgba(0,0,0,0.4) !important;
+      backdrop-filter: blur(4px);
+    }
+
+    /* ── FLOATING BUTTONS Enhanced ── */
+    .float-btns {
+      gap: 0.8rem !important;
+    }
+    .float-btn {
+      border-radius: 16px !important;
+      width: 52px !important; height: 52px !important;
+      box-shadow: 0 8px 28px rgba(0,0,0,0.4), 0 2px 8px rgba(0,0,0,0.3) !important;
+    }
+    .float-btn:hover {
+      border-radius: 12px !important;
+    }
+    .float-btn-label {
+      border-radius: 6px !important;
+    }
+
+    /* ── Tags / Badges ── */
+    .modal-tag {
+      border-radius: 20px !important;
+      transition: all 0.3s ease;
+    }
+    .modal-tag:hover { transform: translateY(-2px) scale(1.05); }
+
+    /* ── Scroll reveal enhanced ── */
+    @keyframes revealFadeUp {
+      from { opacity: 0; transform: translateY(40px) scale(0.97); }
+      to { opacity: 1; transform: translateY(0) scale(1); }
+    }
+    @keyframes revealFadeLeft {
+      from { opacity: 0; transform: translateX(-40px); }
+      to { opacity: 1; transform: translateX(0); }
+    }
+    @keyframes revealFadeRight {
+      from { opacity: 0; transform: translateX(40px); }
+      to { opacity: 1; transform: translateX(0); }
+    }
+
+    /* ── Section headings glow ── */
+    .section-title .italic {
+      position: relative;
+      text-shadow: 0 0 40px rgba(232,114,28,0.2);
+    }
+
+    /* ── Destination card explore hint ── */
+    .dest-explore-hint {
+      color: var(--divine-amber) !important;
+      font-weight: 600 !important;
+    }
+
+    /* ── Chardham img stack glow ── */
+    .chardham-img-stack img {
+      transition: all 0.5s ease !important;
+    }
+    .chardham-img-stack img:hover {
+      transform: scale(1.04) translateY(-4px) !important;
+      box-shadow: 0 24px 60px rgba(0,0,0,0.6), 0 0 0 2px var(--gold) !important;
+      z-index: 10;
+    }
+
+    /* ── Star picker hover glow ── */
+    .star-picker label {
+      transition: all 0.2s ease !important;
+      filter: drop-shadow(0 0 0px rgba(245,200,66,0));
+    }
+    .star-picker label:hover,
+    .star-picker input:checked ~ label {
+      filter: drop-shadow(0 0 8px rgba(245,200,66,0.8)) !important;
+    }
+
+    /* ── Destination modal close button ── */
+    .modal-close {
+      backdrop-filter: blur(12px) !important;
+    }
+
+    /* ── Section wipe line ── */
+    section {
+      overflow: visible !important;
+    }
+
+    /* ── Custom scrollbar ── */
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: var(--deep-maroon); }
+    ::-webkit-scrollbar-thumb { background: var(--gold); border-radius: 3px; }
+    ::-webkit-scrollbar-thumb:hover { background: var(--gold-light); }
+
+    /* ── Review form enhanced ── */
+    .review-form-box {
+      border-radius: 8px !important;
+    }
+    .rv-submit-btn {
+      border-radius: 4px !important;
+    }
+
+    /* ── Rating banner glow ── */
+    .reviews-rating-banner {
+      border-radius: 8px !important;
+      backdrop-filter: blur(8px);
+    }
+    .rating-big-num {
+      animation: ratingNumGlow 3s ease-in-out infinite;
+    }
+    @keyframes ratingNumGlow {
+      0%,100% { text-shadow: 0 0 20px rgba(245,200,66,0.3); }
+      50% { text-shadow: 0 0 40px rgba(245,200,66,0.7), 0 0 80px rgba(245,200,66,0.3); }
+    }
+
+    /* ── Calendar enhanced ── */
+    .cal-dropdown {
+      border-radius: 6px !important;
+      box-shadow: 0 20px 60px rgba(74,14,14,0.25), 0 4px 12px rgba(0,0,0,0.1) !important;
+    }
+    .cal-header { border-radius: 6px 6px 0 0 !important; }
+
+    /* Mobile improvements */
+    @media (max-width: 768px) {
+      .float-btn { width: 48px !important; height: 48px !important; }
+      nav::after { display: none; }
     }
 
 
@@ -350,25 +973,52 @@
     /* ──────────────── DESTINATIONS ──────────────── */
     .destinations { background: var(--cream); }
 
+    /* Featured grid: left big card fills the EXACT height of right column */
     .dest-featured {
-      display: grid; grid-template-columns: 1.2fr 1fr;
-      gap: 2px; margin-bottom: 2px;
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+      gap: 3px;
+      margin-bottom: 3px;
+      /* Fix: align-stretch so left card matches right column height */
+      align-items: stretch;
     }
+    /* The big Chardham card — no aspect-ratio, just fills height */
     .dest-card {
       position: relative; overflow: hidden; cursor: pointer;
-      aspect-ratio: 4/3;
+      min-height: 320px;
     }
-    .dest-card.tall { aspect-ratio: 3/4; }
+    /* Only non-featured cards keep aspect-ratio */
+    .dest-featured > .dest-card {
+      aspect-ratio: unset;
+      height: 100%;
+    }
+    /* Right column stacks two equal-height cards */
+    .dest-right-col {
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+    }
+    .dest-right-col .dest-card {
+      flex: 1;
+      min-height: 0;
+      aspect-ratio: unset;
+      height: 100%;
+    }
     .dest-card img {
       width: 100%; height: 100%; object-fit: cover;
-      transition: transform 0.6s ease;
+      transition: transform 0.7s ease;
+      display: block;
     }
-    .dest-card:hover img { transform: scale(1.08); }
+    .dest-card:hover img { transform: scale(1.07); }
     .dest-overlay {
       position: absolute; inset: 0;
-      background: linear-gradient(to top, rgba(74,14,14,0.85) 0%, rgba(0,0,0,0.1) 60%);
+      background: linear-gradient(to top, rgba(74,14,14,0.88) 0%, rgba(0,0,0,0.08) 55%);
       display: flex; flex-direction: column; justify-content: flex-end;
       padding: 2rem;
+      transition: background 0.4s ease;
+    }
+    .dest-card:hover .dest-overlay {
+      background: linear-gradient(to top, rgba(74,14,14,0.95) 0%, rgba(0,0,0,0.18) 60%);
     }
     .dest-badge {
       display: inline-block;
@@ -385,14 +1035,14 @@
 
     .dest-grid {
       display: grid; grid-template-columns: repeat(3, 1fr);
-      gap: 2px;
+      gap: 3px;
     }
     .dest-mini {
       position: relative; overflow: hidden; cursor: pointer;
       aspect-ratio: 16/10;
     }
-    .dest-mini img { width:100%; height:100%; object-fit:cover; transition: transform 0.6s; }
-    .dest-mini:hover img { transform: scale(1.08); }
+    .dest-mini img { width:100%; height:100%; object-fit:cover; transition: transform 0.7s; display: block; }
+    .dest-mini:hover img { transform: scale(1.07); }
     .dest-mini .dest-overlay { padding: 1.2rem; }
     .dest-mini .dest-name { font-size: 1.2rem; }
 
@@ -974,6 +1624,8 @@
       .nav-links { display: none; }
       .stats-bar { grid-template-columns: repeat(2,1fr); }
       .dest-featured { grid-template-columns: 1fr; }
+      .dest-featured > .dest-card { aspect-ratio: 4/3; height: auto; }
+      .dest-right-col .dest-card { aspect-ratio: 4/3; height: auto; min-height: 220px; }
       .dest-grid { grid-template-columns: 1fr 1fr; }
       .chardham-layout { grid-template-columns: 1fr; }
       .chardham-img-stack { height: 300px; }
@@ -987,6 +1639,43 @@
       .services-grid { grid-template-columns: 1fr; }
       .form-row { grid-template-columns: 1fr; }
     }
+
+    /* ══════════════════════════════════════════
+       SCROLL ANIMATION & MOBILE ENHANCEMENTS
+    ══════════════════════════════════════════ */
+
+    /* GPU compositing layers for animated elements */
+    .dest-card, .dest-mini, .service-card,
+    .why-item, .dham-item, .stat-item,
+    .contact-item, .chardham-img-stack img {
+      will-change: transform, opacity;
+    }
+
+    /* 3D perspective for magnetic tilt effect */
+    .dest-featured, .dest-grid {
+      perspective: 1200px;
+    }
+
+    /* Smooth momentum scroll on iOS */
+    html { -webkit-overflow-scrolling: touch; }
+
+    /* Touch press feedback on mobile */
+    @media (max-width: 768px) {
+      .dest-card:active img,
+      .dest-mini:active img { transform: scale(1.04); }
+      .dest-card:active .dest-overlay,
+      .dest-mini:active .dest-overlay {
+        background: linear-gradient(to top, rgba(74,14,14,0.95) 0%, rgba(0,0,0,0.2) 60%);
+      }
+      .dest-card:active .dest-explore-hint,
+      .dest-mini:active .dest-explore-hint { opacity: 1; transform: translateY(0); }
+
+      /* Bigger tap targets on mobile */
+      .dest-explore-hint { opacity: 0.7; transform: none; }
+    }
+
+    /* Section wipe line container */
+    section { overflow: hidden; }
 
     /* ══════════════════════════════════════════
        BEAUTIFUL ANIMATION ADDITIONS
@@ -1183,6 +1872,16 @@
 <!-- SCROLL PROGRESS BAR -->
 <div id="scroll-progress"></div>
 
+<!-- SCROLL PROGRESS BAR -->
+<div id="scroll-progress"><div id="scroll-progress-bar"></div></div>
+
+<!-- PAGE SPLASH -->
+<div id="page-splash">
+  <div class="splash-om">ॐ</div>
+  <div class="splash-text">Swaminarayan Yatra</div>
+  <div class="splash-line"></div>
+</div>
+
 <!-- NAV -->
 <nav>
   <div class="nav-logo">
@@ -1195,6 +1894,7 @@
     <li><a href="#destinations">Destinations</a></li>
     <li><a href="#chardham">Chardham</a></li>
     <li><a href="#services">Services</a></li>
+    <li><a href="#reviews">Reviews</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
   <a href="tel:7990372808" class="nav-cta">📞 Book Now</a>
@@ -1237,77 +1937,907 @@
   </div>
 
   <div class="dest-featured reveal">
-    <div class="dest-card">
-      <img src="images/photo4.jpg" alt="Chardham"/>
+    <div class="dest-card" onclick="openDestModal('chardham')" style="cursor:pointer;">
+      <img src="images/photo33.jpg" alt="Chardham"/>
       <div class="dest-overlay">
         <span class="dest-badge">⭐ Most Popular</span>
         <div class="dest-name">Chardham Yatra</div>
         <div class="dest-desc">Badrinath · Kedarnath · Gangotri · Yamunotri</div>
+        <div class="dest-explore-hint">Tap to Explore ✦</div>
       </div>
     </div>
-    <div style="display:flex;flex-direction:column;gap:2px;">
-      <div class="dest-card">
+    <div style="display:flex;flex-direction:column;gap:2px;" class="dest-right-col">
+      <div class="dest-card" onclick="openDestModal('ayodhya')" style="cursor:pointer;">
         <img src="images/photo1.jpg" alt="Ayodhya"/>
         <div class="dest-overlay">
           <div class="dest-name">Ayodhya</div>
           <div class="dest-desc">Ram Mandir &amp; Holy Ghats</div>
+          <div class="dest-explore-hint">Tap to Explore ✦</div>
         </div>
       </div>
-      <div class="dest-card">
+      <div class="dest-card" onclick="openDestModal('kashmir')" style="cursor:pointer;">
         <img src="images/photo6.jpg" alt="Kashmir"/>
         <div class="dest-overlay">
           <div class="dest-name">Kashmir</div>
           <div class="dest-desc">Paradise on Earth</div>
+          <div class="dest-explore-hint">Tap to Explore ✦</div>
         </div>
       </div>
     </div>
   </div>
 
   <div class="dest-grid" style="margin-top:2px;">
-    <div class="dest-mini">
+    <div class="dest-mini" onclick="openDestModal('vrindavan')" style="cursor:pointer;">
       <img src="images/photo7.jpg" alt="Vrindavan"/>
       <div class="dest-overlay">
         <div class="dest-name">Vrindavan</div>
         <div class="dest-desc">Mathura &amp; Gokul</div>
+        <div class="dest-explore-hint">Tap to Explore ✦</div>
       </div>
     </div>
-    <div class="dest-mini">
-      <img src="images/photo10.jpg" alt="Haridwar"/>
+    <div class="dest-mini" onclick="openDestModal('haridwar')" style="cursor:pointer;">
+      <img src="images/photo35.jpg" alt="Haridwar"/>
       <div class="dest-overlay">
         <div class="dest-name">Haridwar &amp; Rishikesh</div>
         <div class="dest-desc">Ganga Aarti &amp; Yoga</div>
+        <div class="dest-explore-hint">Tap to Explore ✦</div>
       </div>
     </div>
-    <div class="dest-mini">
-      <img src="images/photo8.jpg" alt="Nepal"/>
+    <div class="dest-mini" onclick="openDestModal('nepal')" style="cursor:pointer;">
+      <img src="images/photo34.jpg" alt="Nepal"/>
       <div class="dest-overlay">
         <div class="dest-name">Nepal Yatra</div>
         <div class="dest-desc">Pashupatinath &amp; Muktinath</div>
+        <div class="dest-explore-hint">Tap to Explore ✦</div>
       </div>
     </div>
-    <div class="dest-mini">
-      <img src="images/photo11.jpg" alt="South India"/>
+    <div class="dest-mini" onclick="openDestModal('southindia')" style="cursor:pointer;">
+      <img src="images/photo36.jpg" alt="South India"/>
       <div class="dest-overlay">
         <div class="dest-name">South India Yatra</div>
         <div class="dest-desc">Tirupati · Rameshwaram · Madurai</div>
+        <div class="dest-explore-hint">Tap to Explore ✦</div>
       </div>
     </div>
-    <div class="dest-mini">
+    <div class="dest-mini" onclick="openDestModal('shimlamanali')" style="cursor:pointer;">
       <img src="images/photo2.jpg" alt="Shimla Manali"/>
       <div class="dest-overlay">
         <div class="dest-name">Shimla &amp; Manali</div>
         <div class="dest-desc">Himalayan Retreats</div>
+        <div class="dest-explore-hint">Tap to Explore ✦</div>
       </div>
     </div>
-    <div class="dest-mini">
+    <div class="dest-mini" onclick="openDestModal('more')" style="cursor:pointer;">
       <img src="images/photo29.jpg" alt="More"/>
       <div class="dest-overlay">
         <div class="dest-name">Many More...</div>
         <div class="dest-desc">Contact us for custom tours</div>
+        <div class="dest-explore-hint">Tap to Explore ✦</div>
       </div>
     </div>
   </div>
 </section>
+
+<!-- ══════════════════════════════════════════
+     DESTINATION MODALS SYSTEM
+══════════════════════════════════════════ -->
+<style>
+/* ── Explore hint on cards ── */
+.dest-explore-hint {
+  font-size: 0.65rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--gold-light);
+  margin-top: 0.5rem;
+  opacity: 0;
+  transform: translateY(6px);
+  transition: opacity 0.3s, transform 0.3s;
+}
+.dest-card:hover .dest-explore-hint,
+.dest-mini:hover .dest-explore-hint {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ── Modal Backdrop ── */
+.dest-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.45s ease;
+}
+.dest-modal-backdrop.active {
+  opacity: 1;
+  pointer-events: all;
+}
+
+/* Themed backdrop blur overlays */
+.dest-modal-backdrop .modal-bg {
+  position: absolute;
+  inset: 0;
+  backdrop-filter: blur(2px);
+  transition: background 0.5s ease;
+}
+
+/* ── Modal Box ── */
+.dest-modal {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: 1000px;
+  max-height: 90vh;
+  overflow: hidden;
+  border-radius: 0;
+  transform: translateY(60px) scale(0.92);
+  opacity: 0;
+  transition: transform 0.55s cubic-bezier(0.34,1.3,0.64,1), opacity 0.4s ease;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 40px 120px rgba(0,0,0,0.75);
+}
+.dest-modal-backdrop.active .dest-modal {
+  transform: translateY(0) scale(1);
+  opacity: 1;
+}
+
+/* ── Modal Header (themed hero area) ── */
+.modal-hero {
+  position: relative;
+  height: 300px;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+.modal-hero-img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  transition: transform 8s ease;
+}
+.dest-modal-backdrop.active .modal-hero-img {
+  transform: scale(1.06);
+}
+.modal-hero-overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 2.5rem;
+}
+.modal-hero-emoji {
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+  animation: modalEmojiFloat 3s ease-in-out infinite;
+  display: inline-block;
+}
+@keyframes modalEmojiFloat {
+  0%,100% { transform: translateY(0) rotate(-3deg); }
+  50% { transform: translateY(-8px) rotate(3deg); }
+}
+.modal-dest-name {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2rem, 5vw, 3.2rem);
+  font-weight: 800;
+  color: white;
+  line-height: 1.05;
+  text-shadow: 0 4px 30px rgba(0,0,0,0.6);
+}
+.modal-dest-tagline {
+  font-size: 0.8rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  margin-top: 0.4rem;
+  opacity: 0.9;
+}
+
+/* ── Close Button ── */
+.modal-close {
+  position: absolute;
+  top: 1.2rem; right: 1.2rem;
+  width: 42px; height: 42px;
+  background: rgba(0,0,0,0.5);
+  border: 1.5px solid rgba(255,255,255,0.3);
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.2rem;
+  color: white;
+  backdrop-filter: blur(8px);
+  transition: background 0.3s, transform 0.3s;
+  z-index: 10;
+}
+.modal-close:hover {
+  background: rgba(255,255,255,0.2);
+  transform: rotate(90deg) scale(1.1);
+}
+
+/* ── Modal Body ── */
+.modal-body {
+  overflow-y: auto;
+  flex: 1;
+  padding: 2.5rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+}
+@media (max-width: 700px) {
+  .modal-body { grid-template-columns: 1fr; padding: 1.5rem; }
+  .modal-hero { height: 220px; }
+}
+
+/* ── Highlights ── */
+.modal-highlights {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+.modal-hl-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+.modal-hl-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.8rem;
+  font-size: 0.85rem;
+  line-height: 1.6;
+  padding: 0.7rem 1rem;
+  border-left: 3px solid transparent;
+  transition: background 0.3s, border-color 0.3s, transform 0.3s;
+}
+.modal-hl-item:hover {
+  transform: translateX(4px);
+}
+.modal-hl-icon {
+  font-size: 1.2rem;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+/* ── Photo Grid ── */
+.modal-photos-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin-bottom: 0.8rem;
+}
+.modal-photo-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 6px;
+}
+.modal-photo-item {
+  aspect-ratio: 1;
+  overflow: hidden;
+  border-radius: 2px;
+  cursor: pointer;
+  position: relative;
+}
+.modal-photo-item img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+.modal-photo-item:hover img {
+  transform: scale(1.12);
+}
+.modal-photo-item::after {
+  content: '🔍';
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  background: rgba(0,0,0,0.3);
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+.modal-photo-item:hover::after {
+  opacity: 1;
+}
+
+/* ── Modal CTA ── */
+.modal-cta {
+  padding: 0 2.5rem 2rem;
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+.modal-cta-btn {
+  flex: 1;
+  min-width: 160px;
+  padding: 14px 24px;
+  text-align: center;
+  text-decoration: none;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  transition: all 0.3s;
+  cursor: pointer;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+/* ── Floating particles inside modal ── */
+.modal-particles {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 1;
+}
+.modal-particle {
+  position: absolute;
+  font-size: 1rem;
+  opacity: 0;
+  animation: modalParticleFloat var(--dur, 6s) var(--delay, 0s) ease-in-out infinite;
+}
+@keyframes modalParticleFloat {
+  0% { opacity: 0; transform: translateY(100px) scale(0.5); }
+  15% { opacity: 0.7; }
+  85% { opacity: 0.4; }
+  100% { opacity: 0; transform: translateY(-80px) scale(1.2) rotate(20deg); }
+}
+
+/* ── Info tags ── */
+.modal-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 1rem;
+}
+.modal-tag {
+  font-size: 0.65rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 4px 12px;
+  font-weight: 600;
+  border-radius: 0;
+}
+
+/* ── Lightbox for photo click ── */
+.photo-lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 99999;
+  background: rgba(0,0,0,0.92);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s;
+  cursor: zoom-out;
+}
+.photo-lightbox.active {
+  opacity: 1;
+  pointer-events: all;
+}
+.photo-lightbox img {
+  max-width: 90vw;
+  max-height: 88vh;
+  object-fit: contain;
+  border: 3px solid rgba(255,255,255,0.1);
+  transform: scale(0.85);
+  transition: transform 0.4s cubic-bezier(0.34,1.3,0.64,1);
+  box-shadow: 0 30px 80px rgba(0,0,0,0.8);
+}
+.photo-lightbox.active img {
+  transform: scale(1);
+}
+.lightbox-close {
+  position: absolute;
+  top: 1.5rem; right: 1.5rem;
+  width: 44px; height: 44px;
+  background: rgba(255,255,255,0.1);
+  border: 1px solid rgba(255,255,255,0.2);
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.3rem; color: white;
+  transition: background 0.3s, transform 0.3s;
+}
+.lightbox-close:hover {
+  background: rgba(255,255,255,0.2);
+  transform: rotate(90deg);
+}
+
+/* ═══════════ THEMED MODALS ═══════════ */
+
+/* AYODHYA — Saffron, sacred, Ram Mandir vibes */
+.modal-ayodhya .modal-bg { background: rgba(120,40,0,0.82); }
+.modal-ayodhya .dest-modal { border-top: 5px solid #FF6B00; }
+.modal-ayodhya .modal-hero-overlay { background: linear-gradient(to top, rgba(120,40,0,0.92) 0%, rgba(200,80,0,0.2) 60%, transparent 100%); }
+.modal-ayodhya .modal-dest-tagline { color: #FFD580; }
+.modal-ayodhya .modal-body { background: linear-gradient(135deg, #FFF8F0 0%, #FFF3E0 100%); }
+.modal-ayodhya .modal-hl-title { color: #7B1F1F; }
+.modal-ayodhya .modal-hl-item { color: #5C3020; background: rgba(255,107,0,0.06); border-left-color: #FF6B00; }
+.modal-ayodhya .modal-hl-item:hover { background: rgba(255,107,0,0.12); }
+.modal-ayodhya .modal-photos-title { color: #7B1F1F; }
+.modal-ayodhya .modal-cta { background: #FFF3E0; }
+.modal-ayodhya .modal-tag { background: rgba(255,107,0,0.12); color: #C45A0A; border: 1px solid rgba(255,107,0,0.3); }
+.modal-ayodhya .modal-cta-btn.primary { background: linear-gradient(135deg, #E8721C, #C45A0A); color: white; }
+.modal-ayodhya .modal-cta-btn.primary:hover { background: linear-gradient(135deg, #FF8A2B, #E8721C); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(232,114,28,0.5); }
+.modal-ayodhya .modal-cta-btn.secondary { background: transparent; color: #7B1F1F; border: 2px solid #E8721C; }
+.modal-ayodhya .modal-cta-btn.secondary:hover { background: #E8721C; color: white; }
+
+/* SHIMLA & MANALI — Snow, blue mountains, pine vibes */
+.modal-shimlamanali .modal-bg { background: rgba(10,40,80,0.85); }
+.modal-shimlamanali .dest-modal { border-top: 5px solid #6BBFFF; }
+.modal-shimlamanali .modal-hero-overlay { background: linear-gradient(to top, rgba(10,40,80,0.92) 0%, rgba(30,80,140,0.3) 60%, transparent 100%); }
+.modal-shimlamanali .modal-dest-tagline { color: #A8DAFF; }
+.modal-shimlamanali .modal-body { background: linear-gradient(135deg, #EBF5FF 0%, #F0F8FF 100%); }
+.modal-shimlamanali .modal-hl-title { color: #0D3260; }
+.modal-shimlamanali .modal-hl-item { color: #1A3A5C; background: rgba(107,191,255,0.08); border-left-color: #4A90D9; }
+.modal-shimlamanali .modal-hl-item:hover { background: rgba(107,191,255,0.15); }
+.modal-shimlamanali .modal-photos-title { color: #0D3260; }
+.modal-shimlamanali .modal-cta { background: #EBF5FF; }
+.modal-shimlamanali .modal-tag { background: rgba(74,144,217,0.1); color: #1A3A5C; border: 1px solid rgba(74,144,217,0.35); }
+.modal-shimlamanali .modal-cta-btn.primary { background: linear-gradient(135deg, #1A3A5C, #2A5A8C); color: white; }
+.modal-shimlamanali .modal-cta-btn.primary:hover { background: linear-gradient(135deg, #2A5A8C, #4A90D9); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(74,144,217,0.5); }
+.modal-shimlamanali .modal-cta-btn.secondary { background: transparent; color: #1A3A5C; border: 2px solid #4A90D9; }
+.modal-shimlamanali .modal-cta-btn.secondary:hover { background: #4A90D9; color: white; }
+
+/* CHARDHAM — Deep maroon & gold, divine */
+.modal-chardham .modal-bg { background: rgba(50,10,10,0.88); }
+.modal-chardham .dest-modal { border-top: 5px solid #D4A017; }
+.modal-chardham .modal-hero-overlay { background: linear-gradient(to top, rgba(74,14,14,0.95) 0%, rgba(120,40,0,0.3) 60%, transparent 100%); }
+.modal-chardham .modal-dest-tagline { color: #F5C842; }
+.modal-chardham .modal-body { background: linear-gradient(135deg, #FDF6E3 0%, #FEF8EC 100%); }
+.modal-chardham .modal-hl-title { color: #4A0E0E; }
+.modal-chardham .modal-hl-item { color: #5C3D2E; background: rgba(212,160,23,0.07); border-left-color: #D4A017; }
+.modal-chardham .modal-hl-item:hover { background: rgba(212,160,23,0.14); }
+.modal-chardham .modal-photos-title { color: #4A0E0E; }
+.modal-chardham .modal-cta { background: #FDF6E3; }
+.modal-chardham .modal-tag { background: rgba(212,160,23,0.12); color: #7B4F00; border: 1px solid rgba(212,160,23,0.4); }
+.modal-chardham .modal-cta-btn.primary { background: linear-gradient(135deg, #D4A017, #B8860B); color: #2C1810; }
+.modal-chardham .modal-cta-btn.primary:hover { background: linear-gradient(135deg, #F5C842, #D4A017); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(212,160,23,0.5); }
+.modal-chardham .modal-cta-btn.secondary { background: transparent; color: #4A0E0E; border: 2px solid #D4A017; }
+.modal-chardham .modal-cta-btn.secondary:hover { background: #4A0E0E; color: #D4A017; }
+
+/* KASHMIR — Lush green, serene blue */
+.modal-kashmir .modal-bg { background: rgba(10,55,30,0.86); }
+.modal-kashmir .dest-modal { border-top: 5px solid #7BC67E; }
+.modal-kashmir .modal-hero-overlay { background: linear-gradient(to top, rgba(10,55,30,0.93) 0%, rgba(20,90,50,0.3) 60%, transparent 100%); }
+.modal-kashmir .modal-dest-tagline { color: #C8F7C5; }
+.modal-kashmir .modal-body { background: linear-gradient(135deg, #F0FFF4 0%, #E8F8F5 100%); }
+.modal-kashmir .modal-hl-title { color: #0D4A20; }
+.modal-kashmir .modal-hl-item { color: #1A3A28; background: rgba(123,198,126,0.08); border-left-color: #4CAF50; }
+.modal-kashmir .modal-hl-item:hover { background: rgba(123,198,126,0.16); }
+.modal-kashmir .modal-photos-title { color: #0D4A20; }
+.modal-kashmir .modal-cta { background: #F0FFF4; }
+.modal-kashmir .modal-tag { background: rgba(76,175,80,0.1); color: #2D5016; border: 1px solid rgba(76,175,80,0.35); }
+.modal-kashmir .modal-cta-btn.primary { background: linear-gradient(135deg, #2D5016, #4A7A25); color: white; }
+.modal-kashmir .modal-cta-btn.primary:hover { background: linear-gradient(135deg, #4A7A25, #6AAB35); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(45,80,22,0.5); }
+.modal-kashmir .modal-cta-btn.secondary { background: transparent; color: #2D5016; border: 2px solid #4CAF50; }
+.modal-kashmir .modal-cta-btn.secondary:hover { background: #2D5016; color: white; }
+
+/* VRINDAVAN — Purple/pink devotional */
+.modal-vrindavan .modal-bg { background: rgba(80,10,100,0.82); }
+.modal-vrindavan .dest-modal { border-top: 5px solid #DA70D6; }
+.modal-vrindavan .modal-hero-overlay { background: linear-gradient(to top, rgba(80,10,100,0.93) 0%, rgba(140,40,170,0.3) 60%, transparent 100%); }
+.modal-vrindavan .modal-dest-tagline { color: #FFB3FF; }
+.modal-vrindavan .modal-body { background: linear-gradient(135deg, #FFF0FF 0%, #FEF0FF 100%); }
+.modal-vrindavan .modal-hl-title { color: #5A0070; }
+.modal-vrindavan .modal-hl-item { color: #4A1060; background: rgba(218,112,214,0.07); border-left-color: #DA70D6; }
+.modal-vrindavan .modal-hl-item:hover { background: rgba(218,112,214,0.14); }
+.modal-vrindavan .modal-photos-title { color: #5A0070; }
+.modal-vrindavan .modal-cta { background: #FFF0FF; }
+.modal-vrindavan .modal-tag { background: rgba(218,112,214,0.1); color: #8B008B; border: 1px solid rgba(218,112,214,0.4); }
+.modal-vrindavan .modal-cta-btn.primary { background: linear-gradient(135deg, #8B008B, #9B30B0); color: white; }
+.modal-vrindavan .modal-cta-btn.primary:hover { background: linear-gradient(135deg, #9B30B0, #DA70D6); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(139,0,139,0.5); }
+.modal-vrindavan .modal-cta-btn.secondary { background: transparent; color: #5A0070; border: 2px solid #DA70D6; }
+.modal-vrindavan .modal-cta-btn.secondary:hover { background: #5A0070; color: #FFB3FF; }
+
+/* HARIDWAR — Ganga blue-green */
+.modal-haridwar .modal-bg { background: rgba(0,70,100,0.85); }
+.modal-haridwar .dest-modal { border-top: 5px solid #00BFFF; }
+.modal-haridwar .modal-hero-overlay { background: linear-gradient(to top, rgba(0,60,90,0.93) 0%, rgba(0,100,140,0.3) 60%, transparent 100%); }
+.modal-haridwar .modal-dest-tagline { color: #B0E8FF; }
+.modal-haridwar .modal-body { background: linear-gradient(135deg, #E8F8FF 0%, #F0FAFF 100%); }
+.modal-haridwar .modal-hl-title { color: #004060; }
+.modal-haridwar .modal-hl-item { color: #00334D; background: rgba(0,191,255,0.07); border-left-color: #00BFFF; }
+.modal-haridwar .modal-hl-item:hover { background: rgba(0,191,255,0.14); }
+.modal-haridwar .modal-photos-title { color: #004060; }
+.modal-haridwar .modal-cta { background: #E8F8FF; }
+.modal-haridwar .modal-tag { background: rgba(0,191,255,0.1); color: #004060; border: 1px solid rgba(0,191,255,0.35); }
+.modal-haridwar .modal-cta-btn.primary { background: linear-gradient(135deg, #006080, #0090C0); color: white; }
+.modal-haridwar .modal-cta-btn.primary:hover { background: linear-gradient(135deg, #0090C0, #00BFFF); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,191,255,0.4); }
+.modal-haridwar .modal-cta-btn.secondary { background: transparent; color: #004060; border: 2px solid #00BFFF; }
+.modal-haridwar .modal-cta-btn.secondary:hover { background: #004060; color: #B0E8FF; }
+
+/* NEPAL — Himalayan red */
+.modal-nepal .modal-bg { background: rgba(140,10,10,0.85); }
+.modal-nepal .dest-modal { border-top: 5px solid #DC143C; }
+.modal-nepal .modal-hero-overlay { background: linear-gradient(to top, rgba(100,10,10,0.94) 0%, rgba(180,30,30,0.3) 60%, transparent 100%); }
+.modal-nepal .modal-dest-tagline { color: #FFB3B3; }
+.modal-nepal .modal-body { background: linear-gradient(135deg, #FFF0F0 0%, #FFF8F8 100%); }
+.modal-nepal .modal-hl-title { color: #6B0000; }
+.modal-nepal .modal-hl-item { color: #5C1010; background: rgba(220,20,60,0.06); border-left-color: #DC143C; }
+.modal-nepal .modal-hl-item:hover { background: rgba(220,20,60,0.12); }
+.modal-nepal .modal-photos-title { color: #6B0000; }
+.modal-nepal .modal-cta { background: #FFF0F0; }
+.modal-nepal .modal-tag { background: rgba(220,20,60,0.1); color: #8B0000; border: 1px solid rgba(220,20,60,0.35); }
+.modal-nepal .modal-cta-btn.primary { background: linear-gradient(135deg, #8B0000, #B01020); color: white; }
+.modal-nepal .modal-cta-btn.primary:hover { background: linear-gradient(135deg, #B01020, #DC143C); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(220,20,60,0.5); }
+.modal-nepal .modal-cta-btn.secondary { background: transparent; color: #6B0000; border: 2px solid #DC143C; }
+.modal-nepal .modal-cta-btn.secondary:hover { background: #6B0000; color: #FFB3B3; }
+
+/* SOUTH INDIA — Deep temple gold-red */
+.modal-southindia .modal-bg { background: rgba(100,40,0,0.86); }
+.modal-southindia .dest-modal { border-top: 5px solid #FF8C00; }
+.modal-southindia .modal-hero-overlay { background: linear-gradient(to top, rgba(80,30,0,0.93) 0%, rgba(150,60,0,0.3) 60%, transparent 100%); }
+.modal-southindia .modal-dest-tagline { color: #FFCF80; }
+.modal-southindia .modal-body { background: linear-gradient(135deg, #FFF8E8 0%, #FFF3D8 100%); }
+.modal-southindia .modal-hl-title { color: #6B3000; }
+.modal-southindia .modal-hl-item { color: #5C2800; background: rgba(255,140,0,0.07); border-left-color: #FF8C00; }
+.modal-southindia .modal-hl-item:hover { background: rgba(255,140,0,0.14); }
+.modal-southindia .modal-photos-title { color: #6B3000; }
+.modal-southindia .modal-cta { background: #FFF8E8; }
+.modal-southindia .modal-tag { background: rgba(255,140,0,0.12); color: #8B4500; border: 1px solid rgba(255,140,0,0.4); }
+.modal-southindia .modal-cta-btn.primary { background: linear-gradient(135deg, #8B4500, #C06000); color: white; }
+.modal-southindia .modal-cta-btn.primary:hover { background: linear-gradient(135deg, #C06000, #FF8C00); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(255,140,0,0.5); }
+.modal-southindia .modal-cta-btn.secondary { background: transparent; color: #6B3000; border: 2px solid #FF8C00; }
+.modal-southindia .modal-cta-btn.secondary:hover { background: #6B3000; color: #FFCF80; }
+
+/* MORE — General brand */
+.modal-more .modal-bg { background: rgba(74,14,14,0.88); }
+.modal-more .dest-modal { border-top: 5px solid #D4A017; }
+.modal-more .modal-hero-overlay { background: linear-gradient(to top, rgba(74,14,14,0.95) 0%, rgba(100,30,0,0.3) 60%, transparent 100%); }
+.modal-more .modal-dest-tagline { color: #F5C842; }
+.modal-more .modal-body { background: linear-gradient(135deg, #FDF6E3 0%, #FEF8EC 100%); }
+.modal-more .modal-hl-title { color: #4A0E0E; }
+.modal-more .modal-hl-item { color: #5C3D2E; background: rgba(232,114,28,0.07); border-left-color: #E8721C; }
+.modal-more .modal-hl-item:hover { background: rgba(232,114,28,0.14); }
+.modal-more .modal-photos-title { color: #4A0E0E; }
+.modal-more .modal-cta { background: #FDF6E3; }
+.modal-more .modal-tag { background: rgba(232,114,28,0.1); color: #7B3A00; border: 1px solid rgba(232,114,28,0.35); }
+.modal-more .modal-cta-btn.primary { background: linear-gradient(135deg, #E8721C, #C45A0A); color: white; }
+.modal-more .modal-cta-btn.primary:hover { background: linear-gradient(135deg, #FF8A2B, #E8721C); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(232,114,28,0.5); }
+.modal-more .modal-cta-btn.secondary { background: transparent; color: #4A0E0E; border: 2px solid #E8721C; }
+.modal-more .modal-cta-btn.secondary:hover { background: #4A0E0E; color: #F5C842; }
+</style>
+
+<!-- Modal Container -->
+<div class="dest-modal-backdrop" id="destModalBackdrop">
+  <div class="modal-bg" id="modalBg"></div>
+  <div class="dest-modal" id="destModal">
+    <button class="modal-close" onclick="closeDestModal()">✕</button>
+    <div class="modal-hero">
+      <img class="modal-hero-img" id="modalHeroImg" src="" alt=""/>
+      <div class="modal-particles" id="modalParticles"></div>
+      <div class="modal-hero-overlay">
+        <div class="modal-hero-emoji" id="modalEmoji"></div>
+        <div class="modal-dest-name" id="modalDestName"></div>
+        <div class="modal-dest-tagline" id="modalTagline"></div>
+        <div class="modal-tags" id="modalTags"></div>
+      </div>
+    </div>
+    <div class="modal-body">
+      <div class="modal-highlights">
+        <div class="modal-hl-title" id="modalHlTitle">✦ Trip Highlights</div>
+        <div id="modalHighlights"></div>
+      </div>
+      <div>
+        <div class="modal-photos-title" id="modalPhotosTitle">📸 Trip Photos</div>
+        <div class="modal-photo-grid" id="modalPhotoGrid"></div>
+      </div>
+    </div>
+    <div class="modal-cta" id="modalCta">
+      <a href="https://wa.me/c/919898927080" target="_blank" class="modal-cta-btn primary">📲 Book on WhatsApp</a>
+      <a href="tel:7990372808" class="modal-cta-btn secondary">📞 Call to Enquire</a>
+    </div>
+  </div>
+</div>
+
+<!-- Lightbox -->
+<div class="photo-lightbox" id="photoLightbox" onclick="closeLightbox()">
+  <button class="lightbox-close" onclick="closeLightbox()">✕</button>
+  <img id="lightboxImg" src="" alt=""/>
+</div>
+
+<script>
+/* ═══════════════════════════════════════════
+   DESTINATION MODAL DATA
+═══════════════════════════════════════════ */
+const DESTINATIONS = {
+  ayodhya: {
+    theme: 'ayodhya',
+    name: 'Ayodhya',
+    emoji: '🛕',
+    tagline: 'Ram Mandir · Saryu Ghat · Holy Dham',
+    heroImg: 'images/photo1.jpg',
+    tags: ['Spiritual Yatra', 'Temple Tour', 'Heritage'],
+    highlights: [
+      { icon: '🛕', text: 'Ram Janmabhoomi & newly built Ram Mandir darshan' },
+      { icon: '🌊', text: 'Saryu River Ghat — evening aarti & boat ride' },
+      { icon: '🔱', text: 'Hanuman Garhi & Kanak Bhawan temple visits' },
+      { icon: '🎉', text: 'Ram Parikrama — 5-day circuit of all sacred sites' },
+      { icon: '🍛', text: 'Traditional Awadhi prasad & pure veg thali stays' },
+      { icon: '🚌', text: 'AC bus from Rajkot with senior-friendly seating' },
+    ],
+    photos: ['images/photo1.jpg','images/photo12.jpg','images/photo13.jpg','images/photo14.jpg','images/photo15.jpg','images/photo16.jpg'],
+    particles: ['🪔','🌸','🙏','✨','🛕','🌺'],
+  },
+  shimlamanali: {
+    theme: 'shimlamanali',
+    name: 'Shimla & Manali',
+    emoji: '❄️',
+    tagline: 'Snow Peaks · Pine Forests · Himalayan Magic',
+    heroImg: 'images/photo2.jpg',
+    tags: ['Hill Station', 'Snow Retreat', 'Adventure'],
+    highlights: [
+      { icon: '❄️', text: 'Rohtang Pass snow experience & sledging activities' },
+      { icon: '🏔️', text: 'Solang Valley — cable car & panoramic snow views' },
+      { icon: '🌲', text: 'Shimla Mall Road & heritage Viceregal Lodge walk' },
+      { icon: '🛕', text: 'Hidimba Devi Temple in cedar forest of Manali' },
+      { icon: '🍎', text: 'Fresh Himachali apple orchards & local cuisine' },
+      { icon: '🚌', text: 'Comfortable AC volvo sleeper coach from Rajkot' },
+    ],
+    photos: ['images/photo2.jpg','images/photo17.jpg','images/photo18.jpg','images/photo19.jpg','images/photo20.jpg','images/photo21.jpg'],
+    particles: ['❄️','⛄','🏔️','🌨️','✨','🌲'],
+  },
+  chardham: {
+    theme: 'chardham',
+    name: 'Chardham Yatra',
+    emoji: '🙏',
+    tagline: 'Badrinath · Kedarnath · Gangotri · Yamunotri',
+    heroImg: 'images/photo4.jpg',
+    tags: ['Most Popular', 'Pilgrimage', 'Uttarakhand'],
+    highlights: [
+      { icon: '⛰️', text: 'Kedarnath — trekking or helicopter darshan options' },
+      { icon: '🛕', text: 'Badrinath Vishnu temple — morning & evening aarti' },
+      { icon: '🌊', text: 'Gangotri — source of sacred River Ganga' },
+      { icon: '🌺', text: 'Yamunotri — Divya Shila puja at the source' },
+      { icon: '🏨', text: 'Hand-picked comfortable hotels along the route' },
+      { icon: '🚌', text: '15+ years of safe Chardham yatra experience' },
+    ],
+    photos: ['images/photo4.jpg','images/photo3.jpg','images/photo5.jpg','images/photo9.jpg','images/photo22.jpg','images/photo23.jpg'],
+    particles: ['🙏','🪔','⛰️','🌸','✨','🛕'],
+  },
+  kashmir: {
+    theme: 'kashmir',
+    name: 'Kashmir',
+    emoji: '🌸',
+    tagline: 'Paradise on Earth · Dal Lake · Valleys of Heaven',
+    heroImg: 'images/photo6.jpg',
+    tags: ['Nature', 'Scenic Beauty', 'Houseboat Stay'],
+    highlights: [
+      { icon: '🌸', text: 'Dal Lake shikara ride at sunrise — unforgettable' },
+      { icon: '🏔️', text: 'Gulmarg Gondola — Asia\'s highest cable car ride' },
+      { icon: '🌿', text: 'Pahalgam & Betaab Valley — Bollywood scenic spots' },
+      { icon: '🏡', text: 'Authentic houseboat stay on Dal Lake with meals' },
+      { icon: '🌺', text: 'Tulip Garden (April) — largest in Asia' },
+      { icon: '🍽️', text: 'Kashmiri Wazwan cuisine — rogan josh, dum aloo' },
+    ],
+    photos: ['images/photo6.jpg','images/photo24.jpg','images/photo25.jpg','images/photo26.jpg','images/photo27.jpg','images/photo28.jpg'],
+    particles: ['🌸','🍃','❄️','🌿','🌺','✨'],
+  },
+  vrindavan: {
+    theme: 'vrindavan',
+    name: 'Vrindavan & Mathura',
+    emoji: '🦚',
+    tagline: 'Krishna Janmabhoomi · Rasa Lila · Divine Love',
+    heroImg: 'images/photo7.jpg',
+    tags: ['Krishna Bhakti', 'Temple Tour', 'Braj Mandal'],
+    highlights: [
+      { icon: '🦚', text: 'Banke Bihari Temple — enchanting Thakurji darshan' },
+      { icon: '🙏', text: 'Krishna Janmabhoomi Mathura — birthplace darshan' },
+      { icon: '🎵', text: 'Prem Mandir light & sound show — mesmerising' },
+      { icon: '🛶', text: 'Yamuna river aarti & evening boat ride at dusk' },
+      { icon: '🌸', text: 'ISKCON temple & Radha Raman temple visits' },
+      { icon: '🍛', text: 'Mathura peda & Govardhan parikrama experience' },
+    ],
+    photos: ['images/photo7.jpg','images/photo12.jpg','images/photo13.jpg','images/photo14.jpg','images/photo15.jpg','images/photo16.jpg'],
+    particles: ['🦚','🌸','🙏','🎵','💜','🌺'],
+  },
+  haridwar: {
+    theme: 'haridwar',
+    name: 'Haridwar & Rishikesh',
+    emoji: '🌊',
+    tagline: 'Ganga Aarti · Yoga Capital · Gateway to Gods',
+    heroImg: 'images/photo10.jpg',
+    tags: ['Ganga Darshan', 'Yoga & Wellness', 'Pilgrimage'],
+    highlights: [
+      { icon: '🌊', text: 'Har Ki Pauri — evening Ganga aarti, breathtaking' },
+      { icon: '🧘', text: 'Rishikesh yoga & meditation retreat mornings' },
+      { icon: '🌉', text: 'Laxman Jhula & Ram Jhula — sacred hanging bridges' },
+      { icon: '🛕', text: 'Mansa Devi & Chandi Devi ropeway temple darshan' },
+      { icon: '🚣', text: 'River rafting in Rishikesh — thrilling adventure' },
+      { icon: '🕊️', text: 'Gangajal blessing — sacred water collection ritual' },
+    ],
+    photos: ['images/photo10.jpg','images/photo17.jpg','images/photo18.jpg','images/photo19.jpg','images/photo20.jpg','images/photo21.jpg'],
+    particles: ['🌊','🕊️','🙏','💧','✨','🌸'],
+  },
+  nepal: {
+    theme: 'nepal',
+    name: 'Nepal Yatra',
+    emoji: '⛰️',
+    tagline: 'Pashupatinath · Muktinath · Himalayan Blessings',
+    heroImg: 'images/photo8.jpg',
+    tags: ['International Yatra', 'Himalayan Darshan', 'Pashupatinath'],
+    highlights: [
+      { icon: '🛕', text: 'Pashupatinath Temple — most sacred Shiva temple' },
+      { icon: '⛰️', text: 'Muktinath — 108 sacred water spouts darshan' },
+      { icon: '🌸', text: 'Boudhanath Stupa & Swayambhunath Monkey Temple' },
+      { icon: '🏔️', text: 'Mount Everest viewpoint at Nagarkot sunrise' },
+      { icon: '🛶', text: "Phewa Lake Pokhara boat ride & Devi\u2019s Fall" },
+      { icon: '✈️', text: 'Visa & full documentation assistance included' },
+    ],
+    photos: ['images/photo8.jpg','images/photo22.jpg','images/photo23.jpg','images/photo24.jpg','images/photo25.jpg','images/photo26.jpg'],
+    particles: ['⛰️','🙏','🌸','🔱','✨','🏔️'],
+  },
+  southindia: {
+    theme: 'southindia',
+    name: 'South India Yatra',
+    emoji: '🛕',
+    tagline: 'Tirupati · Rameshwaram · Madurai · Temple Trail',
+    heroImg: 'images/photo11.jpg',
+    tags: ['Temple Trail', '7 Jyotirlinga', 'Dravidian Culture'],
+    highlights: [
+      { icon: '🛕', text: "Tirupati Balaji \u2014 world\u2019s richest temple darshan" },
+      { icon: '🌊', text: "Rameshwaram \u2014 Adam\u2019s Bridge & Jyotirlinga puja" },
+      { icon: '🌸', text: 'Meenakshi Amman Temple Madurai — stunning gopuram' },
+      { icon: '🌴', text: 'Kanyakumari — southernmost tip sunrise darshan' },
+      { icon: '🐘', text: 'Temple elephant blessings & traditional rituals' },
+      { icon: '🍛', text: 'Authentic South Indian banana leaf thali meals' },
+    ],
+    photos: ['images/photo11.jpg','images/photo27.jpg','images/photo28.jpg','images/photo29.jpg','images/photo12.jpg','images/photo13.jpg'],
+    particles: ['🛕','🌺','🐘','🌴','✨','🌸'],
+  },
+  more: {
+    theme: 'more',
+    name: 'Custom & More Tours',
+    emoji: '🌏',
+    tagline: 'Jyotirlinga · Dwarka · Somnath · Goa · International',
+    heroImg: 'images/photo29.jpg',
+    tags: ['Custom Tours', 'Group Packages', 'Any Destination'],
+    highlights: [
+      { icon: '🌏', text: "Dwarka & Somnath \u2014 Gujarat\u2019s most sacred circuit" },
+      { icon: '🛕', text: '12 Jyotirlinga Yatra — complete Shiva pilgrimage' },
+      { icon: '🌴', text: 'Goa leisure & beach retreat packages' },
+      { icon: '✈️', text: 'International tours — Thailand, Dubai, Singapore' },
+      { icon: '👨‍👩‍👧', text: 'Family, honeymoon & senior citizen special packages' },
+      { icon: '📞', text: 'Custom itinerary built around your budget & dates' },
+    ],
+    photos: ['images/photo29.jpg','images/photo30.jpg','images/photo12.jpg','images/photo14.jpg','images/photo16.jpg','images/photo18.jpg'],
+    particles: ['🌏','✈️','🌟','🗺️','✨','🎉'],
+  },
+};
+
+/* ═══════════════════════════════════════════
+   OPEN / CLOSE MODAL
+═══════════════════════════════════════════ */
+function openDestModal(key) {
+  const data = DESTINATIONS[key];
+  if (!data) return;
+
+  const backdrop = document.getElementById('destModalBackdrop');
+  const modal    = document.getElementById('destModal');
+
+  // Set theme class
+  backdrop.className = 'dest-modal-backdrop modal-' + data.theme;
+  modal.className    = 'dest-modal';
+
+  // Populate hero
+  document.getElementById('modalHeroImg').src = data.heroImg;
+  document.getElementById('modalEmoji').textContent = data.emoji;
+  document.getElementById('modalDestName').textContent = data.name;
+  document.getElementById('modalTagline').textContent = data.tagline;
+
+  // Tags
+  const tagsEl = document.getElementById('modalTags');
+  tagsEl.innerHTML = data.tags.map(t => `<span class="modal-tag">${t}</span>`).join('');
+
+  // Highlights
+  document.getElementById('modalHlTitle').textContent = '✦ Trip Highlights';
+  const hlEl = document.getElementById('modalHighlights');
+  hlEl.innerHTML = data.highlights.map(h =>
+    `<div class="modal-hl-item"><span class="modal-hl-icon">${h.icon}</span><span>${h.text}</span></div>`
+  ).join('');
+
+  // Photo grid
+  const gridEl = document.getElementById('modalPhotoGrid');
+  gridEl.innerHTML = data.photos.map(src =>
+    `<div class="modal-photo-item" onclick="openLightbox('${src}')"><img src="${src}" alt="" loading="lazy"/></div>`
+  ).join('');
+
+  // Particles
+  const particlesEl = document.getElementById('modalParticles');
+  particlesEl.innerHTML = '';
+  for (let i = 0; i < 18; i++) {
+    const p = document.createElement('div');
+    p.className = 'modal-particle';
+    p.textContent = data.particles[i % data.particles.length];
+    p.style.cssText = `
+      left: ${Math.random() * 90 + 5}%;
+      --dur: ${5 + Math.random() * 7}s;
+      --delay: ${Math.random() * 5}s;
+      font-size: ${0.8 + Math.random() * 0.8}rem;
+      filter: drop-shadow(0 0 4px rgba(255,200,80,0.5));
+    `;
+    particlesEl.appendChild(p);
+  }
+
+  // CTA theme colour set via class cascade
+  document.getElementById('modalCta').style.borderTop = '';
+
+  // Show
+  document.body.style.overflow = 'hidden';
+  backdrop.classList.add('active');
+
+  // Entrance stagger for highlights
+  setTimeout(() => {
+    document.querySelectorAll('.modal-hl-item').forEach((el, i) => {
+      el.style.opacity = '0';
+      el.style.transform = 'translateX(-20px)';
+      el.style.transition = 'none';
+      setTimeout(() => {
+        el.style.transition = 'opacity 0.4s ease, transform 0.4s ease';
+        el.style.opacity = '1';
+        el.style.transform = 'translateX(0)';
+      }, 300 + i * 80);
+    });
+    document.querySelectorAll('.modal-photo-item').forEach((el, i) => {
+      el.style.opacity = '0';
+      el.style.transform = 'scale(0.85)';
+      el.style.transition = 'none';
+      setTimeout(() => {
+        el.style.transition = 'opacity 0.4s ease, transform 0.4s ease';
+        el.style.opacity = '1';
+        el.style.transform = 'scale(1)';
+      }, 450 + i * 60);
+    });
+  }, 100);
+}
+
+function closeDestModal() {
+  const backdrop = document.getElementById('destModalBackdrop');
+  backdrop.classList.remove('active');
+  document.body.style.overflow = '';
+  setTimeout(() => {
+    document.getElementById('modalParticles').innerHTML = '';
+  }, 500);
+}
+
+// Close on backdrop click
+document.getElementById('destModalBackdrop').addEventListener('click', function(e) {
+  if (e.target === this || e.target.id === 'modalBg') closeDestModal();
+});
+
+// Close on Escape
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape') {
+    closeDestModal();
+    closeLightbox();
+  }
+});
+
+/* ═══════════════════════════════════════════
+   LIGHTBOX
+═══════════════════════════════════════════ */
+function openLightbox(src) {
+  const lb = document.getElementById('photoLightbox');
+  document.getElementById('lightboxImg').src = src;
+  lb.classList.add('active');
+}
+function closeLightbox() {
+  document.getElementById('photoLightbox').classList.remove('active');
+}
+</script>
 
 <!-- CHARDHAM HIGHLIGHT -->
 <section class="chardham" id="chardham">
@@ -1460,6 +2990,844 @@
   </div>
 </section>
 
+<!-- ══════════════════════════════════════════
+     REVIEWS SECTION
+══════════════════════════════════════════ -->
+<style>
+/* ── Reviews Section ── */
+.reviews-section {
+  background: linear-gradient(160deg, var(--deep-maroon) 0%, #2e0a0a 50%, var(--deep-maroon) 100%);
+  padding: 6rem 5%;
+  position: relative;
+  overflow: hidden;
+}
+.reviews-section::before {
+  content: '🙏';
+  position: absolute;
+  font-size: 22rem;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 0.03;
+  pointer-events: none;
+  animation: reviewsBgFloat 8s ease-in-out infinite;
+}
+@keyframes reviewsBgFloat {
+  0%,100% { transform: translate(-50%, -50%) scale(1) rotate(0deg); }
+  50%      { transform: translate(-50%, -52%) scale(1.04) rotate(3deg); }
+}
+.reviews-section .section-title { color: var(--cream); }
+.reviews-section .section-label { color: var(--gold-light); }
+
+/* ── Overall Rating Banner ── */
+.reviews-rating-banner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2.5rem;
+  background: rgba(212,160,23,0.1);
+  border: 1px solid rgba(212,160,23,0.3);
+  padding: 1.5rem 3rem;
+  margin: 0 auto 3.5rem;
+  max-width: 600px;
+  animation: bannerGlow 3s ease-in-out infinite;
+}
+@keyframes bannerGlow {
+  0%,100% { box-shadow: 0 0 0 0 rgba(212,160,23,0); }
+  50%      { box-shadow: 0 0 30px 4px rgba(212,160,23,0.18); }
+}
+.rating-big-num {
+  font-family: 'Playfair Display', serif;
+  font-size: 4rem;
+  font-weight: 800;
+  color: var(--gold-light);
+  line-height: 1;
+  text-shadow: 0 0 30px rgba(245,200,66,0.4);
+}
+.rating-banner-right { text-align: left; }
+.rating-stars-big { font-size: 1.6rem; letter-spacing: 2px; line-height: 1; }
+.rating-count { font-size: 0.75rem; color: rgba(253,246,227,0.6); letter-spacing: 0.15em; text-transform: uppercase; margin-top: 0.3rem; }
+
+/* ── Reviews Carousel ── */
+.reviews-track-wrap {
+  overflow: hidden;
+  position: relative;
+  margin-bottom: 3rem;
+}
+.reviews-track-wrap::before,
+.reviews-track-wrap::after {
+  content: '';
+  position: absolute;
+  top: 0; bottom: 0;
+  width: 80px;
+  z-index: 2;
+  pointer-events: none;
+}
+.reviews-track-wrap::before {
+  left: 0;
+  background: linear-gradient(to right, #2e0a0a, transparent);
+}
+.reviews-track-wrap::after {
+  right: 0;
+  background: linear-gradient(to left, #2e0a0a, transparent);
+}
+.reviews-track {
+  display: flex;
+  gap: 1.5rem;
+  animation: reviewsScroll 40s linear infinite;
+  width: max-content;
+}
+.reviews-track:hover { animation-play-state: paused; }
+@keyframes reviewsScroll {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+/* ── Single Review Card ── */
+.rv-card {
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(212,160,23,0.25);
+  border-top: 3px solid var(--gold);
+  padding: 1.8rem 1.8rem 1.6rem;
+  width: 320px;
+  flex-shrink: 0;
+  position: relative;
+  transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s;
+  cursor: default;
+}
+.rv-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 50px rgba(0,0,0,0.4), 0 0 0 1px rgba(212,160,23,0.4);
+  border-color: rgba(212,160,23,0.6);
+}
+.rv-quote-mark {
+  font-size: 4rem;
+  font-family: 'Playfair Display', serif;
+  color: var(--gold);
+  line-height: 0.6;
+  opacity: 0.5;
+  margin-bottom: 0.8rem;
+  display: block;
+}
+.rv-stars {
+  display: flex;
+  gap: 3px;
+  margin-bottom: 0.8rem;
+}
+.rv-star {
+  font-size: 1rem;
+  display: inline-block;
+  animation: starTwinkle var(--sd, 3s) var(--sdelay, 0s) ease-in-out infinite;
+}
+@keyframes starTwinkle {
+  0%,100% { transform: scale(1); filter: brightness(1); }
+  50%      { transform: scale(1.2); filter: brightness(1.4); }
+}
+.rv-text {
+  font-size: 0.84rem;
+  color: rgba(253,246,227,0.82);
+  line-height: 1.75;
+  margin-bottom: 1.2rem;
+  font-style: italic;
+}
+.rv-footer {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  border-top: 1px solid rgba(212,160,23,0.2);
+  padding-top: 1rem;
+}
+.rv-avatar {
+  width: 42px; height: 42px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--saffron), var(--deep-maroon));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: white;
+  font-family: 'Playfair Display', serif;
+  flex-shrink: 0;
+  border: 2px solid rgba(212,160,23,0.4);
+  box-shadow: 0 0 12px rgba(232,114,28,0.3);
+}
+.rv-name {
+  font-family: 'Playfair Display', serif;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--gold-light);
+  line-height: 1.2;
+}
+.rv-location {
+  font-size: 0.68rem;
+  color: rgba(253,246,227,0.5);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-top: 1px;
+}
+.rv-destination {
+  margin-left: auto;
+  background: rgba(232,114,28,0.2);
+  border: 1px solid rgba(232,114,28,0.4);
+  color: var(--saffron);
+  font-size: 0.62rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 3px 8px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+/* ── Divider between carousel and form ── */
+.reviews-divider {
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(212,160,23,0.4), transparent);
+  margin: 2rem 0 3.5rem;
+}
+
+/* ── Submit Your Review Box ── */
+.review-form-wrap {
+  max-width: 700px;
+  margin: 0 auto;
+}
+.review-form-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--cream);
+  text-align: center;
+  margin-bottom: 0.4rem;
+}
+.review-form-title .italic { color: var(--gold-light); font-style: italic; }
+.review-form-subtitle {
+  text-align: center;
+  font-size: 0.82rem;
+  color: rgba(253,246,227,0.55);
+  letter-spacing: 0.1em;
+  margin-bottom: 2.2rem;
+}
+.review-form-box {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(212,160,23,0.25);
+  padding: 2.5rem;
+  position: relative;
+  overflow: hidden;
+}
+.review-form-box::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--saffron), var(--gold-light), var(--saffron));
+  background-size: 200% 100%;
+  animation: topBarShimmer 3s linear infinite;
+}
+@keyframes topBarShimmer {
+  0%   { background-position: 0% 0; }
+  100% { background-position: 200% 0; }
+}
+
+/* ── Star Rating Picker ── */
+.star-picker-label {
+  display: block;
+  font-size: 0.65rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--saffron);
+  margin-bottom: 0.6rem;
+}
+.star-picker {
+  display: flex;
+  gap: 6px;
+  margin-bottom: 1.5rem;
+  flex-direction: row-reverse;
+  justify-content: flex-end;
+}
+.star-picker input { display: none; }
+.star-picker label {
+  font-size: 2rem;
+  cursor: pointer;
+  color: rgba(253,246,227,0.25);
+  transition: color 0.2s, transform 0.2s;
+  line-height: 1;
+}
+.star-picker label:hover,
+.star-picker label:hover ~ label,
+.star-picker input:checked ~ label {
+  color: var(--gold-light);
+}
+.star-picker label:hover { transform: scale(1.3) rotate(-5deg); }
+
+/* ── Review Form Fields ── */
+.rv-form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+.rv-form-group {
+  margin-bottom: 1rem;
+}
+.rv-form-group label {
+  display: block;
+  font-size: 0.65rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--saffron);
+  margin-bottom: 0.4rem;
+}
+.rv-form-group input,
+.rv-form-group select,
+.rv-form-group textarea {
+  width: 100%;
+  padding: 12px 14px;
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(212,160,23,0.3);
+  color: var(--cream);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.85rem;
+  outline: none;
+  transition: border-color 0.3s, background 0.3s, box-shadow 0.3s;
+}
+.rv-form-group input::placeholder,
+.rv-form-group textarea::placeholder {
+  color: rgba(253,246,227,0.3);
+}
+.rv-form-group input:focus,
+.rv-form-group select:focus,
+.rv-form-group textarea:focus {
+  border-color: var(--gold);
+  background: rgba(255,255,255,0.1);
+  box-shadow: 0 0 0 3px rgba(212,160,23,0.15);
+}
+.rv-form-group select {
+  -webkit-appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath fill='%23D4A017' d='M6 8L0 0h12z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 14px center;
+  padding-right: 36px;
+  cursor: pointer;
+}
+.rv-form-group select option {
+  background: var(--deep-maroon);
+  color: var(--cream);
+}
+.rv-form-group textarea { resize: vertical; min-height: 110px; }
+
+/* ── Submit Button ── */
+.rv-submit-btn {
+  width: 100%;
+  padding: 0;
+  border: none;
+  cursor: pointer;
+  height: 58px;
+  position: relative;
+  overflow: hidden;
+  background: transparent;
+  margin-top: 0.5rem;
+}
+.rv-submit-bg {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, var(--saffron) 0%, var(--deep-saffron) 50%, var(--saffron) 100%);
+  background-size: 200% 100%;
+  transition: background-position 0.5s ease;
+  border: 2px solid rgba(255,255,255,0.2);
+}
+.rv-submit-btn:hover .rv-submit-bg { background-position: 100% 0; }
+.rv-submit-shimmer {
+  position: absolute; inset: 0;
+  background: linear-gradient(105deg, transparent 40%, rgba(255,255,255,0.2) 50%, transparent 60%);
+  background-size: 200% 100%;
+  background-position: -100% 0;
+  transition: background-position 0s;
+}
+.rv-submit-btn:hover .rv-submit-shimmer {
+  background-position: 200% 0;
+  transition: background-position 0.55s ease;
+}
+.rv-submit-content {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  height: 100%;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.9rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: white;
+  transition: gap 0.3s;
+}
+.rv-submit-btn:hover .rv-submit-content { gap: 16px; }
+.rv-submit-icon {
+  font-size: 1.1rem;
+  display: inline-block;
+  animation: submitIconBob 2.5s ease-in-out infinite;
+}
+@keyframes submitIconBob {
+  0%,100% { transform: translateY(0); }
+  40%      { transform: translateY(-4px); }
+}
+.rv-submit-arrow {
+  display: inline-block;
+  transition: transform 0.3s cubic-bezier(0.34,1.56,0.64,1);
+}
+.rv-submit-btn:hover .rv-submit-arrow { transform: translateX(6px); }
+
+/* Success message */
+.rv-success-msg {
+  display: none;
+  text-align: center;
+  padding: 2rem;
+  animation: fadeUp 0.6s ease both;
+}
+.rv-success-msg .success-icon { font-size: 3rem; margin-bottom: 0.8rem; display: block; animation: successPop 0.5s cubic-bezier(0.34,1.56,0.64,1) both; }
+@keyframes successPop { from { transform: scale(0); } to { transform: scale(1); } }
+.rv-success-msg h3 { font-family: 'Playfair Display', serif; color: var(--gold-light); font-size: 1.4rem; margin-bottom: 0.4rem; }
+.rv-success-msg p { color: rgba(253,246,227,0.65); font-size: 0.82rem; }
+
+@media (max-width: 700px) {
+  .rv-form-row { grid-template-columns: 1fr; }
+  .reviews-rating-banner { flex-direction: column; gap: 0.6rem; padding: 1.2rem; }
+  .review-form-box { padding: 1.5rem; }
+}
+</style>
+
+<!-- REVIEWS SECTION -->
+<section class="reviews-section" id="reviews">
+  <div class="section-header reveal" style="margin-bottom:2rem;">
+    <span class="section-label">Happy Pilgrims</span>
+    <h2 class="section-title">What Our <span class="italic" style="color:var(--gold-light);font-style:italic;">Yatris Say</span></h2>
+    <div class="section-divider"></div>
+  </div>
+
+  <!-- Overall Rating -->
+  <div class="reviews-rating-banner">
+    <div class="rating-big-num">4.9</div>
+    <div class="rating-banner-right">
+      <div class="rating-stars-big">⭐⭐⭐⭐⭐</div>
+      <div class="rating-count">Based on 200+ happy yatris</div>
+    </div>
+  </div>
+
+  <!-- Auto-scrolling Review Cards -->
+  <div class="reviews-track-wrap">
+    <div class="reviews-track" id="reviewsTrack">
+
+      <!-- ── Pre-loaded Positive Reviews ── -->
+      <div class="rv-card">
+        <span class="rv-quote-mark">"</span>
+        <div class="rv-stars">
+          <span class="rv-star" style="--sd:2.8s;--sdelay:0s">⭐</span><span class="rv-star" style="--sd:3.1s;--sdelay:0.2s">⭐</span><span class="rv-star" style="--sd:2.6s;--sdelay:0.4s">⭐</span><span class="rv-star" style="--sd:3.3s;--sdelay:0.1s">⭐</span><span class="rv-star" style="--sd:2.9s;--sdelay:0.3s">⭐</span>
+        </div>
+        <div class="rv-text">Manish bhai ने ચારધામ yatra અત્યંત સુંદर organize кया। Every detail was perfect — from transport to hotels to darshan timings. We felt safe and spiritually blessed throughout. Jay Swaminarayan! 🙏</div>
+        <div class="rv-footer">
+          <div class="rv-avatar">R</div>
+          <div>
+            <div class="rv-name">Ramesh Patel</div>
+            <div class="rv-location">Rajkot, Gujarat</div>
+          </div>
+          <div class="rv-destination">Chardham</div>
+        </div>
+      </div>
+
+      <div class="rv-card">
+        <span class="rv-quote-mark">"</span>
+        <div class="rv-stars">
+          <span class="rv-star" style="--sd:3s;--sdelay:0.1s">⭐</span><span class="rv-star" style="--sd:2.7s;--sdelay:0.3s">⭐</span><span class="rv-star" style="--sd:3.2s;--sdelay:0s">⭐</span><span class="rv-star" style="--sd:2.5s;--sdelay:0.2s">⭐</span><span class="rv-star" style="--sd:3.4s;--sdelay:0.4s">⭐</span>
+        </div>
+        <div class="rv-text">We went on Ayodhya yatra with our family of 12 people. The arrangements were flawless. Ram Mandir darshan was absolutely divine. Manish bhai's team was available 24/7. Highly recommended for families! 🛕</div>
+        <div class="rv-footer">
+          <div class="rv-avatar">S</div>
+          <div>
+            <div class="rv-name">Sushila Mehta</div>
+            <div class="rv-location">Rajkot, Gujarat</div>
+          </div>
+          <div class="rv-destination">Ayodhya</div>
+        </div>
+      </div>
+
+      <div class="rv-card">
+        <span class="rv-quote-mark">"</span>
+        <div class="rv-stars">
+          <span class="rv-star" style="--sd:2.9s;--sdelay:0.2s">⭐</span><span class="rv-star" style="--sd:3.1s;--sdelay:0s">⭐</span><span class="rv-star" style="--sd:2.7s;--sdelay:0.3s">⭐</span><span class="rv-star" style="--sd:3.3s;--sdelay:0.1s">⭐</span><span class="rv-star" style="--sd:2.6s;--sdelay:0.4s">⭐</span>
+        </div>
+        <div class="rv-text">Best travel experience of our lives! The Kashmir trip was a dream. Snow-covered mountains, beautiful Dal Lake, and every accommodation was top-class. Swaminarayan Yatra knows how to make memories! ❄️</div>
+        <div class="rv-footer">
+          <div class="rv-avatar">D</div>
+          <div>
+            <div class="rv-name">Devyani Shah</div>
+            <div class="rv-location">Rajkot, Gujarat</div>
+          </div>
+          <div class="rv-destination">Kashmir</div>
+        </div>
+      </div>
+
+      <div class="rv-card">
+        <span class="rv-quote-mark">"</span>
+        <div class="rv-stars">
+          <span class="rv-star" style="--sd:3.2s;--sdelay:0s">⭐</span><span class="rv-star" style="--sd:2.8s;--sdelay:0.2s">⭐</span><span class="rv-star" style="--sd:3s;--sdelay:0.4s">⭐</span><span class="rv-star" style="--sd:2.6s;--sdelay:0.1s">⭐</span><span class="rv-star" style="--sd:3.4s;--sdelay:0.3s">⭐</span>
+        </div>
+        <div class="rv-text">Our group yatra to Vrindavan and Mathura was unforgettable. The hotel was clean, food was pure vegetarian, and the guides were knowledgeable. Manish bhai personally ensured everyone's comfort. 🙏</div>
+        <div class="rv-footer">
+          <div class="rv-avatar">H</div>
+          <div>
+            <div class="rv-name">Hasmukh Trivedi</div>
+            <div class="rv-location">Rajkot, Gujarat</div>
+          </div>
+          <div class="rv-destination">Vrindavan</div>
+        </div>
+      </div>
+
+      <div class="rv-card">
+        <span class="rv-quote-mark">"</span>
+        <div class="rv-stars">
+          <span class="rv-star" style="--sd:2.7s;--sdelay:0.3s">⭐</span><span class="rv-star" style="--sd:3.3s;--sdelay:0.1s">⭐</span><span class="rv-star" style="--sd:2.9s;--sdelay:0s">⭐</span><span class="rv-star" style="--sd:3.1s;--sdelay:0.4s">⭐</span><span class="rv-star" style="--sd:2.5s;--sdelay:0.2s">⭐</span>
+        </div>
+        <div class="rv-text">Nepal yatra with Swaminarayan Yatra was simply outstanding. Pashupatinath and Muktinath darshans were spiritually uplifting. The entire trip was well-planned from Rajkot itself. Zero worries throughout! 🏔️</div>
+        <div class="rv-footer">
+          <div class="rv-avatar">K</div>
+          <div>
+            <div class="rv-name">Kantilal Solanki</div>
+            <div class="rv-location">Rajkot, Gujarat</div>
+          </div>
+          <div class="rv-destination">Nepal</div>
+        </div>
+      </div>
+
+      <div class="rv-card">
+        <span class="rv-quote-mark">"</span>
+        <div class="rv-stars">
+          <span class="rv-star" style="--sd:3s;--sdelay:0.4s">⭐</span><span class="rv-star" style="--sd:2.6s;--sdelay:0.2s">⭐</span><span class="rv-star" style="--sd:3.2s;--sdelay:0.3s">⭐</span><span class="rv-star" style="--sd:2.8s;--sdelay:0s">⭐</span><span class="rv-star" style="--sd:3.4s;--sdelay:0.1s">⭐</span>
+        </div>
+        <div class="rv-text">Tirupati to Rameshwaram South India yatra was amazingly organized. Manish bhai got us special darshan slots. Pure vegetarian jain food was arranged throughout. A true blessing for our entire family. 🛕</div>
+        <div class="rv-footer">
+          <div class="rv-avatar">B</div>
+          <div>
+            <div class="rv-name">Bharati Joshi</div>
+            <div class="rv-location">Rajkot, Gujarat</div>
+          </div>
+          <div class="rv-destination">South India</div>
+        </div>
+      </div>
+
+      <div class="rv-card">
+        <span class="rv-quote-mark">"</span>
+        <div class="rv-stars">
+          <span class="rv-star" style="--sd:2.8s;--sdelay:0.1s">⭐</span><span class="rv-star" style="--sd:3.2s;--sdelay:0.3s">⭐</span><span class="rv-star" style="--sd:2.6s;--sdelay:0s">⭐</span><span class="rv-star" style="--sd:3s;--sdelay:0.4s">⭐</span><span class="rv-star" style="--sd:2.9s;--sdelay:0.2s">⭐</span>
+        </div>
+        <div class="rv-text">Honeymooners should definitely choose Swaminarayan Yatra! Our Shimla-Manali trip was magical. Every romantic detail was taken care of. The scenic views with comfortable hotels — truly a heavenly start to our married life! 💑</div>
+        <div class="rv-footer">
+          <div class="rv-avatar">P</div>
+          <div>
+            <div class="rv-name">Priya &amp; Raj Desai</div>
+            <div class="rv-location">Rajkot, Gujarat</div>
+          </div>
+          <div class="rv-destination">Shimla-Manali</div>
+        </div>
+      </div>
+
+      <div class="rv-card">
+        <span class="rv-quote-mark">"</span>
+        <div class="rv-stars">
+          <span class="rv-star" style="--sd:3.1s;--sdelay:0.2s">⭐</span><span class="rv-star" style="--sd:2.7s;--sdelay:0s">⭐</span><span class="rv-star" style="--sd:3.3s;--sdelay:0.4s">⭐</span><span class="rv-star" style="--sd:2.5s;--sdelay:0.1s">⭐</span><span class="rv-star" style="--sd:3s;--sdelay:0.3s">⭐</span>
+        </div>
+        <div class="rv-text">Manish bhai is extremely honest and trustworthy. 15+ years of experience really shows! Our Haridwar Ganga Aarti experience was once-in-a-lifetime. Pricing is very fair — no hidden charges at all. 🌊</div>
+        <div class="rv-footer">
+          <div class="rv-avatar">V</div>
+          <div>
+            <div class="rv-name">Vijaybhai Ranpura</div>
+            <div class="rv-location">Rajkot, Gujarat</div>
+          </div>
+          <div class="rv-destination">Haridwar</div>
+        </div>
+      </div>
+
+      <!-- Duplicate cards for seamless loop -->
+      <div class="rv-card">
+        <span class="rv-quote-mark">"</span>
+        <div class="rv-stars">
+          <span class="rv-star" style="--sd:2.8s;--sdelay:0s">⭐</span><span class="rv-star" style="--sd:3.1s;--sdelay:0.2s">⭐</span><span class="rv-star" style="--sd:2.6s;--sdelay:0.4s">⭐</span><span class="rv-star" style="--sd:3.3s;--sdelay:0.1s">⭐</span><span class="rv-star" style="--sd:2.9s;--sdelay:0.3s">⭐</span>
+        </div>
+        <div class="rv-text">Manish bhai ने ચારધામ yatra અત્યંત સુંદर organize кया। Every detail was perfect — from transport to hotels to darshan timings. We felt safe and spiritually blessed throughout. Jay Swaminarayan! 🙏</div>
+        <div class="rv-footer">
+          <div class="rv-avatar">R</div>
+          <div>
+            <div class="rv-name">Ramesh Patel</div>
+            <div class="rv-location">Rajkot, Gujarat</div>
+          </div>
+          <div class="rv-destination">Chardham</div>
+        </div>
+      </div>
+      <div class="rv-card">
+        <span class="rv-quote-mark">"</span>
+        <div class="rv-stars">
+          <span class="rv-star" style="--sd:3s;--sdelay:0.1s">⭐</span><span class="rv-star" style="--sd:2.7s;--sdelay:0.3s">⭐</span><span class="rv-star" style="--sd:3.2s;--sdelay:0s">⭐</span><span class="rv-star" style="--sd:2.5s;--sdelay:0.2s">⭐</span><span class="rv-star" style="--sd:3.4s;--sdelay:0.4s">⭐</span>
+        </div>
+        <div class="rv-text">We went on Ayodhya yatra with our family of 12 people. The arrangements were flawless. Ram Mandir darshan was absolutely divine. Manish bhai's team was available 24/7. Highly recommended for families! 🛕</div>
+        <div class="rv-footer">
+          <div class="rv-avatar">S</div>
+          <div>
+            <div class="rv-name">Sushila Mehta</div>
+            <div class="rv-location">Rajkot, Gujarat</div>
+          </div>
+          <div class="rv-destination">Ayodhya</div>
+        </div>
+      </div>
+      <div class="rv-card">
+        <span class="rv-quote-mark">"</span>
+        <div class="rv-stars">
+          <span class="rv-star" style="--sd:2.9s;--sdelay:0.2s">⭐</span><span class="rv-star" style="--sd:3.1s;--sdelay:0s">⭐</span><span class="rv-star" style="--sd:2.7s;--sdelay:0.3s">⭐</span><span class="rv-star" style="--sd:3.3s;--sdelay:0.1s">⭐</span><span class="rv-star" style="--sd:2.6s;--sdelay:0.4s">⭐</span>
+        </div>
+        <div class="rv-text">Best travel experience of our lives! The Kashmir trip was a dream. Snow-covered mountains, beautiful Dal Lake, and every accommodation was top-class. Swaminarayan Yatra knows how to make memories! ❄️</div>
+        <div class="rv-footer">
+          <div class="rv-avatar">D</div>
+          <div>
+            <div class="rv-name">Devyani Shah</div>
+            <div class="rv-location">Rajkot, Gujarat</div>
+          </div>
+          <div class="rv-destination">Kashmir</div>
+        </div>
+      </div>
+      <div class="rv-card">
+        <span class="rv-quote-mark">"</span>
+        <div class="rv-stars">
+          <span class="rv-star" style="--sd:3.2s;--sdelay:0s">⭐</span><span class="rv-star" style="--sd:2.8s;--sdelay:0.2s">⭐</span><span class="rv-star" style="--sd:3s;--sdelay:0.4s">⭐</span><span class="rv-star" style="--sd:2.6s;--sdelay:0.1s">⭐</span><span class="rv-star" style="--sd:3.4s;--sdelay:0.3s">⭐</span>
+        </div>
+        <div class="rv-text">Our group yatra to Vrindavan and Mathura was unforgettable. The hotel was clean, food was pure vegetarian, and the guides were knowledgeable. Manish bhai personally ensured everyone's comfort. 🙏</div>
+        <div class="rv-footer">
+          <div class="rv-avatar">H</div>
+          <div>
+            <div class="rv-name">Hasmukh Trivedi</div>
+            <div class="rv-location">Rajkot, Gujarat</div>
+          </div>
+          <div class="rv-destination">Vrindavan</div>
+        </div>
+      </div>
+      <div class="rv-card">
+        <span class="rv-quote-mark">"</span>
+        <div class="rv-stars">
+          <span class="rv-star" style="--sd:2.7s;--sdelay:0.3s">⭐</span><span class="rv-star" style="--sd:3.3s;--sdelay:0.1s">⭐</span><span class="rv-star" style="--sd:2.9s;--sdelay:0s">⭐</span><span class="rv-star" style="--sd:3.1s;--sdelay:0.4s">⭐</span><span class="rv-star" style="--sd:2.5s;--sdelay:0.2s">⭐</span>
+        </div>
+        <div class="rv-text">Nepal yatra with Swaminarayan Yatra was simply outstanding. Pashupatinath and Muktinath darshans were spiritually uplifting. The entire trip was well-planned from Rajkot itself. Zero worries throughout! 🏔️</div>
+        <div class="rv-footer">
+          <div class="rv-avatar">K</div>
+          <div>
+            <div class="rv-name">Kantilal Solanki</div>
+            <div class="rv-location">Rajkot, Gujarat</div>
+          </div>
+          <div class="rv-destination">Nepal</div>
+        </div>
+      </div>
+      <div class="rv-card">
+        <span class="rv-quote-mark">"</span>
+        <div class="rv-stars">
+          <span class="rv-star" style="--sd:3s;--sdelay:0.4s">⭐</span><span class="rv-star" style="--sd:2.6s;--sdelay:0.2s">⭐</span><span class="rv-star" style="--sd:3.2s;--sdelay:0.3s">⭐</span><span class="rv-star" style="--sd:2.8s;--sdelay:0s">⭐</span><span class="rv-star" style="--sd:3.4s;--sdelay:0.1s">⭐</span>
+        </div>
+        <div class="rv-text">Tirupati to Rameshwaram South India yatra was amazingly organized. Manish bhai got us special darshan slots. Pure vegetarian jain food was arranged throughout. A true blessing for our entire family. 🛕</div>
+        <div class="rv-footer">
+          <div class="rv-avatar">B</div>
+          <div>
+            <div class="rv-name">Bharati Joshi</div>
+            <div class="rv-location">Rajkot, Gujarat</div>
+          </div>
+          <div class="rv-destination">South India</div>
+        </div>
+      </div>
+      <div class="rv-card">
+        <span class="rv-quote-mark">"</span>
+        <div class="rv-stars">
+          <span class="rv-star" style="--sd:2.8s;--sdelay:0.1s">⭐</span><span class="rv-star" style="--sd:3.2s;--sdelay:0.3s">⭐</span><span class="rv-star" style="--sd:2.6s;--sdelay:0s">⭐</span><span class="rv-star" style="--sd:3s;--sdelay:0.4s">⭐</span><span class="rv-star" style="--sd:2.9s;--sdelay:0.2s">⭐</span>
+        </div>
+        <div class="rv-text">Honeymooners should definitely choose Swaminarayan Yatra! Our Shimla-Manali trip was magical. Every romantic detail was taken care of. The scenic views with comfortable hotels — truly a heavenly start to our married life! 💑</div>
+        <div class="rv-footer">
+          <div class="rv-avatar">P</div>
+          <div>
+            <div class="rv-name">Priya &amp; Raj Desai</div>
+            <div class="rv-location">Rajkot, Gujarat</div>
+          </div>
+          <div class="rv-destination">Shimla-Manali</div>
+        </div>
+      </div>
+      <div class="rv-card">
+        <span class="rv-quote-mark">"</span>
+        <div class="rv-stars">
+          <span class="rv-star" style="--sd:3.1s;--sdelay:0.2s">⭐</span><span class="rv-star" style="--sd:2.7s;--sdelay:0s">⭐</span><span class="rv-star" style="--sd:3.3s;--sdelay:0.4s">⭐</span><span class="rv-star" style="--sd:2.5s;--sdelay:0.1s">⭐</span><span class="rv-star" style="--sd:3s;--sdelay:0.3s">⭐</span>
+        </div>
+        <div class="rv-text">Manish bhai is extremely honest and trustworthy. 15+ years of experience really shows! Our Haridwar Ganga Aarti experience was once-in-a-lifetime. Pricing is very fair — no hidden charges at all. 🌊</div>
+        <div class="rv-footer">
+          <div class="rv-avatar">V</div>
+          <div>
+            <div class="rv-name">Vijaybhai Ranpura</div>
+            <div class="rv-location">Rajkot, Gujarat</div>
+          </div>
+          <div class="rv-destination">Haridwar</div>
+        </div>
+      </div>
+
+    </div><!-- /reviews-track -->
+  </div><!-- /reviews-track-wrap -->
+
+  <div class="reviews-divider"></div>
+
+  <!-- Submit Your Review Form -->
+  <div class="review-form-wrap">
+    <div class="review-form-title">Share Your <span class="italic">Experience</span></div>
+    <div class="review-form-subtitle">✦ Your feedback inspires other pilgrims to begin their sacred journey ✦</div>
+
+    <div class="review-form-box" id="rvFormBox">
+      <form id="rvForm" action="https://formspree.io/f/mvzvovll" method="POST">
+        <input type="hidden" name="_subject" value="New Yatra Review — Swaminarayan Yatra"/>
+
+        <!-- Star Rating -->
+        <span class="star-picker-label">Your Rating *</span>
+        <div class="star-picker">
+          <input type="radio" id="s5" name="rating" value="5 Stars ⭐⭐⭐⭐⭐" required/>
+          <label for="s5" title="5 stars">★</label>
+          <input type="radio" id="s4" name="rating" value="4 Stars ⭐⭐⭐⭐"/>
+          <label for="s4" title="4 stars">★</label>
+          <input type="radio" id="s3" name="rating" value="3 Stars ⭐⭐⭐"/>
+          <label for="s3" title="3 stars">★</label>
+          <input type="radio" id="s2" name="rating" value="2 Stars ⭐⭐"/>
+          <label for="s2" title="2 stars">★</label>
+          <input type="radio" id="s1" name="rating" value="1 Star ⭐"/>
+          <label for="s1" title="1 star">★</label>
+        </div>
+
+        <!-- Name & Location -->
+        <div class="rv-form-row">
+          <div class="rv-form-group">
+            <label>Your Name *</label>
+            <input type="text" name="reviewer_name" placeholder="Ramesh Patel" required/>
+          </div>
+          <div class="rv-form-group">
+            <label>City / Location</label>
+            <input type="text" name="reviewer_city" placeholder="Rajkot, Gujarat"/>
+          </div>
+        </div>
+
+        <!-- Destination & Travel Date -->
+        <div class="rv-form-row">
+          <div class="rv-form-group">
+            <label>Which Yatra? *</label>
+            <select name="yatra_destination" required>
+              <option value="" disabled selected>Select destination</option>
+              <option>Chardham Yatra</option>
+              <option>Ayodhya</option>
+              <option>Vrindavan / Mathura</option>
+              <option>Nepal Yatra</option>
+              <option>Kashmir</option>
+              <option>South India Yatra</option>
+              <option>Shimla &amp; Manali</option>
+              <option>Haridwar &amp; Rishikesh</option>
+              <option>Other</option>
+            </select>
+          </div>
+          <div class="rv-form-group">
+            <label>Travel Year</label>
+            <select name="travel_year">
+              <option value="" disabled selected>Select year</option>
+              <option>2026</option>
+              <option>2025</option>
+              <option>2024</option>
+              <option>2023</option>
+              <option>2022 or earlier</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Review Text -->
+        <div class="rv-form-group">
+          <label>Your Review *</label>
+          <textarea name="review_text" placeholder="Tell us about your yatra experience — the highlights, how the arrangements were, and anything that made the journey special for you and your family..." required></textarea>
+        </div>
+
+        <!-- Submit Button -->
+        <button type="submit" class="rv-submit-btn" id="rvSubmitBtn">
+          <span class="rv-submit-bg"></span>
+          <span class="rv-submit-shimmer"></span>
+          <span class="rv-submit-content">
+            <span class="rv-submit-icon">🙏</span>
+            <span class="rv-submit-text">Submit My Review</span>
+            <span class="rv-submit-arrow">→</span>
+          </span>
+        </button>
+      </form>
+
+      <!-- Success Message (hidden initially) -->
+      <div class="rv-success-msg" id="rvSuccess">
+        <span class="success-icon">✅</span>
+        <h3>Jay Swaminarayan! 🙏</h3>
+        <p>Thank you for sharing your yatra experience.<br>Your review has been submitted successfully!</p>
+      </div>
+    </div>
+  </div>
+
+</section>
+
+<script>
+/* ── Review Form Submit Handler ── */
+(function() {
+  const form = document.getElementById('rvForm');
+  const successMsg = document.getElementById('rvSuccess');
+  const submitBtn = document.getElementById('rvSubmitBtn');
+  if (!form) return;
+
+  form.addEventListener('submit', function(e) {
+    e.preventDefault();
+
+    // Show sending state
+    const textEl = form.querySelector('.rv-submit-text');
+    const iconEl = form.querySelector('.rv-submit-icon');
+    textEl.textContent = 'Submitting…';
+    iconEl.textContent = '⏳';
+    submitBtn.style.pointerEvents = 'none';
+
+    // Submit via fetch to Formspree
+    fetch(form.action, {
+      method: 'POST',
+      body: new FormData(form),
+      headers: { 'Accept': 'application/json' }
+    }).then(res => {
+      form.style.display = 'none';
+      successMsg.style.display = 'block';
+      // Also prepend new card to carousel
+      const nameVal = form.querySelector('[name="reviewer_name"]').value || 'Anonymous';
+      const destVal = form.querySelector('[name="yatra_destination"]').value || 'Yatra';
+      const reviewVal = form.querySelector('[name="review_text"]').value;
+      const initial = nameVal.trim().charAt(0).toUpperCase();
+      const newCard = document.createElement('div');
+      newCard.className = 'rv-card';
+      newCard.style.animation = 'fadeUp 0.6s ease both';
+      newCard.innerHTML = `
+        <span class="rv-quote-mark">"</span>
+        <div class="rv-stars">⭐⭐⭐⭐⭐</div>
+        <div class="rv-text">${reviewVal.substring(0, 180)}${reviewVal.length > 180 ? '…' : ''}</div>
+        <div class="rv-footer">
+          <div class="rv-avatar" style="background:linear-gradient(135deg,#D4A017,#4A0E0E)">${initial}</div>
+          <div>
+            <div class="rv-name">${nameVal}</div>
+            <div class="rv-location">Just now</div>
+          </div>
+          <div class="rv-destination">${destVal}</div>
+        </div>`;
+      const track = document.getElementById('reviewsTrack');
+      if (track) track.insertBefore(newCard, track.firstChild);
+    }).catch(() => {
+      textEl.textContent = 'Submit My Review';
+      iconEl.textContent = '🙏';
+      submitBtn.style.pointerEvents = '';
+      alert('Something went wrong. Please try again.');
+    });
+  });
+})();
+</script>
+
 <!-- CONTACT -->
 <section class="contact" id="contact">
   <div class="contact-layout">
@@ -1489,7 +3857,7 @@
         <div>
           <div class="contact-detail-label">Email</div>
           <div class="contact-detail-value">
-  <a href="mailto:manish.radadia@gmail.com" style="color:inherit;">manish.radadia@gmail.com</a>
+  <a href="/cdn-cgi/l/email-protection#28454946415b40065a494c494c4149684f45494144064b4745" style="color:inherit;"><span class="__cf_email__" data-cfemail="ff929e91968c97d18d9e9b9e9b969ebf98929e9693d19c9092">[email&#160;protected]</span></a>
 </div>
         </div>
       </div>
@@ -1612,7 +3980,7 @@
       <li><a href="tel:9898927080">📞 9898927080</a></li>
       <li><a href="https://wa.me/c/919898927080" target="_blank">💬 WhatsApp Catalogue</a></li>
       <li><a href="https://www.instagram.com/swam.inarayantourism" target="_blank">📷 Instagram</a></li>
-      <li><a href="mailto:manish.radadia@gmail.com">✉️ manish.radadia@gmail.com</a></li>
+      <li><a href="/cdn-cgi/l/email-protection#e18c808f889289cf93808580858880a1868c80888dcf828e8c">✉️ <span class="__cf_email__" data-cfemail="8de0ece3e4fee5a3ffece9ece9e4eccdeae0ece4e1a3eee2e0">[email&#160;protected]</span></a></li>
     </ul>
   </div>
 </footer>
@@ -1630,8 +3998,8 @@
     <span class="float-btn-label">Follow on Instagram</span>
     <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
   </a>
-  <a href="mailto:manish.radadia@gmail.com" class="float-btn email" title="Email Us">
-    <span class="float-btn-label">manish.radadia@gmail.com</span>
+  <a href="/cdn-cgi/l/email-protection#a7cac6c9ced4cf89d5c6c3c6c3cec6e7c0cac6cecb89c4c8ca" class="float-btn email" title="Email Us">
+    <span class="float-btn-label"><span class="__cf_email__" data-cfemail="8be6eae5e2f8e3a5f9eaefeaefe2eacbece6eae2e7a5e8e4e6">[email&#160;protected]</span></span>
     <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
   </a>
   <a href="tel:7990372808" class="float-btn call" title="Call Now">
@@ -1640,7 +4008,7 @@
   </a>
 </div>
 
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
   function handleSubmit(e) {
     e.preventDefault();
     const btn = e.target.querySelector('.form-submit');
@@ -1905,18 +4273,18 @@
 <script>
   gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
 
-  /* ─────────────────────────────────────────────
-     1. SCROLL PROGRESS BAR
-  ───────────────────────────────────────────── */
+  /* ═══════════════════════════════════════════════════════
+     SCROLL ANIMATION SYSTEM — Cinematic & Mobile-Perfect
+  ═══════════════════════════════════════════════════════ */
+
+  /* ─── 1. SCROLL PROGRESS BAR ─── */
   const progressBar = document.getElementById('scroll-progress');
   window.addEventListener('scroll', () => {
     const pct = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100;
     progressBar.style.width = pct + '%';
   }, { passive: true });
 
-  /* ─────────────────────────────────────────────
-     2. FLOATING DIYA PARTICLES IN HERO
-  ───────────────────────────────────────────── */
+  /* ─── 2. FLOATING DIYA PARTICLES IN HERO ─── */
   const heroParticles = document.getElementById('heroParticles');
   const diyas = ['🪔','✨','🌸','🌼','⭐','🌺'];
   for (let i = 0; i < 22; i++) {
@@ -1932,204 +4300,230 @@
     heroParticles.appendChild(el);
   }
 
-  /* ─────────────────────────────────────────────
-     3. CURSOR GLOW
-  ───────────────────────────────────────────── */
-  const glow = document.createElement('div');
-  glow.className = 'cursor-glow';
-  document.body.appendChild(glow);
-  let mx = -100, my = -100;
-  window.addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; }, { passive: true });
-  (function animGlow() {
-    glow.style.left = mx + 'px';
-    glow.style.top  = my + 'px';
-    requestAnimationFrame(animGlow);
-  })();
+  /* ─── 3. CURSOR GLOW (desktop only) ─── */
+  const isMobile = window.matchMedia('(max-width: 768px)').matches;
+  if (!isMobile) {
+    const glow = document.createElement('div');
+    glow.className = 'cursor-glow';
+    document.body.appendChild(glow);
+    let mx = -100, my = -100;
+    window.addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; }, { passive: true });
+    (function animGlow() { glow.style.left = mx + 'px'; glow.style.top = my + 'px'; requestAnimationFrame(animGlow); })();
+  }
 
-  /* ─────────────────────────────────────────────
-     4. NAV SHRINK ON SCROLL
-  ───────────────────────────────────────────── */
+  /* ─── 4. NAV SHRINK ON SCROLL ─── */
   const nav = document.querySelector('nav');
   window.addEventListener('scroll', () => {
     nav.classList.toggle('scrolled', window.scrollY > 80);
   }, { passive: true });
 
-  /* ─────────────────────────────────────────────
-     5. GSAP HERO ENTRANCE TIMELINE
-  ───────────────────────────────────────────── */
+  /* ─── 5. HERO ENTRANCE TIMELINE ─── */
   const heroTl = gsap.timeline({ delay: 0.2 });
   heroTl
     .from('.hero-badge',    { y: 40, opacity: 0, duration: 0.8, ease: 'power3.out' })
     .from('.hero-gujarati', { y: 30, opacity: 0, duration: 0.7, ease: 'power3.out' }, '-=0.5')
-    .from('.hero-title',    { y: 50, opacity: 0, duration: 0.9, ease: 'power3.out' }, '-=0.5')
+    .from('.hero-title',    { y: 60, opacity: 0, duration: 1.0, ease: 'power3.out' }, '-=0.5')
     .from('.hero-subtitle', { y: 25, opacity: 0, duration: 0.7, ease: 'power3.out' }, '-=0.6')
     .from('.hero-btns a',   { y: 25, opacity: 0, stagger: 0.15, duration: 0.6, ease: 'back.out(1.7)' }, '-=0.4')
     .from('.hero-scroll',   { opacity: 0, duration: 0.8, ease: 'power2.out' }, '-=0.2');
 
-  /* ─────────────────────────────────────────────
-     6. STATS BAR — ANIMATED COUNTER
-  ───────────────────────────────────────────── */
-  gsap.from('.stat-item', {
-    scrollTrigger: { trigger: '.stats-bar', start: 'top 95%', once: true },
-    y: 35, opacity: 0, stagger: 0.1, duration: 0.65, ease: 'power3.out'
+  /* ─── 6. HERO PARALLAX — scrub ─── */
+  gsap.to('.hero-title, .hero-subtitle, .hero-gujarati', {
+    scrollTrigger: { trigger: '.hero', start: 'top top', end: 'bottom top', scrub: 1.5 },
+    y: 80, ease: 'none'
   });
 
+  /* ══════════════════════════════════════════════
+     MASTER REVEAL SYSTEM
+     Every reveal uses willChange + GPU-accelerated
+     transforms. Safe on mobile touch-scroll.
+  ══════════════════════════════════════════════ */
+
+  function revealFade(selector, opts = {}) {
+    gsap.utils.toArray(selector).forEach((el, i) => {
+      gsap.fromTo(el,
+        { opacity: 0, y: opts.y ?? 45, x: opts.x ?? 0, scale: opts.scale ?? 1, rotateX: opts.rotateX ?? 0 },
+        {
+          opacity: 1, y: 0, x: 0, scale: 1, rotateX: 0,
+          duration: opts.duration ?? 0.8,
+          delay: (opts.stagger ?? 0.12) * (opts.noStagger ? 0 : i),
+          ease: opts.ease ?? 'power3.out',
+          clearProps: 'transform,opacity',
+          scrollTrigger: {
+            trigger: opts.trigger ?? el,
+            start: opts.start ?? 'top 88%',
+            once: true,
+          }
+        }
+      );
+    });
+  }
+
+  function revealSide(selector, direction, opts = {}) {
+    const xVal = direction === 'left' ? -60 : 60;
+    gsap.utils.toArray(selector).forEach((el, i) => {
+      gsap.fromTo(el,
+        { opacity: 0, x: xVal },
+        {
+          opacity: 1, x: 0,
+          duration: opts.duration ?? 0.85,
+          delay: (opts.stagger ?? 0) * i,
+          ease: opts.ease ?? 'power3.out',
+          clearProps: 'transform,opacity',
+          scrollTrigger: { trigger: opts.trigger ?? el, start: opts.start ?? 'top 88%', once: true }
+        }
+      );
+    });
+  }
+
+  /* ─── 7. STATS BAR ─── */
+  gsap.fromTo('.stat-item',
+    { opacity: 0, y: 30 },
+    {
+      opacity: 1, y: 0, stagger: 0.1, duration: 0.65, ease: 'power3.out',
+      clearProps: 'transform,opacity',
+      scrollTrigger: { trigger: '.stats-bar', start: 'top 95%', once: true }
+    }
+  );
+  /* Animated counters */
   document.querySelectorAll('.stat-num').forEach(el => {
     const raw    = el.textContent.replace(/[^0-9]/g, '');
     const suffix = el.textContent.replace(/[0-9]/g, '');
     if (!raw) return;
     const target = parseInt(raw);
     ScrollTrigger.create({
-      trigger: el,
-      start: 'top 95%',
-      once: true,
+      trigger: el, start: 'top 95%', once: true,
       onEnter: () => {
         gsap.fromTo({ val: 0 }, { val: target }, {
-          duration: 1.8,
-          ease: 'power2.out',
-          onUpdate: function() {
-            el.textContent = Math.round(this.targets()[0].val) + suffix;
-          }
+          duration: 2.0, ease: 'power2.out',
+          onUpdate: function() { el.textContent = Math.round(this.targets()[0].val) + suffix; }
         });
       }
     });
   });
 
-  /* ─────────────────────────────────────────────
-     7. SECTION HEADERS — ELEGANT ENTRANCE
-  ───────────────────────────────────────────── */
+  /* ─── 8. SECTION HEADERS — split letter reveal ─── */
   document.querySelectorAll('.section-header').forEach(header => {
     const label   = header.querySelector('.section-label');
     const title   = header.querySelector('.section-title');
     const divider = header.querySelector('.section-divider');
-    gsap.timeline({
-      scrollTrigger: { trigger: header, start: 'top 92%', once: true }
-    })
-    .from(label,   { y: 18, opacity: 0, duration: 0.55, ease: 'power2.out' }, 0)
-    .from(title,   { y: 30, opacity: 0, duration: 0.75, ease: 'power3.out' }, 0.1)
-    .from(divider, { scaleX: 0, duration: 0.6, ease: 'power2.inOut' }, 0.25);
+    gsap.timeline({ scrollTrigger: { trigger: header, start: 'top 90%', once: true } })
+      .fromTo(label,   { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.55, ease: 'power2.out', clearProps: 'all' }, 0)
+      .fromTo(title,   { opacity: 0, y: 36, clipPath: 'inset(100% 0% 0% 0%)' },
+                       { opacity: 1, y: 0,  clipPath: 'inset(0% 0% 0% 0%)', duration: 0.85, ease: 'power3.out', clearProps: 'all' }, 0.12)
+      .fromTo(divider, { scaleX: 0, opacity: 0 }, { scaleX: 1, opacity: 1, duration: 0.7, ease: 'power2.inOut', clearProps: 'all' }, 0.3);
+  });
 
-    ScrollTrigger.create({
-      trigger: header, start: 'top 92%', once: true,
-      onEnter: () => {
-        header.classList.add('in-view');
-        label?.classList.add('in-view');
+  /* ─── 9. DESTINATION CARDS — cinematic stagger ─── */
+  /* Big featured card slides from left */
+  gsap.fromTo('.dest-featured > .dest-card',
+    { opacity: 0, x: -70, scale: 0.96 },
+    {
+      opacity: 1, x: 0, scale: 1, duration: 1.0, ease: 'power3.out', clearProps: 'all',
+      scrollTrigger: { trigger: '.dest-featured', start: 'top 85%', once: true }
+    }
+  );
+  /* Right column cards drop in with stagger */
+  gsap.fromTo('.dest-right-col .dest-card',
+    { opacity: 0, y: 50, scale: 0.94 },
+    {
+      opacity: 1, y: 0, scale: 1, stagger: 0.18, duration: 0.85, ease: 'power3.out', clearProps: 'all',
+      scrollTrigger: { trigger: '.dest-featured', start: 'top 85%', once: true }
+    }
+  );
+  /* Mini grid — wave stagger from left to right */
+  gsap.utils.toArray('.dest-mini').forEach((el, i) => {
+    const col = i % 3;
+    const row = Math.floor(i / 3);
+    gsap.fromTo(el,
+      { opacity: 0, y: 40 + row * 10, scale: 0.92 },
+      {
+        opacity: 1, y: 0, scale: 1, duration: 0.75, ease: 'back.out(1.4)',
+        delay: col * 0.1 + row * 0.08,
+        clearProps: 'all',
+        scrollTrigger: { trigger: '.dest-grid', start: 'top 88%', once: true }
       }
+    );
+  });
+
+  /* ─── 10. CHARDHAM SECTION — theatrical entrance ─── */
+  gsap.fromTo('.chardham-img-stack img',
+    { opacity: 0, scale: 0.85, rotate: (i) => i === 0 ? -4 : i === 1 ? 4 : 0 },
+    {
+      opacity: 1, scale: 1, rotate: 0,
+      stagger: 0.22, duration: 0.95, ease: 'back.out(1.5)', clearProps: 'all',
+      scrollTrigger: { trigger: '.chardham-img-stack', start: 'top 85%', once: true }
+    }
+  );
+  /* Scrub parallax on chardham images */
+  gsap.to('.chardham-img-stack img:nth-child(1)', {
+    scrollTrigger: { trigger: '.chardham', start: 'top bottom', end: 'bottom top', scrub: 2 },
+    y: -30, ease: 'none'
+  });
+  gsap.to('.chardham-img-stack img:nth-child(2)', {
+    scrollTrigger: { trigger: '.chardham', start: 'top bottom', end: 'bottom top', scrub: 2 },
+    y: 30, ease: 'none'
+  });
+
+  revealSide('.chardham-text .highlight', 'right', { trigger: '.chardham-text', duration: 0.9 });
+  revealFade('.dham-item', { scale: 0.85, y: 0, ease: 'back.out(1.7)', stagger: 0.12, trigger: '.chardham-dhams', start: 'top 88%' });
+  revealFade('.chardham-text p', { stagger: 0.18, trigger: '.chardham-text', start: 'top 85%' });
+  revealFade('.chardham-text .btn-primary', { y: 20, trigger: '.chardham-text', start: 'top 80%' });
+
+  /* ─── 11. SERVICES — flip in cards ─── */
+  gsap.utils.toArray('.service-card').forEach((el, i) => {
+    gsap.fromTo(el,
+      { opacity: 0, y: 55, rotateX: 15 },
+      {
+        opacity: 1, y: 0, rotateX: 0,
+        duration: 0.75, ease: 'power3.out', delay: (i % 3) * 0.1,
+        clearProps: 'all',
+        scrollTrigger: { trigger: '.services-grid', start: 'top 87%', once: true }
+      }
+    );
+  });
+
+  /* ─── 12. WHY-US — slide + bounce ─── */
+  gsap.utils.toArray('.why-item').forEach((el, i) => {
+    gsap.fromTo(el,
+      { opacity: 0, y: 50, scale: 0.9 },
+      {
+        opacity: 1, y: 0, scale: 1, duration: 0.7,
+        delay: i * 0.14, ease: 'back.out(1.6)', clearProps: 'all',
+        scrollTrigger: { trigger: '.why-grid', start: 'top 88%', once: true }
+      }
+    );
+  });
+
+  /* ─── 13. GALLERY ─── */
+  revealFade('.gallery .section-header', { y: 30, trigger: '.gallery', start: 'top 88%' });
+
+  /* ─── 14. REVIEWS ─── */
+  revealFade('.reviews-rating-banner', { scale: 0.9, y: 0, trigger: '.reviews-rating-banner', start: 'top 88%' });
+
+  /* ─── 15. CONTACT ─── */
+  revealSide('.contact-info',    'left',  { trigger: '.contact-layout', duration: 0.9 });
+  revealSide('.contact-form-box','right', { trigger: '.contact-layout', duration: 0.9 });
+  revealFade('.contact-item', { stagger: 0.13, trigger: '.contact-info', start: 'top 85%' });
+  revealFade('.contact-social a', { scale: 0.8, y: 0, stagger: 0.1, ease: 'back.out(1.8)', trigger: '.contact-social', start: 'top 90%' });
+
+  /* ─── 16. FOOTER ─── */
+  revealFade('footer > *',  { stagger: 0.14, trigger: 'footer', start: 'top 90%' });
+  revealFade('.footer-bottom', { trigger: '.footer-bottom', start: 'top 95%' });
+
+  /* ─── 17. SECTION BACKGROUND PARALLAX STRIPS ─── */
+  /* Each section subtly shifts its background on scroll for depth */
+  ['.destinations', '.why-us', '.services'].forEach(sel => {
+    const el = document.querySelector(sel);
+    if (!el) return;
+    gsap.to(el, {
+      backgroundPositionY: '20%',
+      ease: 'none',
+      scrollTrigger: { trigger: el, start: 'top bottom', end: 'bottom top', scrub: 2 }
     });
   });
 
-  /* ─────────────────────────────────────────────
-     SAFE SCROLL ANIMATION HELPER
-     Uses once:true + generous start so nothing
-     ever gets stuck invisible
-  ───────────────────────────────────────────── */
-  function safeFrom(selector, vars, triggerEl) {
-    const els = gsap.utils.toArray(selector);
-    if (!els.length) return;
-    const trig = triggerEl || els[0];
-    gsap.from(els, {
-      ...vars,
-      scrollTrigger: {
-        trigger: trig,
-        start: 'top 92%',
-        once: true,
-        toggleActions: 'play none none none',
-        ...(vars.scrollTrigger || {})
-      }
-    });
-  }
-
-  /* ─────────────────────────────────────────────
-     8. DESTINATION CARDS
-  ───────────────────────────────────────────── */
-  safeFrom('.dest-featured .dest-card',
-    { x: (i) => i === 0 ? -50 : 50, opacity: 0, duration: 0.85, stagger: 0.15, ease: 'power3.out' },
-    '.dest-featured'
-  );
-  safeFrom('.dest-mini',
-    { y: 40, opacity: 0, scale: 0.94, stagger: 0.09, duration: 0.65, ease: 'power3.out' },
-    '.dest-grid'
-  );
-
-  /* ─────────────────────────────────────────────
-     9. CHARDHAM SECTION
-  ───────────────────────────────────────────── */
-  safeFrom('.chardham-img-stack img',
-    { scale: 0.88, opacity: 0, stagger: 0.18, duration: 0.85, ease: 'back.out(1.4)' },
-    '.chardham-img-stack'
-  );
-  safeFrom('.chardham-text .highlight',
-    { x: -30, opacity: 0, duration: 0.85, ease: 'power3.out' },
-    '.chardham-text'
-  );
-  safeFrom('.dham-item',
-    { scale: 0.82, opacity: 0, stagger: 0.1, duration: 0.6, ease: 'back.out(1.7)' },
-    '.chardham-dhams'
-  );
-  safeFrom('.chardham-text p',
-    { y: 20, opacity: 0, stagger: 0.15, duration: 0.65, ease: 'power2.out' },
-    '.chardham-text'
-  );
-
-  /* ─────────────────────────────────────────────
-     10. SERVICE CARDS
-  ───────────────────────────────────────────── */
-  safeFrom('.service-card',
-    { y: 45, opacity: 0, stagger: 0.11, duration: 0.7, ease: 'power3.out' },
-    '.services-grid'
-  );
-
-  /* ─────────────────────────────────────────────
-     11. WHY-US
-  ───────────────────────────────────────────── */
-  safeFrom('.why-item',
-    { y: 40, opacity: 0, stagger: 0.12, duration: 0.65, ease: 'power3.out' },
-    '.why-grid'
-  );
-
-  /* ─────────────────────────────────────────────
-     12. GALLERY HEADER
-  ───────────────────────────────────────────── */
-  safeFrom('.gallery .section-header',
-    { y: 25, opacity: 0, duration: 0.85, ease: 'power3.out' },
-    '.gallery'
-  );
-
-  /* ─────────────────────────────────────────────
-     13. CONTACT SECTION
-  ───────────────────────────────────────────── */
-  safeFrom('.contact-info',
-    { x: -50, opacity: 0, duration: 0.85, ease: 'power3.out' },
-    '.contact-layout'
-  );
-  safeFrom('.contact-form-box',
-    { x: 50, opacity: 0, duration: 0.85, ease: 'power3.out' },
-    '.contact-layout'
-  );
-  safeFrom('.contact-item',
-    { x: -25, opacity: 0, stagger: 0.12, duration: 0.55, ease: 'power2.out' },
-    '.contact-info'
-  );
-  safeFrom('.contact-social a',
-    { scale: 0.88, opacity: 0, stagger: 0.1, duration: 0.5, ease: 'back.out(1.7)' },
-    '.contact-social'
-  );
-
-  /* ─────────────────────────────────────────────
-     14. FOOTER
-  ───────────────────────────────────────────── */
-  safeFrom('footer > *',
-    { y: 25, opacity: 0, stagger: 0.12, duration: 0.65, ease: 'power3.out' },
-    'footer'
-  );
-  safeFrom('.footer-bottom',
-    { opacity: 0, duration: 0.7, ease: 'power2.out' },
-    '.footer-bottom'
-  );
-
-  /* ─────────────────────────────────────────────
-     15. RIPPLE EFFECT ON BUTTONS
-  ───────────────────────────────────────────── */
+  /* ─── 18. RIPPLE ON BUTTONS ─── */
   document.querySelectorAll('.btn-primary, .btn-outline, .nav-cta').forEach(btn => {
     btn.style.position = 'relative';
     btn.addEventListener('click', function(e) {
@@ -2143,52 +4537,7 @@
     });
   });
 
-  /* ─────────────────────────────────────────────
-     16. HERO PARALLAX (gentle, only y movement)
-  ───────────────────────────────────────────── */
-  gsap.to('.hero-title, .hero-subtitle, .hero-gujarati', {
-    scrollTrigger: {
-      trigger: '.hero',
-      start: 'top top',
-      end: 'bottom top',
-      scrub: 1.5
-    },
-    y: 80,
-    ease: 'none'
-  });
-
-  /* ─────────────────────────────────────────────
-     17. GLOBAL SAFETY NET
-     After 2.5s, force-show ANY element that is
-     still invisible due to a missed trigger.
-     Skips elements that are INTENTIONALLY hidden.
-  ───────────────────────────────────────────── */
-  setTimeout(() => {
-    // Elements that should stay hidden when closed
-    const skipSelectors = [
-      '#calDropdown', '.cal-dropdown',
-      '.btn-spark', '.diya-particle', '.star', '.cursor-glow',
-      '.btn-ripple', '.send-btn-particles', '.hero-particles'
-    ];
-    const skipEls = new Set();
-    skipSelectors.forEach(sel => {
-      document.querySelectorAll(sel).forEach(el => skipEls.add(el));
-    });
-
-    document.querySelectorAll('section, section *, .stats-bar, .stats-bar *, footer, footer *, .footer-bottom').forEach(el => {
-      if (skipEls.has(el)) return;
-      const cs = window.getComputedStyle(el);
-      const op = parseFloat(cs.opacity);
-      if (op < 0.05 && cs.display !== 'none' && cs.visibility !== 'hidden') {
-        el.style.opacity = '1';
-        el.style.transform = 'none';
-      }
-    });
-  }, 2500);
-
-  /* ─────────────────────────────────────────────
-     18. SCROLL-TO on nav links (smooth)
-  ───────────────────────────────────────────── */
+  /* ─── 19. SCROLL-TO ON NAV LINKS ─── */
   document.querySelectorAll('a[href^="#"]').forEach(link => {
     link.addEventListener('click', function(e) {
       const target = document.querySelector(this.getAttribute('href'));
@@ -2198,6 +4547,78 @@
       }
     });
   });
+
+  /* ─── 20. MAGNETIC HOVER on destination cards (desktop only) ─── */
+  if (!isMobile) {
+    document.querySelectorAll('.dest-card, .dest-mini').forEach(card => {
+      card.addEventListener('mousemove', function(e) {
+        const rect = card.getBoundingClientRect();
+        const cx = rect.left + rect.width / 2;
+        const cy = rect.top + rect.height / 2;
+        const dx = (e.clientX - cx) / rect.width  * 8;
+        const dy = (e.clientY - cy) / rect.height * 8;
+        gsap.to(card, { rotateY: dx, rotateX: -dy, transformPerspective: 800, duration: 0.4, ease: 'power2.out', overwrite: 'auto' });
+      });
+      card.addEventListener('mouseleave', function() {
+        gsap.to(card, { rotateY: 0, rotateX: 0, duration: 0.6, ease: 'power3.out', overwrite: 'auto' });
+      });
+    });
+  }
+
+  /* ─── 21. HORIZONTAL SCROLL SCRUB on gallery strip ─── */
+  const strip = document.querySelector('.gallery-strip');
+  if (strip) {
+    gsap.to(strip, {
+      x: () => -(strip.scrollWidth / 2),
+      ease: 'none',
+      scrollTrigger: {
+        trigger: '.gallery',
+        start: 'top top',
+        end: () => '+=' + strip.scrollWidth / 2,
+        scrub: 1,
+        pin: false,
+      }
+    });
+  }
+
+  /* ─── 22. SECTION ENTRANCE WIPE EFFECT ─── */
+  /* Adds a saffron-gold wipe line that sweeps across when section enters */
+  document.querySelectorAll('section').forEach(sec => {
+    const wipe = document.createElement('div');
+    wipe.style.cssText = `
+      position:absolute; top:0; left:0; right:0; height:3px;
+      background: linear-gradient(90deg, transparent, var(--gold-light), var(--saffron), var(--gold-light), transparent);
+      transform: scaleX(0); transform-origin: left; pointer-events: none; z-index: 10;
+    `;
+    sec.style.position = 'relative';
+    sec.appendChild(wipe);
+    ScrollTrigger.create({
+      trigger: sec, start: 'top 85%', once: true,
+      onEnter: () => gsap.to(wipe, { scaleX: 1, duration: 0.9, ease: 'power3.inOut', clearProps: 'all' })
+    });
+  });
+
+  /* ─── 23. GLOBAL SAFETY NET ─── */
+  /* After 3s, force-show anything stuck invisible */
+  setTimeout(() => {
+    const skipSelectors = [
+      '#calDropdown', '.cal-dropdown', '.btn-spark', '.diya-particle',
+      '.star', '.cursor-glow', '.btn-ripple', '.send-btn-particles',
+      '.hero-particles', '.dest-modal-backdrop', '.photo-lightbox'
+    ];
+    const skipEls = new Set();
+    skipSelectors.forEach(sel => document.querySelectorAll(sel).forEach(el => skipEls.add(el)));
+    document.querySelectorAll('section, section *, .stats-bar, .stats-bar *, footer, footer *, .footer-bottom').forEach(el => {
+      if (skipEls.has(el)) return;
+      const cs = window.getComputedStyle(el);
+      const op = parseFloat(cs.opacity);
+      if (op < 0.05 && cs.display !== 'none' && cs.visibility !== 'hidden') {
+        el.style.opacity = '1';
+        el.style.transform = 'none';
+        el.style.clipPath = 'none';
+      }
+    });
+  }, 3000);
 
   /* ─────────────────────────────────────────────
      19. CUSTOM CALENDAR PICKER — FIXED
@@ -2384,19 +4805,200 @@
           btn.classList.add('success');
           document.querySelector('.send-btn-text').textContent = 'Enquiry Sent!';
           document.querySelector('.send-btn-icon').textContent = '✅';
-          document.querySelector('.send-btn-arrow').textContent = '';
-          spawnSparks(); spawnSparks();
-          setTimeout(() => {
-            btn.classList.remove('success');
-            document.querySelector('.send-btn-text').textContent = 'Send Enquiry';
-            document.querySelector('.send-btn-icon').textContent = '🙏';
-            document.querySelector('.send-btn-arrow').textContent = '→';
-          }, 4000);
-        }, 1500);
+        }, 3000);
       });
     }
   })();
 
+</script>
+
+<!-- ═══════════════════════════════════════════════
+     NEW THEME ANIMATION SCRIPTS
+═══════════════════════════════════════════════ -->
+<script>
+(function() {
+  /* ── 1. Page Splash ── */
+  window.addEventListener('load', function() {
+    setTimeout(function() {
+      document.getElementById('page-splash').classList.add('gone');
+    }, 1600);
+  });
+
+  /* ── 2. Scroll Progress Bar ── */
+  window.addEventListener('scroll', function() {
+    var scrolled = window.scrollY;
+    var total = document.documentElement.scrollHeight - window.innerHeight;
+    var pct = total > 0 ? (scrolled / total) * 100 : 0;
+    var bar = document.getElementById('scroll-progress-bar');
+    if (bar) bar.style.width = pct + '%';
+  }, { passive: true });
+
+  /* ── 3. Nav shrink on scroll ── */
+  window.addEventListener('scroll', function() {
+    var nav = document.querySelector('nav');
+    if (!nav) return;
+    if (window.scrollY > 60) {
+      nav.classList.add('scrolled');
+    } else {
+      nav.classList.remove('scrolled');
+    }
+  }, { passive: true });
+
+  /* ── 4. Twinkling Stars in Hero ── */
+  var hero = document.querySelector('.hero');
+  if (hero) {
+    var sc = document.createElement('div');
+    sc.className = 'stars-canvas';
+    hero.insertBefore(sc, hero.firstChild);
+    for (var i = 0; i < 50; i++) {
+      var s = document.createElement('div');
+      s.className = 'star-dot';
+      var size = 1 + Math.random() * 2.5;
+      s.style.cssText = [
+        'width:' + size + 'px',
+        'height:' + size + 'px',
+        'left:' + (Math.random() * 100) + '%',
+        'top:' + (Math.random() * 100) + '%',
+        '--dur:' + (2 + Math.random() * 4) + 's',
+        '--del:' + (Math.random() * 4) + 's',
+        'opacity:0'
+      ].join(';');
+      sc.appendChild(s);
+    }
+  }
+
+  /* ── 5. Mandala BG on sections ── */
+  ['#chardham', '.reviews-section'].forEach(function(sel) {
+    var el = document.querySelector(sel);
+    if (el) {
+      var mb = document.createElement('div');
+      mb.className = 'mandala-bg';
+      el.insertBefore(mb, el.firstChild);
+    }
+  });
+
+  /* ── 6. Button ripple for all CTA buttons ── */
+  document.querySelectorAll('.btn-primary, .btn-outline, .nav-cta, .modal-cta-btn').forEach(function(btn) {
+    btn.addEventListener('click', function(e) {
+      var r = document.createElement('span');
+      r.className = 'btn-ripple';
+      var rect = btn.getBoundingClientRect();
+      var x = e.clientX - rect.left;
+      var y = e.clientY - rect.top;
+      r.style.cssText = 'width:160px;height:160px;left:' + (x - 80) + 'px;top:' + (y - 80) + 'px;position:absolute;border-radius:50%;background:rgba(255,255,255,0.25);transform:scale(0);animation:rippleOut 0.6s linear;pointer-events:none;';
+      btn.style.position = 'relative';
+      btn.style.overflow = 'hidden';
+      btn.appendChild(r);
+      setTimeout(function() { r.remove(); }, 700);
+    });
+  });
+
+  /* ── 7. Section label animated underline trigger ── */
+  var labels = document.querySelectorAll('.section-label');
+  var labelObs = new IntersectionObserver(function(entries) {
+    entries.forEach(function(e) {
+      if (e.isIntersecting) e.target.classList.add('in-view');
+    });
+  }, { threshold: 0.5 });
+  labels.forEach(function(l) { labelObs.observe(l); });
+
+  /* ── 8. Contact item animated icon on scroll ── */
+  var contactItems = document.querySelectorAll('.contact-item');
+  var contactObs = new IntersectionObserver(function(entries) {
+    entries.forEach(function(e, i) {
+      if (e.isIntersecting) {
+        var box = e.target.querySelector('.contact-icon-box');
+        if (box) {
+          box.style.animation = 'none';
+          setTimeout(function() {
+            box.style.animation = 'contactIconPop 0.6s cubic-bezier(0.34,1.56,0.64,1) both';
+          }, i * 100);
+        }
+      }
+    });
+  }, { threshold: 0.3 });
+  contactItems.forEach(function(ci) { contactObs.observe(ci); });
+
+  /* ── 9. Add CSS for contactIconPop ── */
+  var style = document.createElement('style');
+  style.textContent = [
+    '@keyframes contactIconPop {',
+    '  from { transform: scale(0) rotate(-20deg); opacity: 0; }',
+    '  to   { transform: scale(1) rotate(0deg); opacity: 1; }',
+    '}',
+    '@keyframes rippleOut { to { transform: scale(4); opacity: 0; } }',
+    /* Service card stagger */
+    '.services-grid .service-card:nth-child(1) { animation-delay: 0.05s; }',
+    '.services-grid .service-card:nth-child(2) { animation-delay: 0.1s; }',
+    '.services-grid .service-card:nth-child(3) { animation-delay: 0.15s; }',
+    '.services-grid .service-card:nth-child(4) { animation-delay: 0.2s; }',
+    '.services-grid .service-card:nth-child(5) { animation-delay: 0.25s; }',
+    '.services-grid .service-card:nth-child(6) { animation-delay: 0.3s; }',
+    /* Why item hover */
+    '.why-item { cursor: default; }',
+    /* Footer link indent */
+    '.footer-col a { display: inline-block; }',
+    /* Hero badge */
+    '.hero-badge { animation-duration: 1s !important; }',
+    /* nav height transition */
+    'nav { transition: height 0.3s ease, background 0.3s ease !important; }'
+  ].join('\n');
+  document.head.appendChild(style);
+
+  /* ── 10. Gallery item mouse-parallax subtle ── */
+  document.querySelectorAll('.gallery-item').forEach(function(item) {
+    item.addEventListener('mousemove', function(e) {
+      var rect = item.getBoundingClientRect();
+      var cx = (e.clientX - rect.left) / rect.width - 0.5;
+      var cy = (e.clientY - rect.top) / rect.height - 0.5;
+      var img = item.querySelector('img');
+      if (img) img.style.transform = 'scale(1.1) translate(' + (cx * 6) + 'px,' + (cy * 6) + 'px)';
+    });
+    item.addEventListener('mouseleave', function() {
+      var img = item.querySelector('img');
+      if (img) img.style.transform = '';
+    });
+  });
+
+  /* ── 11. Why item counter animation ── */
+  var whyItems = document.querySelectorAll('.why-num');
+  var whyObs = new IntersectionObserver(function(entries) {
+    entries.forEach(function(e) {
+      if (e.isIntersecting) {
+        var el = e.target;
+        el.style.animation = 'whyNumReveal 0.8s cubic-bezier(0.34,1.56,0.64,1) both';
+        whyObs.unobserve(el);
+      }
+    });
+  }, { threshold: 0.5 });
+  whyItems.forEach(function(w) { whyObs.observe(w); });
+  var s2 = document.createElement('style');
+  s2.textContent = '@keyframes whyNumReveal { from { opacity:0; transform:scale(2) rotate(-10deg); } to { opacity:1; transform:scale(1) rotate(0); } }';
+  document.head.appendChild(s2);
+
+  /* ── 12. Section title text shimmer on scroll ── */
+  var sectionTitles = document.querySelectorAll('.section-title');
+  var titleObs = new IntersectionObserver(function(entries) {
+    entries.forEach(function(e) {
+      if (e.isIntersecting) {
+        e.target.classList.add('title-revealed');
+        titleObs.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.3 });
+  sectionTitles.forEach(function(t) { titleObs.observe(t); });
+  var s3 = document.createElement('style');
+  s3.textContent = [
+    '.section-title { transition: opacity 0.6s ease; }',
+    '.section-title.title-revealed { animation: titleReveal 0.8s ease both; }',
+    '@keyframes titleReveal {',
+    '  from { opacity:0; transform: translateY(20px); }',
+    '  to   { opacity:1; transform: translateY(0); }',
+    '}'
+  ].join('\n');
+  document.head.appendChild(s3);
+
+})();
 </script>
 </body>
 </html>
